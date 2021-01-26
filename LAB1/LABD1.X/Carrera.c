@@ -1,7 +1,8 @@
-/*
- * 
- * 
- *
+/*FRANCISCO MONTÚFAR
+ *CARNET 19379
+ *ELECTRÓNICA DIGITAL 2
+ *LABORATORIO #1
+ *JUEGO DE CARRERAS
  * 
  */
 //******************************************************************************
