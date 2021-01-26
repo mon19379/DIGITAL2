@@ -27,18 +27,17 @@
 // CONFIG2
 #pragma config BOR4V = BOR40V   // Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)
 #pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)
-#define _XTAL_FREQ 8000000
+#define _XTAL_FREQ 8000000      //SE CONFIGURA EL OSCILADOR EXTERNO
 
 //******************************************************************************
 //Variables
 //******************************************************************************
 unsigned char sem = 0; //VARIABLE DE ANTIREBOTE PARA BOTON DEL SEMAFORO
 unsigned char FLAG = 0; //BANDERA DEL SEMAFORO
-unsigned char FLAG1 = 0; 
 unsigned char P1 = 0;//BANDERA CORREDOR 1
 unsigned char P2 = 0;//BANDERA CORREDOR 2
-unsigned char CONT = 0;//CONTADOR
-unsigned char CONT1 = 0;
+unsigned char CONT = 0;//CONTADOR DEL CORREDOR 1
+unsigned char CONT1 = 0;//CONTADOR DEL CORREDOR 2
 
 
 
@@ -47,8 +46,8 @@ unsigned char CONT1 = 0;
 //******************************************************************************
 void Setup(void);
 void semaforo(void); //FUNCIÓN DEL SEMAFORO
-void player1 (void);
-void player2 (void);
+void player1 (void);//FUNCION DEL CORREDOR 1
+void player2 (void);//FUNCION DEL CORREDOR 2
 
 
 //******************************************************************************
@@ -74,16 +73,16 @@ void main(void) {
             }
         }
         
-        if (FLAG == 1){
-            if (PORTBbits.RB4 == 1){
-            P1 = 1;
+        if (FLAG == 1){ //CUANDO SE ENCIENDE LA BANDERA SE HABILITAN LOS BOTONES
+            if (PORTBbits.RB4 == 1){ //ANTIREBOTE, SE PRESIONA EL BOTON
+            P1 = 1; // SE ENCIENDE LA BANDERA DEL CORREDOR 1
         }
         
             else{
-                if (P1 == 1 && PORTBbits.RB4 == 0 ){
-                P1 = 0;
-                CONT ++;
-                player1();
+                if (P1 == 1 && PORTBbits.RB4 == 0 ){ //SE DEJA DE PRESIONAR EL 
+                P1 = 0;                              //BOTON
+                CONT ++;// SE INCREMENTA UN CONTADOR
+                player1();//SE LLAMA A LA FUNCION DEL CORREDOR1
             }
             
         }
@@ -92,16 +91,16 @@ void main(void) {
     }
         
         
-        if (FLAG == 1){
-            if (PORTBbits.RB5 == 1){
-            P2 = 1;
+        if (FLAG == 1){ //CUANDO SE ENCIENDE LA BANDERA SE HABILITAN LOS BOTONES
+            if (PORTBbits.RB5 == 1){ //ANTIREBOTE, SE PRESIONA EL BOTON
+            P2 = 1; //SE ENCIENDE LA BANDERA DEL JUGADOR2
         }
         
             else{
-                if (P2 == 1 && PORTBbits.RB5 == 0 ){
-                P2 = 0;
-                CONT1 ++;
-                player2();
+                if (P2 == 1 && PORTBbits.RB5 == 0 ){ //SE DEJA DE PRESIONAR EL
+                P2 = 0;                              //BOTON
+                CONT1 ++;//SE INCREMENTA UN CONTADOR
+                player2();//SE LLAMA A LA FUNCION DEL CORREDOR 2
             }
             
         }
@@ -162,7 +161,7 @@ void semaforo (void){
     
         PORTBbits.RB0 = 0;
         PORTBbits.RB1 = 0;//LAS OTRAS DOS SE MANTIENEN APAGADAS
-        PORTBbits.RB2 = 1;//SE ENCIENDE LA LED ROJA DEL SEMAFORO
+        PORTBbits.RB2 = 1;//SE ENCIENDE LA LED VERDE DEL SEMAFORO
         FLAG = 1;   
        
         __delay_ms(100);
@@ -177,37 +176,37 @@ void semaforo (void){
 }
 
 void player1(void){
-    if(CONT == 1){
-        PORTC = 1;
+    if(CONT == 1){ 
+        PORTC = 1; //SI EL CONTADOR ESTA EN 1, SE ENCIENDE LA PRIMER LED
     }
-        else if (CONT >1 && CONT < 8){
-            PORTC = PORTC<<1;
+        else if (CONT >1 && CONT < 8){ //SI EL CONTADOR SE ENCUENTRA ENTRE 1 Y 8
+            PORTC = PORTC<<1;          //SE HACE UN SHIFT AL UNICO BIT ACTIVO
     }
         
     else if(CONT == 8){
-        CONT = 0;
-        PORTCbits.RC6 = 0;
-        PORTCbits.RC7 = 1;
-        PORTEbits.RE0 = 1;
-        FLAG = 0;
+        CONT = 0;   //SI EL CONTADOR ES = 8 SE RESETEA
+        PORTCbits.RC6 = 0; //SE APAGA LA PENULTIMA LED
+        PORTCbits.RC7 = 1;//SE ENCIENDE LA ULTIMA LED
+        PORTEbits.RE0 = 1;//SE ACTIVA EL INDICADOR DE VICTORIA
+        FLAG = 0; //SE APAGA LA BANDERA QUE HABILITA LOS BOTONES 
     }
 }
 
 void player2 (void){
     if (CONT1 == 1){
-        PORTD = 1;
+        PORTD = 1; //SI EL CONTADOR ESTA EN 1, SE ENCIENDE LA PRIMER LED
     }
     
-        else if (CONT1 > 1 && CONT1 < 8){
-            PORTD = PORTD<<1;
+        else if (CONT1 > 1 && CONT1 < 8){ //SI EL CONTADOR SE ENCUENTRA ENTRE 1 Y 8
+            PORTD = PORTD<<1;             //SE HACE UN SHIFT AL UNICO BIT ACTIVO
         }
     
     else if(CONT1 == 8){
-        CONT1 = 0;
-        PORTDbits.RD6 = 0;
-        PORTDbits.RD7 = 1;
-        PORTEbits.RE1 = 1;
-        FLAG = 0;
+        CONT1 = 0;      //SI EL CONTADOR ES = 8 SE RESETEA
+        PORTDbits.RD6 = 0; //SE APAGA LA PENULTIMA LED
+        PORTDbits.RD7 = 1; //SE ENCIENDE LA ULTIMA LED
+        PORTEbits.RE1 = 1; //SE ACTIVA EL INDICADOR DE VICTORIA
+        FLAG = 0; //SE APAGA LA BANDERA QUE HABILITA LOS BOTONES 
     }
 }
 

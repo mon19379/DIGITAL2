@@ -2519,7 +2519,6 @@ extern __bank0 __bit __timeout;
 
 unsigned char sem = 0;
 unsigned char FLAG = 0;
-unsigned char FLAG1 = 0;
 unsigned char P1 = 0;
 unsigned char P2 = 0;
 unsigned char CONT = 0;

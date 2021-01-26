@@ -1,7 +1,7 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"48 Carrera.c
-[; ;Carrera.c: 48:             P1 = 1;
+"47 Carrera.c
+[; ;Carrera.c: 47:             P1 = 1;
 [v _Setup `(v ~T0 @X0 0 ef ]
 "234 C:\Program Files\Microchip\xc8\v2.20\pic\include\proc\pic16f887.h
 [; ;C:\Program Files\Microchip\xc8\v2.20\pic\include\proc\pic16f887.h: 234:     struct {
@@ -14,14 +14,14 @@ Version 4.0 HI-TECH Software Intermediate Code
 "245
 [; ;C:\Program Files\Microchip\xc8\v2.20\pic\include\proc\pic16f887.h: 245: extern volatile PORTBbits_t PORTBbits __attribute__((address(0x006)));
 [v _PORTBbits `VS7 ~T0 @X0 0 e@6 ]
-"49 Carrera.c
-[; ;Carrera.c: 49:         }
+"48 Carrera.c
+[; ;Carrera.c: 48:         }
 [v _semaforo `(v ~T0 @X0 0 ef ]
-"50
-[; ;Carrera.c: 50: 
+"49
+[; ;Carrera.c: 49: 
 [v _player1 `(v ~T0 @X0 0 ef ]
-"51
-[; ;Carrera.c: 51:             else{
+"50
+[; ;Carrera.c: 50:             else{
 [v _player2 `(v ~T0 @X0 0 ef ]
 "3387 C:\Program Files\Microchip\xc8\v2.20\pic\include\proc\pic16f887.h
 [; ;C:\Program Files\Microchip\xc8\v2.20\pic\include\proc\pic16f887.h: 3387: extern volatile unsigned char ANSEL __attribute__((address(0x188)));
@@ -334,19 +334,19 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:\Program Files\Microchip\xc8\v2.20\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
 "16 Carrera.c
-[; ;Carrera.c: 16: 
+[; ;Carrera.c: 16: void Setup(void);
 [p x FOSC = XT ]
 "17
-[; ;Carrera.c: 17: void Setup(void);
+[; ;Carrera.c: 17: void semaforo(void);
 [p x WDTE = OFF ]
 "18
-[; ;Carrera.c: 18: void semaforo(void);
+[; ;Carrera.c: 18: void player1 (void);
 [p x PWRTE = OFF ]
 "19
-[; ;Carrera.c: 19: void player1 (void);
+[; ;Carrera.c: 19: void player2 (void);
 [p x MCLRE = OFF ]
 "20
-[; ;Carrera.c: 20: void player2 (void);
+[; ;Carrera.c: 20: 
 [p x CP = OFF ]
 "21
 [; ;Carrera.c: 21: 
@@ -364,410 +364,404 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;Carrera.c: 25: 
 [p x LVP = OFF ]
 "28
-[; ;Carrera.c: 28: 
+[; ;Carrera.c: 28:     Setup();
 [p x BOR4V = BOR40V ]
 "29
-[; ;Carrera.c: 29:     Setup();
+[; ;Carrera.c: 29: 
 [p x WRT = OFF ]
 "35
-[; ;Carrera.c: 35:             sem = 0;
+[; ;Carrera.c: 35:         }
 [v _sem `uc ~T0 @X0 1 e ]
 [i _sem
 -> -> 0 `i `uc
 ]
 "36
-[; ;Carrera.c: 36:         }
+[; ;Carrera.c: 36: 
 [v _FLAG `uc ~T0 @X0 1 e ]
 [i _FLAG
 -> -> 0 `i `uc
 ]
 "37
-[; ;Carrera.c: 37: 
-[v _FLAG1 `uc ~T0 @X0 1 e ]
-[i _FLAG1
--> -> 0 `i `uc
-]
-"38
-[; ;Carrera.c: 38:         else{
+[; ;Carrera.c: 37:         else{
 [v _P1 `uc ~T0 @X0 1 e ]
 [i _P1
 -> -> 0 `i `uc
 ]
-"39
-[; ;Carrera.c: 39:             if (sem == 0){
+"38
+[; ;Carrera.c: 38:             if (sem == 0){
 [v _P2 `uc ~T0 @X0 1 e ]
 [i _P2
 -> -> 0 `i `uc
 ]
-"40
-[; ;Carrera.c: 40:                 sem = 1;
+"39
+[; ;Carrera.c: 39:                 sem = 1;
 [v _CONT `uc ~T0 @X0 1 e ]
 [i _CONT
 -> -> 0 `i `uc
 ]
-"41
-[; ;Carrera.c: 41:                 semaforo();
+"40
+[; ;Carrera.c: 40:                 semaforo();
 [v _CONT1 `uc ~T0 @X0 1 e ]
 [i _CONT1
 -> -> 0 `i `uc
 ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"58
-[; ;Carrera.c: 58:         }
+"57
+[; ;Carrera.c: 57:         }
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"60
-[; ;Carrera.c: 60: 
+"59
+[; ;Carrera.c: 59: 
 [e ( _Setup ..  ]
-"64
-[; ;Carrera.c: 64:         if (FLAG == 1){
+"63
+[; ;Carrera.c: 63:         if (FLAG == 1){
 [e :U 140 ]
 {
-"65
-[; ;Carrera.c: 65:             if (PORTBbits.RB5 == 1){
+"64
+[; ;Carrera.c: 64:             if (PORTBbits.RB5 == 1){
 [e $ ! == -> . . _PORTBbits 0 3 `i -> 0 `i 142  ]
 {
-"66
-[; ;Carrera.c: 66:             P2 = 1;
+"65
+[; ;Carrera.c: 65:             P2 = 1;
 [e = _sem -> -> 0 `i `uc ]
-"67
-[; ;Carrera.c: 67:         }
+"66
+[; ;Carrera.c: 66:         }
 }
 [e $U 143  ]
-"69
-[; ;Carrera.c: 69:             else{
+"68
+[; ;Carrera.c: 68:             else{
 [e :U 142 ]
 {
-"70
-[; ;Carrera.c: 70:                 if (P2 == 1 && PORTBbits.RB5 == 0 ){
+"69
+[; ;Carrera.c: 69:                 if (P2 == 1 && PORTBbits.RB5 == 0 ){
 [e $ ! == -> _sem `i -> 0 `i 144  ]
 {
-"71
-[; ;Carrera.c: 71:                 P2 = 0;
+"70
+[; ;Carrera.c: 70:                 P2 = 0;
 [e = _sem -> -> 1 `i `uc ]
-"72
-[; ;Carrera.c: 72:                 CONT1 ++;
+"71
+[; ;Carrera.c: 71:                 CONT1 ++;
 [e ( _semaforo ..  ]
-"74
-[; ;Carrera.c: 74:             }
+"73
+[; ;Carrera.c: 73:             }
 }
 [e :U 144 ]
-"75
-[; ;Carrera.c: 75: 
+"74
+[; ;Carrera.c: 74: 
 }
 [e :U 143 ]
-"77
-[; ;Carrera.c: 77: 
+"76
+[; ;Carrera.c: 76: 
 [e $ ! == -> _FLAG `i -> 1 `i 145  ]
 {
-"78
-[; ;Carrera.c: 78: 
+"77
+[; ;Carrera.c: 77: 
 [e $ ! == -> . . _PORTBbits 0 4 `i -> 1 `i 146  ]
 {
-"79
-[; ;Carrera.c: 79:     }
+"78
+[; ;Carrera.c: 78:     }
 [e = _P1 -> -> 1 `i `uc ]
-"80
-[; ;Carrera.c: 80: 
+"79
+[; ;Carrera.c: 79: 
 }
 [e $U 147  ]
-"82
-[; ;Carrera.c: 82: 
+"81
+[; ;Carrera.c: 81: 
 [e :U 146 ]
 {
-"83
-[; ;Carrera.c: 83: 
+"82
+[; ;Carrera.c: 82: 
 [e $ ! && == -> _P1 `i -> 1 `i == -> . . _PORTBbits 0 4 `i -> 0 `i 148  ]
 {
-"84
-[; ;Carrera.c: 84:     }
+"83
+[; ;Carrera.c: 83:     }
 [e = _P1 -> -> 0 `i `uc ]
-"85
-[; ;Carrera.c: 85: }
+"84
+[; ;Carrera.c: 84: }
 [e ++ _CONT -> -> 1 `i `uc ]
+"85
+[; ;Carrera.c: 85: 
+[e ( _player1 ..  ]
 "86
 [; ;Carrera.c: 86: 
-[e ( _player1 ..  ]
-"87
-[; ;Carrera.c: 87: 
 }
 [e :U 148 ]
-"89
-[; ;Carrera.c: 89: 
+"88
+[; ;Carrera.c: 88: 
 }
 [e :U 147 ]
-"92
-[; ;Carrera.c: 92: void Setup(void) {
+"91
+[; ;Carrera.c: 91: void Setup(void) {
 }
 [e :U 145 ]
-"95
-[; ;Carrera.c: 95:     PORTA = 0;
+"94
+[; ;Carrera.c: 94:     PORTA = 0;
 [e $ ! == -> _FLAG `i -> 1 `i 149  ]
 {
-"96
-[; ;Carrera.c: 96:     PORTB = 0;
+"95
+[; ;Carrera.c: 95:     PORTB = 0;
 [e $ ! == -> . . _PORTBbits 0 5 `i -> 1 `i 150  ]
 {
-"97
-[; ;Carrera.c: 97:     PORTC = 0;
+"96
+[; ;Carrera.c: 96:     PORTC = 0;
 [e = _P2 -> -> 1 `i `uc ]
-"98
-[; ;Carrera.c: 98:     PORTD = 0;
+"97
+[; ;Carrera.c: 97:     PORTD = 0;
 }
 [e $U 151  ]
-"100
-[; ;Carrera.c: 100: 
+"99
+[; ;Carrera.c: 99: 
 [e :U 150 ]
 {
-"101
-[; ;Carrera.c: 101:     TRISA = 0;
+"100
+[; ;Carrera.c: 100:     TRISA = 0;
 [e $ ! && == -> _P2 `i -> 1 `i == -> . . _PORTBbits 0 5 `i -> 0 `i 152  ]
 {
-"102
-[; ;Carrera.c: 102:     TRISB = 0b00111000;
+"101
+[; ;Carrera.c: 101:     TRISB = 0b00111000;
 [e = _P2 -> -> 0 `i `uc ]
-"103
-[; ;Carrera.c: 103:     TRISC = 0;
+"102
+[; ;Carrera.c: 102:     TRISC = 0;
 [e ++ _CONT1 -> -> 1 `i `uc ]
-"104
-[; ;Carrera.c: 104:     TRISD = 0;
+"103
+[; ;Carrera.c: 103:     TRISD = 0;
 [e ( _player2 ..  ]
-"105
-[; ;Carrera.c: 105:     TRISE = 0;
+"104
+[; ;Carrera.c: 104:     TRISE = 0;
 }
 [e :U 152 ]
-"107
-[; ;Carrera.c: 107: 
+"106
+[; ;Carrera.c: 106: 
 }
 [e :U 151 ]
-"110
-[; ;Carrera.c: 110: 
+"109
+[; ;Carrera.c: 109: 
 }
 [e :U 149 ]
-"115
-[; ;Carrera.c: 115: 
+"114
+[; ;Carrera.c: 114: 
 }
 [e :U 139 ]
 [e $U 140  ]
 [e :U 141 ]
-"116
-[; ;Carrera.c: 116: 
+"115
+[; ;Carrera.c: 115: 
 [e :UE 138 ]
 }
-"123
-[; ;Carrera.c: 123:         PORTBbits.RB1 = 0;
+"122
+[; ;Carrera.c: 122:         PORTBbits.RB1 = 0;
 [v _Setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _Setup ]
 [f ]
-"124
-[; ;Carrera.c: 124:         PORTBbits.RB2 = 0;
+"123
+[; ;Carrera.c: 123:         PORTBbits.RB2 = 0;
 [e = _ANSEL -> -> 0 `i `uc ]
-"125
-[; ;Carrera.c: 125:         _delay((unsigned long)((50)*(8000000/4000.0)));
+"124
+[; ;Carrera.c: 124:         _delay((unsigned long)((50)*(8000000/4000.0)));
 [e = _ANSELH -> -> 0 `i `uc ]
-"126
-[; ;Carrera.c: 126: 
+"125
+[; ;Carrera.c: 125: 
 [e = _PORTA -> -> 0 `i `uc ]
-"127
-[; ;Carrera.c: 127:         PORTBbits.RB0 = 0;
+"126
+[; ;Carrera.c: 126:         PORTBbits.RB0 = 0;
 [e = _PORTB -> -> 0 `i `uc ]
-"128
-[; ;Carrera.c: 128:         PORTBbits.RB1 = 1;
+"127
+[; ;Carrera.c: 127:         PORTBbits.RB1 = 1;
 [e = _PORTC -> -> 0 `i `uc ]
-"129
-[; ;Carrera.c: 129:         PORTBbits.RB2 = 0;
+"128
+[; ;Carrera.c: 128:         PORTBbits.RB2 = 0;
 [e = _PORTD -> -> 0 `i `uc ]
-"130
-[; ;Carrera.c: 130:         _delay((unsigned long)((50)*(8000000/4000.0)));
+"129
+[; ;Carrera.c: 129:         _delay((unsigned long)((50)*(8000000/4000.0)));
 [e = _PORTE -> -> 0 `i `uc ]
-"132
-[; ;Carrera.c: 132:         PORTBbits.RB0 = 0;
+"131
+[; ;Carrera.c: 131:         PORTBbits.RB0 = 0;
 [e = _TRISA -> -> 0 `i `uc ]
-"133
-[; ;Carrera.c: 133:         PORTBbits.RB1 = 0;
+"132
+[; ;Carrera.c: 132:         PORTBbits.RB1 = 0;
 [e = _TRISB -> -> 56 `i `uc ]
-"134
-[; ;Carrera.c: 134:         PORTBbits.RB2 = 1;
+"133
+[; ;Carrera.c: 133:         PORTBbits.RB2 = 1;
 [e = _TRISC -> -> 0 `i `uc ]
-"135
-[; ;Carrera.c: 135:         FLAG = 1;
+"134
+[; ;Carrera.c: 134:         FLAG = 1;
 [e = _TRISD -> -> 0 `i `uc ]
-"136
-[; ;Carrera.c: 136: 
+"135
+[; ;Carrera.c: 135: 
 [e = _TRISE -> -> 0 `i `uc ]
-"137
-[; ;Carrera.c: 137:         _delay((unsigned long)((100)*(8000000/4000.0)));
+"136
+[; ;Carrera.c: 136:         _delay((unsigned long)((100)*(8000000/4000.0)));
 [e = _OPTION_REG -> -> 128 `i `uc ]
-"143
-[; ;Carrera.c: 143:     }
+"142
+[; ;Carrera.c: 142:     }
 [e :UE 153 ]
 }
-"148
-[; ;Carrera.c: 148: void player1(void){
+"147
+[; ;Carrera.c: 147: void player1(void){
 [v _semaforo `(v ~T0 @X0 1 ef ]
 {
 [e :U _semaforo ]
 [f ]
-"149
-[; ;Carrera.c: 149:     if(CONT == 1){
+"148
+[; ;Carrera.c: 148:     if(CONT == 1){
 [e $ ! == -> _sem `i -> 1 `i 155  ]
 {
-"150
-[; ;Carrera.c: 150:         PORTC = 1;
+"149
+[; ;Carrera.c: 149:         PORTC = 1;
 [e = _PORTD -> -> 0 `i `uc ]
-"151
-[; ;Carrera.c: 151:     }
+"150
+[; ;Carrera.c: 150:     }
 [e = _PORTC -> -> 0 `i `uc ]
-"152
-[; ;Carrera.c: 152:         else if (CONT >1 && CONT < 8){
+"151
+[; ;Carrera.c: 151:         else if (CONT >1 && CONT < 8){
 [e = _PORTE -> -> 0 `i `uc ]
-"153
-[; ;Carrera.c: 153:             PORTC = PORTC<<1;
+"152
+[; ;Carrera.c: 152:             PORTC = PORTC<<1;
 [e = . . _PORTBbits 0 0 -> -> 1 `i `uc ]
+"153
+[; ;Carrera.c: 153:     }
+[e = . . _PORTBbits 0 1 -> -> 0 `i `uc ]
 "154
-[; ;Carrera.c: 154:     }
-[e = . . _PORTBbits 0 1 -> -> 0 `i `uc ]
+[; ;Carrera.c: 154: 
+[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
 "155
-[; ;Carrera.c: 155: 
-[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
-"156
-[; ;Carrera.c: 156:     else if(CONT == 8){
+[; ;Carrera.c: 155:     else if(CONT == 8){
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"157
+[; ;Carrera.c: 157:         PORTCbits.RC6 = 0;
+[e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
 "158
-[; ;Carrera.c: 158:         PORTCbits.RC6 = 0;
-[e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
-"159
-[; ;Carrera.c: 159:         PORTCbits.RC7 = 1;
+[; ;Carrera.c: 158:         PORTCbits.RC7 = 1;
 [e = . . _PORTBbits 0 1 -> -> 1 `i `uc ]
+"159
+[; ;Carrera.c: 159:         PORTEbits.RE0 = 1;
+[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
 "160
-[; ;Carrera.c: 160:         PORTEbits.RE0 = 1;
-[e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
-"161
-[; ;Carrera.c: 161:         FLAG = 0;
+[; ;Carrera.c: 160:         FLAG = 0;
 [e ( __delay (1 -> * -> -> 50 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
+"162
+[; ;Carrera.c: 162: }
+[e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
 "163
-[; ;Carrera.c: 163: }
-[e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
+[; ;Carrera.c: 163: 
+[e = . . _PORTBbits 0 1 -> -> 0 `i `uc ]
 "164
-[; ;Carrera.c: 164: 
-[e = . . _PORTBbits 0 1 -> -> 0 `i `uc ]
-"165
-[; ;Carrera.c: 165: void player2 (void){
+[; ;Carrera.c: 164: void player2 (void){
 [e = . . _PORTBbits 0 2 -> -> 1 `i `uc ]
-"166
-[; ;Carrera.c: 166:     if (CONT1 == 1){
+"165
+[; ;Carrera.c: 165:     if (CONT1 == 1){
 [e = _FLAG -> -> 1 `i `uc ]
-"168
-[; ;Carrera.c: 168:     }
+"167
+[; ;Carrera.c: 167:     }
 [e ( __delay (1 -> * -> -> 100 `i `d / -> -> 8000000 `l `d .4000.0 `ul ]
-"170
-[; ;Carrera.c: 170:         else if (CONT1 > 1 && CONT1 < 8){
+"169
+[; ;Carrera.c: 169:         else if (CONT1 > 1 && CONT1 < 8){
 [e = . . _PORTBbits 0 0 -> -> 0 `i `uc ]
-"171
-[; ;Carrera.c: 171:             PORTD = PORTD<<1;
+"170
+[; ;Carrera.c: 170:             PORTD = PORTD<<1;
 [e = . . _PORTBbits 0 1 -> -> 0 `i `uc ]
-"172
-[; ;Carrera.c: 172:         }
+"171
+[; ;Carrera.c: 171:         }
 [e = . . _PORTBbits 0 2 -> -> 0 `i `uc ]
-"174
-[; ;Carrera.c: 174:     else if(CONT1 == 8){
+"173
+[; ;Carrera.c: 173:     else if(CONT1 == 8){
 }
 [e :U 155 ]
-"177
-[; ;Carrera.c: 177:         PORTDbits.RD7 = 1;
+"176
+[; ;Carrera.c: 176:         PORTDbits.RD7 = 1;
 [e :UE 154 ]
 }
-"179
-[; ;Carrera.c: 179:         FLAG = 0;
+"178
+[; ;Carrera.c: 178:         FLAG = 0;
 [v _player1 `(v ~T0 @X0 1 ef ]
 {
 [e :U _player1 ]
 [f ]
-"180
-[; ;Carrera.c: 180:     }
+"179
+[; ;Carrera.c: 179:     }
 [e $ ! == -> _CONT `i -> 1 `i 157  ]
 {
-"181
-[; ;Carrera.c: 181: }
+"180
+[; ;Carrera.c: 180: }
 [e = _PORTC -> -> 1 `i `uc ]
-"182
+"181
 }
 [e $U 158  ]
-"183
+"182
 [e :U 157 ]
 [e $ ! && > -> _CONT `i -> 1 `i < -> _CONT `i -> 8 `i 159  ]
 {
-"184
+"183
 [e = _PORTC -> << -> _PORTC `i -> 1 `i `uc ]
-"185
+"184
 }
 [e $U 160  ]
-"187
+"186
 [e :U 159 ]
 [e $ ! == -> _CONT `i -> 8 `i 161  ]
 {
-"188
+"187
 [e = _CONT -> -> 0 `i `uc ]
-"189
+"188
 [e = . . _PORTCbits 0 6 -> -> 0 `i `uc ]
-"190
+"189
 [e = . . _PORTCbits 0 7 -> -> 1 `i `uc ]
-"191
+"190
 [e = . . _PORTEbits 0 0 -> -> 1 `i `uc ]
-"192
+"191
 [e = _FLAG -> -> 0 `i `uc ]
-"193
+"192
 }
 [e :U 161 ]
 [e :U 160 ]
 [e :U 158 ]
-"194
+"193
 [e :UE 156 ]
 }
-"196
+"195
 [v _player2 `(v ~T0 @X0 1 ef ]
 {
 [e :U _player2 ]
 [f ]
-"197
+"196
 [e $ ! == -> _CONT1 `i -> 1 `i 163  ]
 {
-"198
+"197
 [e = _PORTD -> -> 1 `i `uc ]
-"199
+"198
 }
 [e $U 164  ]
-"201
+"200
 [e :U 163 ]
 [e $ ! && > -> _CONT1 `i -> 1 `i < -> _CONT1 `i -> 8 `i 165  ]
 {
-"202
+"201
 [e = _PORTD -> << -> _PORTD `i -> 1 `i `uc ]
-"203
+"202
 }
 [e $U 166  ]
-"205
+"204
 [e :U 165 ]
 [e $ ! == -> _CONT1 `i -> 8 `i 167  ]
 {
-"206
+"205
 [e = _CONT1 -> -> 0 `i `uc ]
-"207
+"206
 [e = . . _PORTDbits 0 6 -> -> 0 `i `uc ]
-"208
+"207
 [e = . . _PORTDbits 0 7 -> -> 1 `i `uc ]
-"209
+"208
 [e = . . _PORTEbits 0 1 -> -> 1 `i `uc ]
-"210
+"209
 [e = _FLAG -> -> 0 `i `uc ]
-"211
+"210
 }
 [e :U 167 ]
 [e :U 166 ]
 [e :U 164 ]
-"212
+"211
 [e :UE 162 ]
 }

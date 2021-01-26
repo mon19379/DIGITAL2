@@ -11,15 +11,15 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"58 C:\Users\franc\Documents\GitHub\DIGITAL2\LAB1\LABD1.X\Carrera.c
+"57 C:\Users\franc\Documents\GitHub\DIGITAL2\LAB1\LABD1.X\Carrera.c
 [v _main main `(v  1 e 1 0 ]
-"123
+"122
 [v _Setup Setup `(v  1 e 1 0 ]
-"148
+"147
 [v _semaforo semaforo `(v  1 e 1 0 ]
-"179
+"178
 [v _player1 player1 `(v  1 e 1 0 ]
-"196
+"195
 [v _player2 player2 `(v  1 e 1 0 ]
 "166 C:\Program Files\Microchip\xc8\v2.20\pic\include\proc\pic16f887.h
 [v _PORTA PORTA `VEuc  1 e 1 @5 ]
@@ -95,36 +95,36 @@
 [v _sem sem `uc  1 e 1 0 ]
 "36
 [v _FLAG FLAG `uc  1 e 1 0 ]
-"38
+"37
 [v _P1 P1 `uc  1 e 1 0 ]
-"39
+"38
 [v _P2 P2 `uc  1 e 1 0 ]
-"40
+"39
 [v _CONT CONT `uc  1 e 1 0 ]
-"41
+"40
 [v _CONT1 CONT1 `uc  1 e 1 0 ]
-"58
+"57
 [v _main main `(v  1 e 1 0 ]
 {
-"116
+"115
 } 0
-"148
+"147
 [v _semaforo semaforo `(v  1 e 1 0 ]
 {
-"177
+"176
 } 0
-"196
+"195
 [v _player2 player2 `(v  1 e 1 0 ]
 {
-"212
+"211
 } 0
-"179
+"178
 [v _player1 player1 `(v  1 e 1 0 ]
 {
-"194
+"193
 } 0
-"123
+"122
 [v _Setup Setup `(v  1 e 1 0 ]
 {
-"143
+"142
 } 0
