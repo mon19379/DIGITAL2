@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.20\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\LABD2.X.production.sym \
   --cmf=dist/default/production\LABD2.X.production.cmf -z -Q16F887 \
-  -oC:\Users\franc\AppData\Local\Temp\sdqc.2 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\franc\AppData\Local\Temp\sf50.2 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/LABD2.X.production.map -E1 -ver=XC8 Compiler \
   --acfsm=1493 -ASTACK=0110h-016Fh -pstack=STACK -ACODE=00h-07FFhx4 \
   -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 -ACONST=00h-0FFhx32 \
@@ -18,7 +18,7 @@ Linker command line:
   -preset_vec=00h,intentry=04h,init,end_init -ppowerup=CODE -pcinit=CODE \
   -pfunctab=ENTRY -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA -DEEDATA=2 \
   -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
-  C:\Users\franc\AppData\Local\Temp\sdqc.o \
+  C:\Users\franc\AppData\Local\Temp\sf50.o \
   dist/default/production\LABD2.X.production.o 
 
 Object code version is 3.11
@@ -28,7 +28,7 @@ Machine type is 16F887
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\franc\AppData\Local\Temp\sdqc.o
+C:\Users\franc\AppData\Local\Temp\sf50.o
                 end_init                             12       12        3        8       0
                 reset_vec                             0        0        3        0       0
                 config                             2007     2007        2        0       4
@@ -42,7 +42,7 @@ dist/default/production\LABD2.X.production.o
                 text3                               11A      11A       BC        8       0
                 text2                               1D6      1D6       5E        8       0
                 text1                               284      284       36        8       0
-                maintext                            2F0      2F0        9        8       0
+                maintext                            2F0      2F0       14        8       0
                 cstackBANK0                          20       20        4       20       1
                 cstackCOMMON                         70       70        8       70       1
                 bssBANK0                             24       24        1       20       1
@@ -62,7 +62,7 @@ TOTAL           Name                               Link     Load   Length     Sp
                 text3                               11A      11A       BC         0
                 text2                               1D6      1D6       5E         0
                 text1                               284      284       36         0
-                maintext                            2F0      2F0        9         0
+                maintext                            2F0      2F0       14         0
 
         CLASS   STRCODE        
 
@@ -111,7 +111,7 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
                 reset_vec                      000000  000003  000003         0       0  CODE        2
-                intentry                       000004  0002F5  0002F9         8       0  CODE        2
+                intentry                       000004  000300  000304         8       0  CODE        2
                 cstackBANK0                    000020  000005  000025        20       1  BANK0       1
                 cstackCOMMON                   000070  00000E  00007E        70       1  COMMON      1
 
@@ -124,12 +124,12 @@ UNUSED ADDRESS RANGES
         BANK2            0110-016F             60           1
         BANK3            0190-01EF             60           1
         CODE             0003-0003              1           2
-                         02F9-1FFF            800
+                         0304-1FFF            800
         CONST            0003-0003              1           2
-                         02F9-1FFF            100
+                         0304-1FFF            100
         EEDATA           2100-21FF            100           2
         ENTRY            0003-0003              1           2
-                         02F9-1FFF            100
+                         0304-1FFF            100
         IDLOC            2000-2003              4           2
         RAM              0025-006F             4B           1
                          00A0-00EF             50
@@ -141,9 +141,9 @@ UNUSED ADDRESS RANGES
         SFR3             0180-018F             10           1
         STACK            0110-016F             60           1
         STRCODE          0003-0003              1           2
-                         02F9-1FFF           1D07
+                         0304-1FFF           1CFC
         STRING           0003-0003              1           2
-                         02F9-1FFF            100
+                         0304-1FFF            100
 
                                   Symbol Table
 
@@ -155,7 +155,7 @@ _ANSEL                   (abs)        0188
 _ANSELH                  (abs)        0189
 _B1                      bssCOMMON    007D
 _B2                      bssCOMMON    007C
-_FLAG                    bssCOMMON    0078
+_FLAG                    bssCOMMON    0079
 _INTCONbits              (abs)        000B
 _IOCB                    (abs)        0096
 _NH                      bssCOMMON    007B
@@ -208,7 +208,7 @@ __Hsfr0                  sfr0         0000
 __Hsfr1                  sfr1         0000
 __Hsfr2                  sfr2         0000
 __Hsfr3                  sfr3         0000
-__Hspace_0               (abs)        02F9
+__Hspace_0               (abs)        0304
 __Hspace_1               (abs)        007E
 __Hspace_2               (abs)        0000
 __Hspace_3               (abs)        0000
@@ -251,7 +251,7 @@ __Lspace_4               (abs)        0000
 __Lstack                 stack        0000
 __Lstrings               strings      0000
 __Ltext                  text         0000
-__S0                     (abs)        02F9
+__S0                     (abs)        0304
 __S1                     (abs)        007E
 __S2                     (abs)        0000
 __S3                     (abs)        0000
@@ -267,7 +267,7 @@ __end_of_display         text6        011A
 __end_of_displays        text5        02F0
 __end_of_initOsc         text2        0234
 __end_of_isr             text4        0284
-__end_of_main            maintext     02F9
+__end_of_main            maintext     0304
 __initialization         cinit        0015
 __pbssBANK0              bssBANK0     0024
 __pbssCOMMON             bssCOMMON    0078
@@ -294,7 +294,7 @@ _displays                text5        02BA
 _initOsc                 text2        01D6
 _isr                     text4        0234
 _main                    maintext     02F0
-_pot                     bssCOMMON    0079
+_pot                     bssBANK0     0024
 btemp                    (abs)        007E
 configADC@chan           cstackBANK0  0020
 configADC@fosc           cstackBANK0  0023
@@ -348,7 +348,7 @@ Total ram usage:        0 bytes
 
  *************** function _Setup *****************
  Defined at:
-		line 128 in file "L2.c"
+		line 135 in file "L2.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -409,7 +409,7 @@ Total ram usage:        3 bytes
 
  *************** function _configADC *****************
  Defined at:
-		line 8 in file "adc.c"
+		line 10 in file "adc.c"
  Parameters:    Size  Location     Type
   fosc            1    wreg     unsigned char 
   chan            1    0[BANK0 ] unsigned char 
@@ -440,7 +440,7 @@ Total ram usage:        4 bytes
 
  *************** function _isr *****************
  Defined at:
-		line 63 in file "L2.c"
+		line 61 in file "L2.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -470,7 +470,7 @@ Total ram usage:        4 bytes
 
  *************** function _displays *****************
  Defined at:
-		line 165 in file "L2.c"
+		line 172 in file "L2.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -543,11 +543,11 @@ Osc.c estimated size: 95
 
 L2.c
 		_displays      		CODE           	02BA	0000	55
-		_main          		CODE           	02F0	0000	10
+		_main          		CODE           	02F0	0000	21
 		_Setup         		CODE           	0284	0000	55
 		_isr           		CODE           	0234	0000	81
 
-L2.c estimated size: 201
+L2.c estimated size: 212
 
 adc.c
 		_configADC     		CODE           	011A	0000	189

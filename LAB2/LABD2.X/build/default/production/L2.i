@@ -2681,11 +2681,11 @@ void display(uint8_t segment);
 
 uint8_t B1 = 0;
 uint8_t B2 = 0;
-uint8_t CONT = 0;
 uint8_t NH = 0;
 uint8_t NL = 0;
 uint8_t pot = 0;
 uint8_t FLAG = 0;
+uint8_t CONT = 0;
 
 
 
@@ -2696,8 +2696,6 @@ uint8_t FLAG = 0;
 void Setup(void);
 void split(void);
 void displays(void);
-void conver(void);
-
 
 
 
@@ -2715,7 +2713,7 @@ void __attribute__((picinterrupt(("")))) isr (void){
     if (ADIF == 1){
         pot = ADRESH;
         ADIF = 0;
-        ADCON0bits.GO = 1;
+        ADCON0bits.GO_nDONE = 1;
     }
 
     if (RBIF == 1){
@@ -2745,6 +2743,8 @@ void __attribute__((picinterrupt(("")))) isr (void){
 
      INTCONbits.RBIF = 0;
 
+
+
     }
 
 }
@@ -2759,6 +2759,13 @@ void main(void) {
 
 
     while(1){
+         if(pot > PORTD){
+             PORTAbits.RA1 = 1;
+
+     }
+        else{
+            PORTAbits.RA1 = 0;
+     }
 
 }
 
@@ -2780,7 +2787,7 @@ void Setup(void) {
     PORTD = 0;
     PORTE = 0;
 
-    TRISA = 0b00000111;
+    TRISA = 0b00000101;
     TRISB = 0b00000011;
     TRISC = 0;
     TRISD = 0;

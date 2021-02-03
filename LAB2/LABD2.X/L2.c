@@ -39,7 +39,6 @@
 //******************************************************************************
 uint8_t B1 = 0;
 uint8_t B2 = 0;
-uint8_t CONT = 0;
 uint8_t NH = 0;
 uint8_t NL = 0;
 uint8_t pot = 0;
@@ -60,46 +59,48 @@ void displays(void);
 //******************************************************************************
 void __interrupt() isr (void){
     
-    if (T0IF == 1){
-        TMR0 = 236;
-        T0IF = 0;
-        displays();
+    if (T0IF == 1){ //SE REVISA LA BANDERA DE INTERRUPCION DEL TIMER0
+        TMR0 = 236; //SE CARGA UN VALOR AL TIMER CERO PARA QUE SEA DE 20ms
+        T0IF = 0;  //SE APAGA LA BANDERA DE INTERRUPCION
+        displays(); //SE LLAMA LA RUTINA DE MUTIPLEXACION
         
         
     }
     
-    if (ADIF == 1){        
-        pot = ADRESH;
-        ADIF = 0;
-        ADCON0bits.GO = 1;
+    if (ADIF == 1){ //SE REVISA LA BANDERA DE INTERRUPCION DEL ADC  
+        pot = ADRESH; //SE INGRESA EL VALOR DE ADRESH A UNA VARIABLE
+        ADIF = 0;    //SE APAGA LA BANDERA DE INTERRUPCION
+        ADCON0bits.GO_nDONE = 1;
     }
     
-    if (RBIF == 1){
-        if (PORTBbits.RB0 == 0){ //ANTIREBOTE, SE PRESIONA EL BOTON
-            B1 = 1; // SE ENCIENDE LA BANDERA DEL CORREDOR 1
+    if (RBIF == 1){ //SE REVISA LA BANDERA DE INTERRUPCION DEL PUERTO B
+        if (PORTBbits.RB0 == 0){ //ANTIREBOTE, SI NO SE PRESIONA EL BOTON
+            B1 = 1; // SE ENCIENDE LA BANDERA DEL BOTON DE INCREMENTO
         }
         
         else{
-            if (B1 == 1 && PORTBbits.RB0 == 1 ){ //SE DEJA DE PRESIONAR EL 
-                B1 = 0;                              //BOTON
-                PORTD ++;// SE INCREMENTA UN CONTADOR
-                //PORTD = CONT;
+            if (B1 == 1 && PORTBbits.RB0 == 1 ){ //SE  PRESIONA EL BOTON
+                B1 = 0;         //SE APAGA LA BANDERA DE BOTON DE INCREMENTO
+                PORTD ++;// SE INCREMENTA EL PUERTOD
+                
             }
     }
     
-        if (PORTBbits.RB1 == 0){ //ANTIREBOTE, SE PRESIONA EL BOTON
-            B2 = 1; // SE ENCIENDE LA BANDERA DEL CORREDOR 1
+        if (PORTBbits.RB1 == 0){ //ANTIREBOTE, SI NO SE PRESIONA EL BOTON
+            B2 = 1; // SE ENCIENDE LA BANDERA DEL BOTON DE DECREMENTO 
         }
         
         else{
-            if (B2 == 1 && PORTBbits.RB1 == 1 ){ //SE DEJA DE PRESIONAR EL 
-                B2 = 0;                              //BOTON
-                PORTD --;// SE DECREMENTA UN CONTADOR
-                //PORTD = CONT;
+            if (B2 == 1 && PORTBbits.RB1 == 1 ){ //SE PRESIONA EL BOTON
+                B2 = 0;           //SE APAGA LA BANDERA DE BOTON DE DECREMENTO                
+                PORTD --;// SE DECREMENTA UN EL PUERTOD
+               
             }
     }
 
-     INTCONbits.RBIF = 0;   
+     INTCONbits.RBIF = 0;   //SE APAGA LA BANDERA DE INTERRUPION DEL PUERTO B
+     
+    
         
     }
      
@@ -115,7 +116,14 @@ void main(void) {
     // Loop principal
     //**************************************************************************
     while(1){
-        
+         if(pot > PORTD){ //RUTINA DE ALARMA EN DONDE SE COMPARAN EL ADC Y 
+             PORTAbits.RA1 = 1;//EL CONTADOR
+       
+     }
+        else{
+            PORTAbits.RA1 = 0;
+     }
+    
 }
 
 
@@ -125,35 +133,33 @@ void main(void) {
 //******************************************************************************
 void Setup(void) {
     
-    initOsc(10);
-    configADC(2,0);
-    ANSEL = 0;
+    initOsc(10); //SE LLAMA LA CONFIG DEL OSCILADOR
+    configADC(2,0); //SE LLAMA LA CONFIG DEL ADC
+    ANSEL = 0; //SE LIMPIA EL ANSEL
     ANSEL = 0b00000001;  // ENTRADAS DIGITALES Y BIT 0 ANALÓGICA
-    ANSELH = 0; 
+    ANSELH = 0;
     PORTA = 0; //PUERTO A EN 0
     PORTB = 0; //PUERTO B EN 0
     PORTC = 0; //PUERTO C EN 0
     PORTD = 0; //PUERTO D EN 0
     PORTE = 0; //PUERTO E EN 0
-    //PINES RA0,RA1 Y RA2 COMO ENTRADAS, LOS DEMAS COMO SALIDAS
-    TRISA = 0b00000111; 
+    //PINES RA0 Y RA2 COMO ENTRADAS, LOS DEMAS COMO SALIDAS
+    TRISA = 0b00000101; 
     TRISB = 0b00000011; //PUERTO B 
     TRISC = 0; //PUERTO C SALIDAS
     TRISD = 0; //PUERTO D SALIDAS
     TRISE = 0; //PUERTO E SALIDAS
     OPTION_REG = 0b00000111; //SE APAGAN LAS PULLUPS DEL PUERTO B
-    INTCONbits.GIE = 1;
-    INTCONbits.T0IE = 1;
-    INTCONbits.PEIE = 1;
-    PIE1bits.ADIE = 1;
-    INTCONbits.T0IF = 0;
-    PIR1bits.ADIF = 0;
-    INTCONbits.RBIE = 1;
-    INTCONbits.RBIF = 0;
-    IOCB = 3;
+    INTCONbits.GIE = 1; //SE HABILITAN LAS INTERRUPCIONES GLOBALES
+    INTCONbits.T0IE = 1; //SE HABILITA LA INTERRUPCION DEL TIMER0
+    INTCONbits.PEIE = 1; //SE HABILITAN LAS INTERRUPCIONES PERIFERICAS
+    PIE1bits.ADIE = 1; //SE HABILITA LA INTERRUPCION DEL ADC
+    INTCONbits.T0IF = 0; // SE LIMPIA LA BANDERA DE INTERRUPCION DEL TIMER 0
+    PIR1bits.ADIF = 0; //SE LIMPIOA LA BANDERA DE INTERRUPCION DEL ADC
+    INTCONbits.RBIE = 1; //SE HABILITA LA INTERRUPCION DEL PUERTO B
+    INTCONbits.RBIF = 0; //SE LIMPIA LA BANDERA DEL INTERRUPCION DEL PUERTO B
+    IOCB = 3; //SE HABILITA EL INTERRUPT ON CHANGE
     
-    
-    //236 AL TMR0   
   
 }
 //******************************************************************************
@@ -162,20 +168,20 @@ void Setup(void) {
 
 void displays(void){
     PORTAbits.RA3 = 0;
-    PORTAbits.RA4 = 0;
-    if (FLAG == 0){ 
-        NL = pot & 0b00001111;
-        PORTAbits.RA3 = 1;
-        display(NL);
-        FLAG = 1;
+    PORTAbits.RA4 = 0; //SE LIMPIA EL PIN DE LOS TRANSISTORES
+    if (FLAG == 0){  //MULTIPLEXACIÓN
+        NL = pot & 0b00001111;  //SE HACE UN AND 
+        PORTAbits.RA3 = 1; //SE ENCIENTE EL TRANSISTOR DE ESE DISPLAY
+        display(NL); //SE LLAMA LA TABLA
+        FLAG = 1; //TOGGLE
     }
     else{
-        NH = pot;
-        NH = NH & 0b11110000;
-        NH = NH>>4;
-        PORTAbits.RA4 = 1;
-        display(NH);
-        FLAG =0;
+        NH = pot; //SE IGUALA EL NH A LA VARIABLE DEL ADC
+        NH = NH & 0b11110000; //SE HACE UN AND PARA MANTENER LOS MSB
+        NH = NH>>4; //SE HACE EL SHIFT A LA DERECHA 
+        PORTAbits.RA4 = 1; //SE ENCIENDE EL TRANSISTOR DE ESE DISPLAY
+        display(NH); //SE LLAMA LA TABLA
+        FLAG =0; //TOGGLE
     }
 }
 

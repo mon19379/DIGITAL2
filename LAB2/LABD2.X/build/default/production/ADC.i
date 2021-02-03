@@ -2638,6 +2638,8 @@ void configADC(uint8_t fosc, uint8_t chan);
 
 
 
+
+
 void configADC(uint8_t fosc, uint8_t chan){
 
     switch (fosc) {
@@ -2734,7 +2736,11 @@ void configADC(uint8_t fosc, uint8_t chan){
 
     }
 
-    ADCON0bits.GO = 1;
+
+    ADCON0bits.GO_nDONE = 1;
+
+
+
     ADCON0bits.ADON = 1;
     ADCON1 = 0;
 
