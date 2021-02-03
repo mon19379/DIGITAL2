@@ -1,4 +1,5 @@
 #include <pic16f887.h>
+#include <xc.h>
 #include "adc.h"
 
 //******************************************************************************
@@ -24,6 +25,9 @@ void configADC(uint8_t fosc, uint8_t chan){
             ADCON0bits.ADCS = 0b11;
             break;
             
+        default:
+            ADCON0bits.ADCS = 0b00;
+            break;
     }
     switch (chan) {
         case 0:
@@ -89,6 +93,11 @@ void configADC(uint8_t fosc, uint8_t chan){
         case 15:
             ADCON0bits.CHS = 0b1111;
             break;
+            
+        default:
+            ADCON0bits.CHS = 0b0000;
+            break;
+            
             
     }
     

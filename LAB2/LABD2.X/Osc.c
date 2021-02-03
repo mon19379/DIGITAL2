@@ -1,4 +1,5 @@
 #include <pic16f887.h>
+#include <xc.h>
 #include "Osc.h"
 //******************************************************************************
 //Inicialización del oscilador interno pg. 62
