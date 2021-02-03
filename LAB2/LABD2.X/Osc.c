@@ -1,3 +1,4 @@
+#include <pic16f887.h>
 #include "Osc.h"
 //******************************************************************************
 //Inicialización del oscilador interno pg. 62
@@ -8,7 +9,7 @@ void initOsc(uint8_t IRCF){
         
         case 0: //OSCILADOR DE 31 kHz
             OSCCONbits.IRCF2 = 0;
-            OSCCONbits.IRCF0 = 0;
+            OSCCONbits.IRCF1 = 0;
             OSCCONbits.IRCF0 = 0;
             
             break;
