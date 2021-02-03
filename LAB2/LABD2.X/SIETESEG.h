@@ -9,7 +9,7 @@
 #include <xc.h> // include processor files - each processor file is guarded.  
 #include <stdint.h>
 
-void display(uint8_t PORTC);
+void display(uint8_t segment);
 
 
 #endif	/* SIETESEG_H */

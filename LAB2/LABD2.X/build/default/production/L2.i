@@ -2653,7 +2653,7 @@ void configADC(uint8_t fosc, uint8_t chan);
 # 10 "./SIETESEG.h" 2
 
 
-void display(uint8_t PORTC);
+void display(uint8_t segment);
 # 16 "L2.c" 2
 
 
@@ -2680,7 +2680,13 @@ void display(uint8_t PORTC);
 
 
 uint8_t B1 = 0;
+uint8_t B2 = 0;
 uint8_t CONT = 0;
+uint8_t NH = 0;
+uint8_t NL = 0;
+uint8_t pot = 0;
+uint8_t FLAG = 0;
+
 
 
 
@@ -2688,6 +2694,9 @@ uint8_t CONT = 0;
 
 
 void Setup(void);
+void split(void);
+void displays(void);
+void conver(void);
 
 
 
@@ -2698,28 +2707,46 @@ void __attribute__((picinterrupt(("")))) isr (void){
     if (T0IF == 1){
         TMR0 = 236;
         T0IF = 0;
+        displays();
 
 
     }
 
     if (ADIF == 1){
-
-        PORTC = ADRESH;
+        pot = ADRESH;
         ADIF = 0;
-
+        ADCON0bits.GO = 1;
     }
 
-     if (PORTAbits.RA1 == 1){
+    if (RBIF == 1){
+        if (PORTBbits.RB0 == 0){
             B1 = 1;
         }
 
-     else{
-         if (B1 == 1 && PORTAbits.RA1 == 0 ){
-             B1 = 0;
-             CONT ++;
-             PORTB = CONT;
+        else{
+            if (B1 == 1 && PORTBbits.RB0 == 1 ){
+                B1 = 0;
+                PORTD ++;
+
             }
     }
+
+        if (PORTBbits.RB1 == 0){
+            B2 = 1;
+        }
+
+        else{
+            if (B2 == 1 && PORTBbits.RB1 == 1 ){
+                B2 = 0;
+                PORTD --;
+
+            }
+    }
+
+     INTCONbits.RBIF = 0;
+
+    }
+
 }
 
 
@@ -2743,7 +2770,8 @@ void main(void) {
 void Setup(void) {
 
     initOsc(10);
-    configADC(1,0);
+    configADC(2,0);
+    ANSEL = 0;
     ANSEL = 0b00000001;
     ANSELH = 0;
     PORTA = 0;
@@ -2753,19 +2781,44 @@ void Setup(void) {
     PORTE = 0;
 
     TRISA = 0b00000111;
-    TRISB = 0b00000000;
+    TRISB = 0b00000011;
     TRISC = 0;
     TRISD = 0;
     TRISE = 0;
-    OPTION_REG = 0b10000111;
+    OPTION_REG = 0b00000111;
     INTCONbits.GIE = 1;
     INTCONbits.T0IE = 1;
     INTCONbits.PEIE = 1;
     PIE1bits.ADIE = 1;
     INTCONbits.T0IF = 0;
     PIR1bits.ADIF = 0;
+    INTCONbits.RBIE = 1;
+    INTCONbits.RBIF = 0;
+    IOCB = 3;
 
 
 
 
+}
+
+
+
+
+void displays(void){
+    PORTAbits.RA3 = 0;
+    PORTAbits.RA4 = 0;
+    if (FLAG == 0){
+        NL = pot & 0b00001111;
+        PORTAbits.RA3 = 1;
+        display(NL);
+        FLAG = 1;
+    }
+    else{
+        NH = pot;
+        NH = NH & 0b11110000;
+        NH = NH>>4;
+        PORTAbits.RA4 = 1;
+        display(NH);
+        FLAG =0;
+    }
 }

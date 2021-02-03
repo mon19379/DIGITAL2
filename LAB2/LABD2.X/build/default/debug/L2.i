@@ -1,4 +1,4 @@
-# 1 "adc.c"
+# 1 "L2.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,47 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "adc.c" 2
+# 1 "L2.c" 2
+# 12 "L2.c"
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 1 3
+# 18 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 3
+extern const char __xc8_OPTIM_SPEED;
+
+extern double __fpnormalize(double);
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\xc8debug.h" 1 3
+# 13 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\xc8debug.h" 3
+#pragma intrinsic(__builtin_software_breakpoint)
+extern void __builtin_software_breakpoint(void);
+# 23 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 2 3
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\pic.h" 1 3
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\htc.h" 1 3
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 1 3
+# 4 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\htc.h" 2 3
+# 5 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\pic.h" 2 3
+
+
+
+
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\pic_chip_select.h" 1 3
+# 2733 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\pic_chip_select.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\proc\\pic16f887.h" 1 3
 # 44 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\proc\\pic16f887.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\__at.h" 1 3
@@ -2418,46 +2458,7 @@ extern volatile __bit nW __attribute__((address(0x4A2)));
 
 
 extern volatile __bit nWRITE __attribute__((address(0x4A2)));
-# 1 "adc.c" 2
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 1 3
-# 18 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 3
-extern const char __xc8_OPTIM_SPEED;
-
-extern double __fpnormalize(double);
-
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\xc8debug.h" 1 3
-# 13 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\xc8debug.h" 3
-#pragma intrinsic(__builtin_software_breakpoint)
-extern void __builtin_software_breakpoint(void);
-# 23 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 2 3
-
-
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\pic.h" 1 3
-
-
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\htc.h" 1 3
-
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 1 3
-# 4 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\htc.h" 2 3
-# 5 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\pic.h" 2 3
-
-
-
-
-
-
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\pic_chip_select.h" 1 3
+# 2733 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\pic_chip_select.h" 2 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\pic.h" 2 3
 # 30 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\pic.h" 3
 #pragma intrinsic(__nop)
@@ -2491,10 +2492,8 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 2 3
-# 2 "adc.c" 2
+# 12 "L2.c" 2
 
-# 1 "./adc.h" 1
-# 14 "./adc.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 3
 typedef signed char int8_t;
@@ -2628,116 +2627,196 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
+# 13 "L2.c" 2
+
+# 1 "./Osc.h" 1
+# 15 "./Osc.h"
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 1 3
+# 15 "./Osc.h" 2
+
+
+void initOsc(uint8_t IRCF);
+# 14 "L2.c" 2
+
+# 1 "./adc.h" 1
+# 14 "./adc.h"
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 1 3
 # 14 "./adc.h" 2
 
 
 void configADC(uint8_t fosc, uint8_t chan);
-# 3 "adc.c" 2
+# 15 "L2.c" 2
+
+# 1 "./SIETESEG.h" 1
+# 10 "./SIETESEG.h"
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 1 3
+# 10 "./SIETESEG.h" 2
+
+
+void display(uint8_t segment);
+# 16 "L2.c" 2
 
 
 
 
 
-void configADC(uint8_t fosc, uint8_t chan){
+#pragma config FOSC = INTRC_NOCLKOUT
+#pragma config WDTE = OFF
+#pragma config PWRTE = OFF
+#pragma config MCLRE = OFF
+#pragma config CP = OFF
+#pragma config CPD = OFF
+#pragma config BOREN = OFF
+#pragma config IESO = OFF
+#pragma config FCMEN = OFF
+#pragma config LVP = OFF
 
-    switch (fosc) {
 
-        case 0:
-            ADCON0bits.ADCS = 0b00;
-            break;
+#pragma config BOR4V = BOR40V
+#pragma config WRT = OFF
 
-        case 1:
-            ADCON0bits.ADCS = 0b01;
-            break;
 
-        case 2:
-            ADCON0bits.ADCS = 0b10;
-            break;
 
-        case 3:
-            ADCON0bits.ADCS = 0b11;
-            break;
 
-        default:
-            ADCON0bits.ADCS = 0b00;
-            break;
-    }
-    switch (chan) {
-        case 0:
-            ADCON0bits.CHS = 0b0000;
-            break;
 
-        case 1:
-            ADCON0bits.CHS = 0b0001;
-            break;
+uint8_t B1 = 0;
+uint8_t B2 = 0;
+uint8_t CONT = 0;
+uint8_t NH = 0;
+uint8_t NL = 0;
+uint8_t pot = 0;
+uint8_t FLAG = 0;
 
-        case 2:
-            ADCON0bits.CHS = 0b0010;
-            break;
 
-        case 3:
-            ADCON0bits.CHS = 0b0011;
-            break;
 
-        case 4:
-            ADCON0bits.CHS = 0b0100;
-            break;
 
-        case 5:
-            ADCON0bits.CHS = 0b0101;
-            break;
 
-        case 6:
-            ADCON0bits.CHS = 0b0110;
-            break;
 
-        case 7:
-            ADCON0bits.CHS = 0b0111;
-            break;
 
-        case 8:
-            ADCON0bits.CHS = 0b1000;
-            break;
+void Setup(void);
+void split(void);
+void displays(void);
 
-        case 9:
-            ADCON0bits.CHS = 0b1001;
-            break;
 
-        case 10:
-            ADCON0bits.CHS = 0b1010;
-            break;
 
-        case 11:
-            ADCON0bits.CHS = 0b1011;
-            break;
 
-        case 12:
-            ADCON0bits.CHS = 0b1100;
-            break;
+void __attribute__((picinterrupt(("")))) isr (void){
 
-        case 13:
-            ADCON0bits.CHS = 0b1101;
-            break;
-
-        case 14:
-            ADCON0bits.CHS = 0b1110;
-            break;
-
-        case 15:
-            ADCON0bits.CHS = 0b1111;
-            break;
-
-        default:
-            ADCON0bits.CHS = 0b0000;
-            break;
+    if (T0IF == 1){
+        TMR0 = 236;
+        T0IF = 0;
+        displays();
 
 
     }
 
-    ADCON0bits.GO = 1;
-    ADCON0bits.ADON = 1;
-    ADCON1 = 0;
+    if (ADIF == 1){
+        pot = ADRESH;
+        ADIF = 0;
+        ADCON0bits.GO = 1;
+    }
 
+    if (RBIF == 1){
+        if (PORTBbits.RB0 == 0){
+            B1 = 1;
+        }
 
+        else{
+            if (B1 == 1 && PORTBbits.RB0 == 1 ){
+                B1 = 0;
+                PORTD ++;
+
+            }
+    }
+
+        if (PORTBbits.RB1 == 0){
+            B2 = 1;
+        }
+
+        else{
+            if (B2 == 1 && PORTBbits.RB1 == 1 ){
+                B2 = 0;
+                PORTD --;
+
+            }
+    }
+
+     INTCONbits.RBIF = 0;
 
     }
+
+}
+
+
+
+
+void main(void) {
+
+    Setup();
+
+
+
+    while(1){
+
+}
+
+
+}
+
+
+
+void Setup(void) {
+
+    initOsc(10);
+    configADC(2,0);
+    ANSEL = 0;
+    ANSEL = 0b00000001;
+    ANSELH = 0;
+    PORTA = 0;
+    PORTB = 0;
+    PORTC = 0;
+    PORTD = 0;
+    PORTE = 0;
+
+    TRISA = 0b00000111;
+    TRISB = 0b00000011;
+    TRISC = 0;
+    TRISD = 0;
+    TRISE = 0;
+    OPTION_REG = 0b00000111;
+    INTCONbits.GIE = 1;
+    INTCONbits.T0IE = 1;
+    INTCONbits.PEIE = 1;
+    PIE1bits.ADIE = 1;
+    INTCONbits.T0IF = 0;
+    PIR1bits.ADIF = 0;
+    INTCONbits.RBIE = 1;
+    INTCONbits.RBIF = 0;
+    IOCB = 3;
+
+
+
+
+}
+
+
+
+
+void displays(void){
+    PORTAbits.RA3 = 0;
+    PORTAbits.RA4 = 0;
+    if (FLAG == 0){
+        NL = pot & 0b00001111;
+        PORTAbits.RA3 = 1;
+        display(NL);
+        FLAG = 1;
+    }
+    else{
+        NH = pot;
+        NH = NH & 0b11110000;
+        NH = NH>>4;
+        PORTAbits.RA4 = 1;
+        display(NH);
+        FLAG =0;
+    }
+}

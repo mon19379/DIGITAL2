@@ -103,7 +103,7 @@ void configADC(uint8_t fosc, uint8_t chan){
     
     ADCON0bits.GO = 1;
     ADCON0bits.ADON = 1;
-    
+    ADCON1 = 0;
             
             
             

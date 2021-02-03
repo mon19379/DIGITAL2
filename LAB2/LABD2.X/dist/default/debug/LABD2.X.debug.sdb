@@ -13,13 +13,13 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"63 C:\Users\franc\Documents\GitHub\DIGITAL2\LAB2\LABD2.X\L2.c
+"61 C:\Users\franc\Documents\GitHub\DIGITAL2\LAB2\LABD2.X\L2.c
 [v _isr isr `II(v  1 e 1 0 ]
-"113
+"111
 [v _main main `(v  1 e 1 0 ]
-"128
+"126
 [v _Setup Setup `(v  1 e 1 0 ]
-"165
+"163
 [v _displays displays `(v  1 e 1 0 ]
 "7 C:\Users\franc\Documents\GitHub\DIGITAL2\LAB2\LABD2.X\Osc.c
 [v _initOsc initOsc `(v  1 e 1 0 ]
@@ -189,15 +189,15 @@
 [v _pot pot `uc  1 e 1 0 ]
 "46
 [v _FLAG FLAG `uc  1 e 1 0 ]
-"113
+"111
 [v _main main `(v  1 e 1 0 ]
 {
-"124
+"122
 } 0
-"128
+"126
 [v _Setup Setup `(v  1 e 1 0 ]
 {
-"160
+"158
 } 0
 "7 C:\Users\franc\Documents\GitHub\DIGITAL2\LAB2\LABD2.X\Osc.c
 [v _initOsc initOsc `(v  1 e 1 0 ]
@@ -216,15 +216,15 @@
 [v configADC@fosc fosc `uc  1 a 1 3 ]
 "110
 } 0
-"63 C:\Users\franc\Documents\GitHub\DIGITAL2\LAB2\LABD2.X\L2.c
+"61 C:\Users\franc\Documents\GitHub\DIGITAL2\LAB2\LABD2.X\L2.c
 [v _isr isr `II(v  1 e 1 0 ]
 {
-"108
+"106
 } 0
-"165
+"163
 [v _displays displays `(v  1 e 1 0 ]
 {
-"182
+"180
 } 0
 "5 C:\Users\franc\Documents\GitHub\DIGITAL2\LAB2\LABD2.X\SIETESEG.c
 [v _display display `(v  1 e 1 0 ]

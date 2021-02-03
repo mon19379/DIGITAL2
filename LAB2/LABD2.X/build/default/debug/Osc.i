@@ -1,4 +1,4 @@
-# 1 "adc.c"
+# 1 "Osc.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "adc.c" 2
+# 1 "Osc.c" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\proc\\pic16f887.h" 1 3
 # 44 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\proc\\pic16f887.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\__at.h" 1 3
@@ -2418,7 +2418,7 @@ extern volatile __bit nW __attribute__((address(0x4A2)));
 
 
 extern volatile __bit nWRITE __attribute__((address(0x4A2)));
-# 1 "adc.c" 2
+# 1 "Osc.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 3
@@ -2491,10 +2491,10 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 2 3
-# 2 "adc.c" 2
+# 2 "Osc.c" 2
 
-# 1 "./adc.h" 1
-# 14 "./adc.h"
+# 1 "./Osc.h" 1
+# 15 "./Osc.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 3
 typedef signed char int8_t;
@@ -2628,116 +2628,81 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 14 "./adc.h" 2
+# 15 "./Osc.h" 2
 
 
-void configADC(uint8_t fosc, uint8_t chan);
-# 3 "adc.c" 2
+void initOsc(uint8_t IRCF);
+# 3 "Osc.c" 2
 
 
 
 
+void initOsc(uint8_t IRCF){
 
-void configADC(uint8_t fosc, uint8_t chan){
-
-    switch (fosc) {
+    switch (IRCF){
 
         case 0:
-            ADCON0bits.ADCS = 0b00;
+            OSCCONbits.IRCF2 = 0;
+            OSCCONbits.IRCF1 = 0;
+            OSCCONbits.IRCF0 = 0;
+
             break;
 
         case 1:
-            ADCON0bits.ADCS = 0b01;
+            OSCCONbits.IRCF2 = 0;
+            OSCCONbits.IRCF1 = 0;
+            OSCCONbits.IRCF0 = 1;
             break;
 
         case 2:
-            ADCON0bits.ADCS = 0b10;
+            OSCCONbits.IRCF2 = 0;
+            OSCCONbits.IRCF1 = 1;
+            OSCCONbits.IRCF0 = 0;
             break;
 
         case 3:
-            ADCON0bits.ADCS = 0b11;
-            break;
-
-        default:
-            ADCON0bits.ADCS = 0b00;
-            break;
-    }
-    switch (chan) {
-        case 0:
-            ADCON0bits.CHS = 0b0000;
-            break;
-
-        case 1:
-            ADCON0bits.CHS = 0b0001;
-            break;
-
-        case 2:
-            ADCON0bits.CHS = 0b0010;
-            break;
-
-        case 3:
-            ADCON0bits.CHS = 0b0011;
+            OSCCONbits.IRCF2 = 0;
+            OSCCONbits.IRCF1 = 1;
+            OSCCONbits.IRCF0 = 1;
             break;
 
         case 4:
-            ADCON0bits.CHS = 0b0100;
+            OSCCONbits.IRCF2 = 1;
+            OSCCONbits.IRCF1 = 0;
+            OSCCONbits.IRCF0 = 0;
             break;
 
         case 5:
-            ADCON0bits.CHS = 0b0101;
+            OSCCONbits.IRCF2 = 1;
+            OSCCONbits.IRCF1 = 0;
+            OSCCONbits.IRCF0 = 1;
             break;
 
+
         case 6:
-            ADCON0bits.CHS = 0b0110;
+            OSCCONbits.IRCF2 = 1;
+            OSCCONbits.IRCF1 = 1;
+            OSCCONbits.IRCF0 = 0;
             break;
 
         case 7:
-            ADCON0bits.CHS = 0b0111;
+            OSCCONbits.IRCF2 = 1;
+            OSCCONbits.IRCF1 = 1;
+            OSCCONbits.IRCF0 = 1;
             break;
 
-        case 8:
-            ADCON0bits.CHS = 0b1000;
-            break;
 
-        case 9:
-            ADCON0bits.CHS = 0b1001;
-            break;
 
-        case 10:
-            ADCON0bits.CHS = 0b1010;
-            break;
-
-        case 11:
-            ADCON0bits.CHS = 0b1011;
-            break;
-
-        case 12:
-            ADCON0bits.CHS = 0b1100;
-            break;
-
-        case 13:
-            ADCON0bits.CHS = 0b1101;
-            break;
-
-        case 14:
-            ADCON0bits.CHS = 0b1110;
-            break;
-
-        case 15:
-            ADCON0bits.CHS = 0b1111;
-            break;
 
         default:
-            ADCON0bits.CHS = 0b0000;
+            OSCCONbits.IRCF2 = 1;
+            OSCCONbits.IRCF1 = 0;
+            OSCCONbits.IRCF0 = 0;
             break;
 
-
     }
 
-    ADCON0bits.GO = 1;
-    ADCON0bits.ADON = 1;
-    ADCON1 = 0;
+    OSCCONbits.SCS = 1;
 
 
-
-    }
+}
