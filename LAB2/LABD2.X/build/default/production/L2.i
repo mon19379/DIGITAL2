@@ -2647,6 +2647,15 @@ void initOsc(uint8_t IRCF);
 void configADC(uint8_t fosc, uint8_t chan);
 # 15 "L2.c" 2
 
+# 1 "./SIETESEG.h" 1
+# 10 "./SIETESEG.h"
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 1 3
+# 10 "./SIETESEG.h" 2
+
+
+void display(uint8_t PORTC);
+# 16 "L2.c" 2
+
 
 
 
@@ -2665,7 +2674,19 @@ void configADC(uint8_t fosc, uint8_t chan);
 
 #pragma config BOR4V = BOR40V
 #pragma config WRT = OFF
-# 46 "L2.c"
+
+
+
+
+
+uint8_t B1 = 0;
+uint8_t CONT = 0;
+
+
+
+
+
+
 void Setup(void);
 
 
@@ -2683,9 +2704,21 @@ void __attribute__((picinterrupt(("")))) isr (void){
 
     if (ADIF == 1){
 
-        PORTB = ADRESH;
+        PORTC = ADRESH;
         ADIF = 0;
 
+    }
+
+     if (PORTAbits.RA1 == 1){
+            B1 = 1;
+        }
+
+     else{
+         if (B1 == 1 && PORTAbits.RA1 == 0 ){
+             B1 = 0;
+             CONT ++;
+             PORTB = CONT;
+            }
     }
 }
 

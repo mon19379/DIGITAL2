@@ -1,4 +1,4 @@
-# 1 "ADC.c"
+# 1 "adc.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "ADC.c" 2
+# 1 "adc.c" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\proc\\pic16f887.h" 1 3
 # 44 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\proc\\pic16f887.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\__at.h" 1 3
@@ -2418,10 +2418,8 @@ extern volatile __bit nW __attribute__((address(0x4A2)));
 
 
 extern volatile __bit nWRITE __attribute__((address(0x4A2)));
-# 1 "ADC.c" 2
+# 1 "adc.c" 2
 
-# 1 "./adc.h" 1
-# 13 "./adc.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 3
 extern const char __xc8_OPTIM_SPEED;
@@ -2493,8 +2491,10 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 2 3
-# 13 "./adc.h" 2
+# 2 "adc.c" 2
 
+# 1 "./adc.h" 1
+# 14 "./adc.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 3
 typedef signed char int8_t;
@@ -2632,7 +2632,7 @@ typedef uint16_t uintptr_t;
 
 
 void configADC(uint8_t fosc, uint8_t chan);
-# 2 "ADC.c" 2
+# 3 "adc.c" 2
 
 
 
@@ -2658,6 +2658,9 @@ void configADC(uint8_t fosc, uint8_t chan){
             ADCON0bits.ADCS = 0b11;
             break;
 
+        default:
+            ADCON0bits.ADCS = 0b00;
+            break;
     }
     switch (chan) {
         case 0:
@@ -2723,6 +2726,11 @@ void configADC(uint8_t fosc, uint8_t chan){
         case 15:
             ADCON0bits.CHS = 0b1111;
             break;
+
+        default:
+            ADCON0bits.CHS = 0b0000;
+            break;
+
 
     }
 

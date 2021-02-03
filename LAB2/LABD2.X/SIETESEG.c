@@ -1,5 +1,6 @@
 #include <pic16f887.h>
 #include <xc.h>
+#include "SIETESEG.h"
 
 void display(uint8_t PORTC){
     
@@ -167,7 +168,7 @@ void display(uint8_t PORTC){
             PORTCbits.RC7 = 1;
             break;
             
-        default: 0
+        default: 
             PORTCbits.RC0 = 0;
             PORTCbits.RC1 = 0;
             PORTCbits.RC2 = 0;

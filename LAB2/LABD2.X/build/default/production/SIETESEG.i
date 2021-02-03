@@ -1,4 +1,4 @@
-# 1 "Osc.c"
+# 1 "SIETESEG.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,7 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "Osc.c" 2
+# 1 "SIETESEG.c" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\proc\\pic16f887.h" 1 3
 # 44 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\proc\\pic16f887.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\__at.h" 1 3
@@ -2418,7 +2418,7 @@ extern volatile __bit nW __attribute__((address(0x4A2)));
 
 
 extern volatile __bit nWRITE __attribute__((address(0x4A2)));
-# 1 "Osc.c" 2
+# 1 "SIETESEG.c" 2
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 1 3
 # 18 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 3
@@ -2491,10 +2491,10 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 2 3
-# 2 "Osc.c" 2
+# 2 "SIETESEG.c" 2
 
-# 1 "./Osc.h" 1
-# 15 "./Osc.h"
+# 1 "./SIETESEG.h" 1
+# 10 "./SIETESEG.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 3
 typedef signed char int8_t;
@@ -2628,81 +2628,190 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 15 "./Osc.h" 2
+# 10 "./SIETESEG.h" 2
 
 
-void initOsc(uint8_t IRCF);
-# 3 "Osc.c" 2
+void display(uint8_t PORTC);
+# 3 "SIETESEG.c" 2
 
 
+void display(uint8_t PORTC){
 
-
-void initOsc(uint8_t IRCF){
-
-    switch (IRCF){
+    switch (PORTC){
 
         case 0:
-            OSCCONbits.IRCF2 = 0;
-            OSCCONbits.IRCF1 = 0;
-            OSCCONbits.IRCF0 = 0;
-
+            PORTCbits.RC0 = 0;
+            PORTCbits.RC1 = 0;
+            PORTCbits.RC2 = 0;
+            PORTCbits.RC3 = 1;
+            PORTCbits.RC4 = 0;
+            PORTCbits.RC5 = 0;
+            PORTCbits.RC6 = 0;
+            PORTCbits.RC7 = 1;
             break;
 
         case 1:
-            OSCCONbits.IRCF2 = 0;
-            OSCCONbits.IRCF1 = 0;
-            OSCCONbits.IRCF0 = 1;
+            PORTCbits.RC0 = 1;
+            PORTCbits.RC1 = 1;
+            PORTCbits.RC2 = 0;
+            PORTCbits.RC3 = 1;
+            PORTCbits.RC4 = 1;
+            PORTCbits.RC5 = 1;
+            PORTCbits.RC6 = 1;
+            PORTCbits.RC7 = 0;
             break;
-
         case 2:
-            OSCCONbits.IRCF2 = 0;
-            OSCCONbits.IRCF1 = 1;
-            OSCCONbits.IRCF0 = 0;
+            PORTCbits.RC0 = 0;
+            PORTCbits.RC1 = 0;
+            PORTCbits.RC2 = 1;
+            PORTCbits.RC3 = 1;
+            PORTCbits.RC4 = 0;
+            PORTCbits.RC5 = 0;
+            PORTCbits.RC6 = 1;
+            PORTCbits.RC7 = 0;
             break;
-
         case 3:
-            OSCCONbits.IRCF2 = 0;
-            OSCCONbits.IRCF1 = 1;
-            OSCCONbits.IRCF0 = 1;
+            PORTCbits.RC0 = 1;
+            PORTCbits.RC1 = 0;
+            PORTCbits.RC2 = 0;
+            PORTCbits.RC3 = 1;
+            PORTCbits.RC4 = 0;
+            PORTCbits.RC5 = 0;
+            PORTCbits.RC6 = 1;
+            PORTCbits.RC7 = 0;
             break;
-
         case 4:
-            OSCCONbits.IRCF2 = 1;
-            OSCCONbits.IRCF1 = 0;
-            OSCCONbits.IRCF0 = 0;
+            PORTCbits.RC0 = 1;
+            PORTCbits.RC1 = 1;
+            PORTCbits.RC2 = 0;
+            PORTCbits.RC3 = 1;
+            PORTCbits.RC4 = 0;
+            PORTCbits.RC5 = 1;
+            PORTCbits.RC6 = 0;
+            PORTCbits.RC7 = 0;
             break;
-
         case 5:
-            OSCCONbits.IRCF2 = 1;
-            OSCCONbits.IRCF1 = 0;
-            OSCCONbits.IRCF0 = 1;
+            PORTCbits.RC0 = 1;
+            PORTCbits.RC1 = 0;
+            PORTCbits.RC2 = 0;
+            PORTCbits.RC3 = 1;
+            PORTCbits.RC4 = 1;
+            PORTCbits.RC5 = 0;
+            PORTCbits.RC6 = 0;
+            PORTCbits.RC7 = 0;
             break;
-
-
         case 6:
-            OSCCONbits.IRCF2 = 1;
-            OSCCONbits.IRCF1 = 1;
-            OSCCONbits.IRCF0 = 0;
+            PORTCbits.RC0 = 0;
+            PORTCbits.RC1 = 0;
+            PORTCbits.RC2 = 0;
+            PORTCbits.RC3 = 1;
+            PORTCbits.RC4 = 1;
+            PORTCbits.RC5 = 0;
+            PORTCbits.RC6 = 0;
+            PORTCbits.RC7 = 0;
             break;
-
         case 7:
-            OSCCONbits.IRCF2 = 1;
-            OSCCONbits.IRCF1 = 1;
-            OSCCONbits.IRCF0 = 1;
+            PORTCbits.RC0 = 1;
+            PORTCbits.RC1 = 1;
+            PORTCbits.RC2 = 0;
+            PORTCbits.RC3 = 1;
+            PORTCbits.RC4 = 0;
+            PORTCbits.RC5 = 0;
+            PORTCbits.RC6 = 1;
+            PORTCbits.RC7 = 1;
             break;
-
-
-
+        case 8:
+            PORTCbits.RC0 = 0;
+            PORTCbits.RC1 = 0;
+            PORTCbits.RC2 = 0;
+            PORTCbits.RC3 = 1;
+            PORTCbits.RC4 = 0;
+            PORTCbits.RC5 = 0;
+            PORTCbits.RC6 = 0;
+            PORTCbits.RC7 = 0;
+            break;
+        case 9:
+            PORTCbits.RC0 = 1;
+            PORTCbits.RC1 = 1;
+            PORTCbits.RC2 = 0;
+            PORTCbits.RC3 = 1;
+            PORTCbits.RC4 = 0;
+            PORTCbits.RC5 = 0;
+            PORTCbits.RC6 = 0;
+            PORTCbits.RC7 = 0;
+            break;
+        case 10:
+            PORTCbits.RC0 = 0;
+            PORTCbits.RC1 = 1;
+            PORTCbits.RC2 = 0;
+            PORTCbits.RC3 = 1;
+            PORTCbits.RC4 = 0;
+            PORTCbits.RC5 = 0;
+            PORTCbits.RC6 = 0;
+            PORTCbits.RC7 = 0;
+            break;
+        case 11:
+            PORTCbits.RC0 = 0;
+            PORTCbits.RC1 = 0;
+            PORTCbits.RC2 = 0;
+            PORTCbits.RC3 = 1;
+            PORTCbits.RC4 = 1;
+            PORTCbits.RC5 = 1;
+            PORTCbits.RC6 = 0;
+            PORTCbits.RC7 = 0;
+            break;
+        case 12:
+            PORTCbits.RC0 = 0;
+            PORTCbits.RC1 = 0;
+            PORTCbits.RC2 = 1;
+            PORTCbits.RC3 = 1;
+            PORTCbits.RC4 = 1;
+            PORTCbits.RC5 = 0;
+            PORTCbits.RC6 = 0;
+            PORTCbits.RC7 = 1;
+            break;
+        case 13:
+            PORTCbits.RC0 = 0;
+            PORTCbits.RC1 = 0;
+            PORTCbits.RC2 = 0;
+            PORTCbits.RC3 = 1;
+            PORTCbits.RC4 = 0;
+            PORTCbits.RC5 = 1;
+            PORTCbits.RC6 = 1;
+            PORTCbits.RC7 = 0;
+            break;
+        case 14:
+            PORTCbits.RC0 = 0;
+            PORTCbits.RC1 = 0;
+            PORTCbits.RC2 = 1;
+            PORTCbits.RC3 = 1;
+            PORTCbits.RC4 = 0;
+            PORTCbits.RC5 = 0;
+            PORTCbits.RC6 = 0;
+            PORTCbits.RC7 = 1;
+            break;
+        case 15:
+            PORTCbits.RC0 = 0;
+            PORTCbits.RC1 = 1;
+            PORTCbits.RC2 = 1;
+            PORTCbits.RC3 = 1;
+            PORTCbits.RC4 = 0;
+            PORTCbits.RC5 = 0;
+            PORTCbits.RC6 = 0;
+            PORTCbits.RC7 = 1;
+            break;
 
         default:
-            OSCCONbits.IRCF2 = 1;
-            OSCCONbits.IRCF1 = 0;
-            OSCCONbits.IRCF0 = 0;
+            PORTCbits.RC0 = 0;
+            PORTCbits.RC1 = 0;
+            PORTCbits.RC2 = 0;
+            PORTCbits.RC3 = 1;
+            PORTCbits.RC4 = 0;
+            PORTCbits.RC5 = 0;
+            PORTCbits.RC6 = 0;
+            PORTCbits.RC7 = 1;
             break;
 
+
     }
-
-    OSCCONbits.SCS = 1;
-
-
 }

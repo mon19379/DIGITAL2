@@ -13,6 +13,7 @@
 #include <stdint.h>
 #include "Osc.h"
 #include "adc.h"
+#include "SIETESEG.h"
 //******************************************************************************
 // Palabra de configuración
 //******************************************************************************
@@ -36,7 +37,8 @@
 //******************************************************************************
 //Variables
 //******************************************************************************
-
+uint8_t B1 = 0;
+uint8_t CONT = 0;
 
 
 
@@ -60,9 +62,21 @@ void __interrupt() isr (void){
     
     if (ADIF == 1){
         
-        PORTB = ADRESH;
+        PORTC = ADRESH;
         ADIF = 0;
         
+    }
+    
+     if (PORTAbits.RA1 == 1){ //ANTIREBOTE, SE PRESIONA EL BOTON
+            B1 = 1; // SE ENCIENDE LA BANDERA DEL CORREDOR 1
+        }
+        
+     else{
+         if (B1 == 1 && PORTAbits.RA1 == 0 ){ //SE DEJA DE PRESIONAR EL 
+             B1 = 0;                              //BOTON
+             CONT ++;// SE INCREMENTA UN CONTADOR
+             PORTB = CONT;
+            }
     }
 }
 //******************************************************************************
