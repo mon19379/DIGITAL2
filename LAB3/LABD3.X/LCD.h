@@ -3,7 +3,6 @@
 #define	LCD_H
 
 char EN;
-
 char RS;
 
 

@@ -2,10 +2,10 @@
 #include <xc.h>
 #include "SIETESEG.h"
 
-void display(uint8_t segment){
-    
-    switch (segment){
-        
+void display(uint8_t segment) {
+
+    switch (segment) {
+
         case 0: //0
             PORTCbits.RC0 = 0;
             PORTCbits.RC1 = 0;
@@ -14,9 +14,9 @@ void display(uint8_t segment){
             PORTCbits.RC4 = 0;
             PORTCbits.RC5 = 0;
             PORTCbits.RC6 = 1;
-            PORTCbits.RC7 = 1;        
+            PORTCbits.RC7 = 1;
             break;
-        
+
         case 1: //1
             PORTCbits.RC0 = 1;
             PORTCbits.RC1 = 0;
@@ -167,8 +167,8 @@ void display(uint8_t segment){
             PORTCbits.RC6 = 0;
             PORTCbits.RC7 = 1;
             break;
-            
-        default: 
+
+        default:
             PORTCbits.RC0 = 0;
             PORTCbits.RC1 = 0;
             PORTCbits.RC2 = 0;
@@ -176,10 +176,10 @@ void display(uint8_t segment){
             PORTCbits.RC4 = 0;
             PORTCbits.RC5 = 0;
             PORTCbits.RC6 = 1;
-            PORTCbits.RC7 = 1;        
+            PORTCbits.RC7 = 1;
             break;
-          
-           
+
+
     }
 }
 

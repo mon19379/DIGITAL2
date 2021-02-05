@@ -1,8 +1,13 @@
+/*
+ * File:   adc2.c
+ * Author: franc
+ *
+ * Created on 4 de febrero de 2021, 06:25 PM
+ */
+
 #include <pic16f887.h>
 #include <xc.h>
-#include "adc.h"
-
-
+#include "adc2.h"
 
 //******************************************************************************
 // CONFIGURACION DEL ADC
@@ -112,10 +117,4 @@ void configADC(uint8_t fosc, uint8_t chan) {
     ADCON0bits.ADON = 1;
     ADCON1 = 0;
 
-
-
 }
-
-
-
-
