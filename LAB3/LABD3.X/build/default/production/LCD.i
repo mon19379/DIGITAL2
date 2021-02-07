@@ -2701,9 +2701,10 @@ void Lcd_Init() {
 
 
     Lcd_Cmd(0x38);
-    Lcd_Cmd(0x08);
+    Lcd_Cmd(0x10);
     Lcd_Cmd(0x01);
     Lcd_Cmd(0x06);
+    Lcd_Cmd(0x0F);
 }
 
 void Lcd_Write_Char(char a) {
@@ -2728,11 +2729,11 @@ void Lcd_Write_String(char *a) {
 }
 
 void Lcd_Shift_Right() {
-    Lcd_Cmd(0x01);
-    Lcd_Cmd(0x0C);
+    Lcd_Cmd(0x1C);
+
 }
 
 void Lcd_Shift_Left() {
-    Lcd_Cmd(0x01);
-    Lcd_Cmd(0x08);
+    Lcd_Cmd(0x18);
+
 }

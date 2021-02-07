@@ -1,7 +1,7 @@
 Version 4.0 HI-TECH Software Intermediate Code
 [p mainexit ]
-"43 L3.c
-[; ;L3.c: 43: void Setup(void);
+"47 L3.c
+[; ;L3.c: 47: void Setup(void);
 [v _Setup `(v ~T0 @X0 0 ef ]
 "3387 C:\Program Files\Microchip\xc8\v2.20\pic\include\proc\pic16f887.h
 [; ;C:\Program Files\Microchip\xc8\v2.20\pic\include\proc\pic16f887.h: 3387: extern volatile unsigned char ANSEL __attribute__((address(0x188)));
@@ -313,121 +313,130 @@ Version 4.0 HI-TECH Software Intermediate Code
 "3546
 [; ;C:\Program Files\Microchip\xc8\v2.20\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
-"17 L3.c
+"5 ./LCD.h
+[; ;./LCD.h: 5: char EN;
+[v _EN `uc ~T0 @X0 1 e ]
+"6
+[; ;./LCD.h: 6: char RS;
+[v _RS `uc ~T0 @X0 1 e ]
+"21 L3.c
 [p x FOSC = INTRC_NOCLKOUT ]
-"18
-[p x WDTE = OFF ]
-"19
-[p x PWRTE = OFF ]
-"20
-[p x MCLRE = OFF ]
-"21
-[p x CP = OFF ]
 "22
-[p x CPD = OFF ]
+[p x WDTE = OFF ]
 "23
-[p x BOREN = OFF ]
+[p x PWRTE = OFF ]
 "24
-[p x IESO = OFF ]
+[p x MCLRE = OFF ]
 "25
-[p x FCMEN = OFF ]
+[p x CP = OFF ]
 "26
-[p x LVP = OFF ]
+[p x CPD = OFF ]
+"27
+[p x BOREN = OFF ]
+"28
+[p x IESO = OFF ]
 "29
-[p x BOR4V = BOR40V ]
+[p x FCMEN = OFF ]
 "30
+[p x LVP = OFF ]
+"33
+[p x BOR4V = BOR40V ]
+"34
 [p x WRT = OFF ]
 [v $root$_main `(v ~T0 @X0 0 e ]
-"53
-[; ;L3.c: 53: void main(void) {
+"57
+[; ;L3.c: 57: void main(void) {
 [v _main `(v ~T0 @X0 1 ef ]
 {
 [e :U _main ]
 [f ]
-"55
-[; ;L3.c: 55:     Setup();
-[e ( _Setup ..  ]
 "59
-[; ;L3.c: 59:     while (1) {
+[; ;L3.c: 59:     Setup();
+[e ( _Setup ..  ]
+"63
+[; ;L3.c: 63:     while (1) {
 [e :U 140 ]
 {
-"69
-[; ;L3.c: 69:     }
+"73
+[; ;L3.c: 73:     }
 }
 [e :U 139 ]
 [e $U 140  ]
 [e :U 141 ]
-"70
-[; ;L3.c: 70: }
+"74
+[; ;L3.c: 74: }
 [e :UE 138 ]
 }
-"75
-[; ;L3.c: 75: void Setup(void) {
+"79
+[; ;L3.c: 79: void Setup(void) {
 [v _Setup `(v ~T0 @X0 1 ef ]
 {
 [e :U _Setup ]
 [f ]
-"77
-[; ;L3.c: 77:     ANSEL = 0;
-[e = _ANSEL -> -> 0 `i `uc ]
-"78
-[; ;L3.c: 78:     ANSEL = 0;
-[e = _ANSEL -> -> 0 `i `uc ]
-"79
-[; ;L3.c: 79:     ANSELH = 0b00000011;
-[e = _ANSELH -> -> 3 `i `uc ]
-"80
-[; ;L3.c: 80:     PORTA = 0;
-[e = _PORTA -> -> 0 `i `uc ]
 "81
-[; ;L3.c: 81:     PORTB = 0;
-[e = _PORTB -> -> 0 `i `uc ]
+[; ;L3.c: 81:     ANSEL = 0;
+[e = _ANSEL -> -> 0 `i `uc ]
 "82
-[; ;L3.c: 82:     PORTC = 0;
-[e = _PORTC -> -> 0 `i `uc ]
+[; ;L3.c: 82:     ANSEL = 0;
+[e = _ANSEL -> -> 0 `i `uc ]
 "83
-[; ;L3.c: 83:     PORTD = 0;
-[e = _PORTD -> -> 0 `i `uc ]
+[; ;L3.c: 83:     ANSELH = 0b00000011;
+[e = _ANSELH -> -> 3 `i `uc ]
 "84
-[; ;L3.c: 84:     PORTE = 0;
-[e = _PORTE -> -> 0 `i `uc ]
+[; ;L3.c: 84:     PORTA = 0;
+[e = _PORTA -> -> 0 `i `uc ]
+"85
+[; ;L3.c: 85:     PORTB = 0;
+[e = _PORTB -> -> 0 `i `uc ]
 "86
-[; ;L3.c: 86:     TRISA = 0b00000101;
-[e = _TRISA -> -> 5 `i `uc ]
+[; ;L3.c: 86:     PORTC = 0;
+[e = _PORTC -> -> 0 `i `uc ]
 "87
-[; ;L3.c: 87:     TRISB = 0b00000011;
-[e = _TRISB -> -> 3 `i `uc ]
+[; ;L3.c: 87:     PORTD = 0;
+[e = _PORTD -> -> 0 `i `uc ]
 "88
-[; ;L3.c: 88:     TRISC = 0;
-[e = _TRISC -> -> 0 `i `uc ]
-"89
-[; ;L3.c: 89:     TRISD = 0;
-[e = _TRISD -> -> 0 `i `uc ]
+[; ;L3.c: 88:     PORTE = 0;
+[e = _PORTE -> -> 0 `i `uc ]
 "90
-[; ;L3.c: 90:     TRISE = 0;
-[e = _TRISE -> -> 0 `i `uc ]
+[; ;L3.c: 90:     TRISA = 0;
+[e = _TRISA -> -> 0 `i `uc ]
 "91
-[; ;L3.c: 91:     OPTION_REG = 0b10000111;
-[e = _OPTION_REG -> -> 135 `i `uc ]
+[; ;L3.c: 91:     TRISB = 0b00000011;
+[e = _TRISB -> -> 3 `i `uc ]
 "92
-[; ;L3.c: 92:     INTCONbits.GIE = 1;
-[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
+[; ;L3.c: 92:     TRISC = 0b10000000;
+[e = _TRISC -> -> 128 `i `uc ]
 "93
-[; ;L3.c: 93:     INTCONbits.T0IE = 1;
-[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+[; ;L3.c: 93:     TRISD = 0;
+[e = _TRISD -> -> 0 `i `uc ]
 "94
-[; ;L3.c: 94:     INTCONbits.PEIE = 1;
-[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+[; ;L3.c: 94:     TRISE = 0;
+[e = _TRISE -> -> 0 `i `uc ]
 "95
-[; ;L3.c: 95:     PIE1bits.ADIE = 1;
-[e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
+[; ;L3.c: 95:     OPTION_REG = 0b10000111;
+[e = _OPTION_REG -> -> 135 `i `uc ]
 "96
-[; ;L3.c: 96:     INTCONbits.T0IF = 0;
-[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
+[; ;L3.c: 96:     INTCONbits.GIE = 1;
+[e = . . _INTCONbits 0 7 -> -> 1 `i `uc ]
 "97
-[; ;L3.c: 97:     PIR1bits.ADIF = 0;
-[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+[; ;L3.c: 97:     INTCONbits.T0IE = 1;
+[e = . . _INTCONbits 0 5 -> -> 1 `i `uc ]
+"98
+[; ;L3.c: 98:     INTCONbits.PEIE = 1;
+[e = . . _INTCONbits 0 6 -> -> 1 `i `uc ]
+"99
+[; ;L3.c: 99:     PIE1bits.ADIE = 1;
+[e = . . _PIE1bits 0 6 -> -> 1 `i `uc ]
+"100
+[; ;L3.c: 100:     INTCONbits.T0IF = 0;
+[e = . . _INTCONbits 0 2 -> -> 0 `i `uc ]
 "101
-[; ;L3.c: 101: }
+[; ;L3.c: 101:     PIR1bits.ADIF = 0;
+[e = . . _PIR1bits 0 6 -> -> 0 `i `uc ]
+"102
+[; ;L3.c: 102:     PIR1bits.TXIF = 0;
+[e = . . _PIR1bits 0 4 -> -> 0 `i `uc ]
+"106
+[; ;L3.c: 106: }
 [e :UE 142 ]
 }

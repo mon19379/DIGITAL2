@@ -2630,6 +2630,71 @@ typedef uint16_t uintptr_t;
 # 11 "L3.c" 2
 
 
+# 1 "./LCD.h" 1
+
+
+
+
+char EN;
+char RS;
+
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 1 3
+# 11 "./LCD.h" 2
+
+void Lcd_Port(char a);
+void Lcd_Cmd(char a);
+void Lcd_Set_Cursor(char a, char b);
+void Lcd_Init();
+void Lcd_Write_Char(char a);
+void Lcd_Write_String(char *a);
+void Lcd_Shift_Right();
+void Lcd_Shift_Left();
+# 13 "L3.c" 2
+
+# 1 "./adc2.h" 1
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 1 3
+# 5 "./adc2.h" 2
+
+
+void configADC2(uint8_t fosc, uint8_t chan);
+# 14 "L3.c" 2
+
+# 1 "./osc.h" 1
+
+
+
+
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 1 3
+# 9 "./osc.h" 2
+
+
+void initOsc(uint8_t IRCF);
+# 15 "L3.c" 2
+
+# 1 "./usart.h" 1
+
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 1 3
+# 6 "./usart.h" 2
+
+void usart(void);
+# 16 "L3.c" 2
+
 
 
 
@@ -2648,9 +2713,9 @@ typedef uint16_t uintptr_t;
 
 #pragma config BOR4V = BOR40V
 #pragma config WRT = OFF
-# 43 "L3.c"
+# 47 "L3.c"
 void Setup(void);
-# 53 "L3.c"
+# 57 "L3.c"
 void main(void) {
 
     Setup();
@@ -2658,7 +2723,7 @@ void main(void) {
 
 
     while (1) {
-# 69 "L3.c"
+# 73 "L3.c"
     }
 }
 
@@ -2676,9 +2741,9 @@ void Setup(void) {
     PORTD = 0;
     PORTE = 0;
 
-    TRISA = 0b00000101;
+    TRISA = 0;
     TRISB = 0b00000011;
-    TRISC = 0;
+    TRISC = 0b10000000;
     TRISD = 0;
     TRISE = 0;
     OPTION_REG = 0b10000111;
@@ -2688,6 +2753,7 @@ void Setup(void) {
     PIE1bits.ADIE = 1;
     INTCONbits.T0IF = 0;
     PIR1bits.ADIF = 0;
+    PIR1bits.TXIF = 0;
 
 
 

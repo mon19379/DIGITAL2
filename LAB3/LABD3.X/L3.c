@@ -9,7 +9,11 @@
 
 #include <xc.h>
 #include <stdint.h>
-
+#include <pic16f887.h>
+#include "LCD.h"
+#include "adc2.h"
+#include "osc.h"
+#include "usart.h"
 //******************************************************************************
 // Palabra de configuración
 //******************************************************************************
@@ -83,9 +87,9 @@ void Setup(void) {
     PORTD = 0; //PUERTO D EN 0
     PORTE = 0; //PUERTO E EN 0
     //PINES RA0 Y RA2 COMO ENTRADAS, LOS DEMAS COMO SALIDAS
-    TRISA = 0b00000101;
+    TRISA = 0;
     TRISB = 0b00000011; //PUERTO B 
-    TRISC = 0; //PUERTO C SALIDAS
+    TRISC = 0b10000000; //PUERTO C SALIDAS
     TRISD = 0; //PUERTO D SALIDAS
     TRISE = 0; //PUERTO E SALIDAS
     OPTION_REG = 0b10000111; //SE APAGAN LAS PULLUPS DEL PUERTO B
@@ -95,7 +99,8 @@ void Setup(void) {
     PIE1bits.ADIE = 1; //SE HABILITA LA INTERRUPCION DEL ADC
     INTCONbits.T0IF = 0; // SE LIMPIA LA BANDERA DE INTERRUPCION DEL TIMER 0
     PIR1bits.ADIF = 0; //SE LIMPIOA LA BANDERA DE INTERRUPCION DEL ADC
-
+    PIR1bits.TXIF = 0;
+    
 
 
 }
