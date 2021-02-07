@@ -2631,19 +2631,9 @@ typedef uint16_t uintptr_t;
 
 
 # 1 "./LCD.h" 1
-
-
-
-
-char EN;
-char RS;
-
-
-
-
-
+# 18 "./LCD.h"
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 1 3
-# 11 "./LCD.h" 2
+# 18 "./LCD.h" 2
 
 void Lcd_Port(char a);
 void Lcd_Cmd(char a);
@@ -2713,17 +2703,46 @@ void usart(void);
 
 #pragma config BOR4V = BOR40V
 #pragma config WRT = OFF
-# 47 "L3.c"
+
+
+
+
+
+uint8_t pot1 = 0;
+uint8_t pot2 = 0;
+uint8_t FLAGADC = 0;
+
+
+
+
+
+
 void Setup(void);
-# 57 "L3.c"
+void pots(void);
+
+
+
+
+void __attribute__((picinterrupt(("")))) isr (void){
+# 71 "L3.c"
+}
+
+
+
+
 void main(void) {
 
     Setup();
 
 
 
+
+
+
     while (1) {
-# 73 "L3.c"
+    Lcd_Set_Cursor (1,1);
+    Lcd_Write_String("V1");
+# 101 "L3.c"
     }
 }
 
@@ -2731,7 +2750,13 @@ void main(void) {
 
 
 void Setup(void) {
+    TRISA = 0;
+    TRISB = 0b00000011;
+    initOsc(6);
 
+
+    Lcd_Init();
+    Lcd_Cmd(0x8A);
     ANSEL = 0;
     ANSEL = 0;
     ANSELH = 0b00000011;
@@ -2741,7 +2766,7 @@ void Setup(void) {
     PORTD = 0;
     PORTE = 0;
 
-    TRISA = 0;
+
     TRISB = 0b00000011;
     TRISC = 0b10000000;
     TRISD = 0;

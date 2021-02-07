@@ -2649,7 +2649,7 @@ void configADC2(uint8_t fosc, uint8_t chan);
 
 
 
-void configADC(uint8_t fosc, uint8_t chan) {
+void configADC2(uint8_t fosc, uint8_t chan) {
 
     switch (fosc) {
 

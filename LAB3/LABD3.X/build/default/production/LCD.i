@@ -2640,16 +2640,11 @@ typedef uint16_t uintptr_t;
 
 
 
-char EN;
-char RS;
-
-
-
 
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 1 3
-# 11 "./LCD.h" 2
-
+# 7 "./LCD.h" 2
+# 22 "./LCD.h"
 void Lcd_Port(char a);
 void Lcd_Cmd(char a);
 void Lcd_Set_Cursor(char a, char b);
@@ -2661,17 +2656,17 @@ void Lcd_Shift_Left();
 # 10 "LCD.c" 2
 
 
-
 void Lcd_Port(char a) {
     PORTA = a;
 }
 
 void Lcd_Cmd(char a) {
-    RS = 0;
     Lcd_Port(a);
-    EN = 1;
-    _delay((unsigned long)((4)*(8000000/4000.0)));
-    EN = 0;
+    PORTBbits.RB3 = 0;
+
+    PORTBbits.RB5 = 1;
+    _delay((unsigned long)((5)*(4000000/4000.0)));
+    PORTBbits.RB5 = 0;
 }
 
 Lcd_Clear() {
@@ -2691,41 +2686,28 @@ void Lcd_Set_Cursor(char a, char b) {
 }
 
 void Lcd_Init() {
-    Lcd_Port(0x00);
-    _delay((unsigned long)((20)*(8000000/4000.0)));
-    Lcd_Cmd(0x30);
-    _delay((unsigned long)((5)*(8000000/4000.0)));
-    Lcd_Cmd(0x30);
-    _delay((unsigned long)((80)*(8000000/4000000.0)));
-    Lcd_Cmd(0x30);
+
 
 
     Lcd_Cmd(0x38);
-    Lcd_Cmd(0x10);
-    Lcd_Cmd(0x01);
+    Lcd_Cmd(0x0C);
     Lcd_Cmd(0x06);
-    Lcd_Cmd(0x0F);
+    Lcd_Cmd(0x80);
 }
 
 void Lcd_Write_Char(char a) {
-    char temp, y;
-    temp = a & 0x0F;
-    y = a & 0xF0;
-    RS = 1;
-    Lcd_Port(y >> 4);
-    EN = 1;
-    _delay((unsigned long)((40)*(8000000/4000000.0)));
-    EN = 0;
-    Lcd_Port(temp);
-    EN = 1;
-    _delay((unsigned long)((40)*(8000000/4000000.0)));
-    EN = 0;
+    PORTBbits.RB3 = 1;
+   Lcd_Port(a);
+   PORTBbits.RB5 = 1;
+   _delay((unsigned long)((40)*(4000000/4000000.0)));
+   PORTBbits.RB5 = 0;
+   PORTBbits.RB3 = 0;
 }
 
 void Lcd_Write_String(char *a) {
-    int i;
-    for (i = 0; a[i] != '\0'; i++)
-        Lcd_Write_Char(a[i]);
+   int i;
+ for(i=0;a[i]!='\0';i++)
+    Lcd_Write_Char(a[i]);
 }
 
 void Lcd_Shift_Right() {

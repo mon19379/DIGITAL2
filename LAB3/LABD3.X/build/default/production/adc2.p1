@@ -260,10 +260,10 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;C:\Program Files\Microchip\xc8\v2.20\pic\include\proc\pic16f887.h: 3546: __asm("EECON2 equ 018Dh");
 [; <" EECON2 equ 018Dh ;# ">
 "16 adc2.c
-[; ;adc2.c: 16: void configADC(uint8_t fosc, uint8_t chan) {
-[v _configADC `(v ~T0 @X0 1 ef2`uc`uc ]
+[; ;adc2.c: 16: void configADC2(uint8_t fosc, uint8_t chan) {
+[v _configADC2 `(v ~T0 @X0 1 ef2`uc`uc ]
 {
-[e :U _configADC ]
+[e :U _configADC2 ]
 [v _fosc `uc ~T0 @X0 1 r1 ]
 [v _chan `uc ~T0 @X0 1 r2 ]
 [f ]
