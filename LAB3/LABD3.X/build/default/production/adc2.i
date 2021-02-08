@@ -2649,6 +2649,7 @@ void configADC2(uint8_t fosc, uint8_t chan);
 
 
 
+
 void configADC2(uint8_t fosc, uint8_t chan) {
 
     switch (fosc) {
@@ -2744,6 +2745,8 @@ void configADC2(uint8_t fosc, uint8_t chan) {
 
 
     }
+
+    _delay((unsigned long)((10)*(4000000/4000.0)));
 
 
     ADCON0bits.GO_nDONE = 1;

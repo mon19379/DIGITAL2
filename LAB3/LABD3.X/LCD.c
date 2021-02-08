@@ -10,7 +10,7 @@
 #include "LCD.h"
 
 void Lcd_Port(char a) {
-    PORTA = a;
+    PORTD = a;
 }
 
 void Lcd_Cmd(char a) {

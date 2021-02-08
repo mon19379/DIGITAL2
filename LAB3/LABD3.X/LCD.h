@@ -8,15 +8,15 @@
 #define _XTAL_FREQ 4000000 
 
 #ifndef EN
-#define	EN PORTBbits.RB5
+#define	EN PORTEbits.RE0
 #endif
 
 #ifndef RS
-#define	RS PORTBbits.RB3
+#define	RS PORTEbits.RE1
 #endif
 
 #ifndef RW
-#define	RW PORTBbits.RB4
+#define	RW 
 #endif
 
 

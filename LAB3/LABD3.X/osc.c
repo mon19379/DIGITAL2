@@ -63,7 +63,7 @@ void initOsc(uint8_t IRCF){
         
         default: //OSCILADOR DE 4MHz
             OSCCONbits.IRCF2 = 1;
-            OSCCONbits.IRCF1 = 0;
+            OSCCONbits.IRCF1 = 1;
             OSCCONbits.IRCF0 = 0;
             break;
     

@@ -8,6 +8,6 @@ void configADC2(uint8_t fosc, uint8_t chan);
 
 
 
-#endif	/* ADC_H*/
+#endif	/* ADC2_H*/
 
 

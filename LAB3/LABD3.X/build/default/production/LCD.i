@@ -2644,7 +2644,7 @@ typedef uint16_t uintptr_t;
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 1 3
 # 7 "./LCD.h" 2
-# 22 "./LCD.h"
+# 23 "./LCD.h"
 void Lcd_Port(char a);
 void Lcd_Cmd(char a);
 void Lcd_Set_Cursor(char a, char b);
@@ -2657,16 +2657,16 @@ void Lcd_Shift_Left();
 
 
 void Lcd_Port(char a) {
-    PORTA = a;
+    PORTD = a;
 }
 
 void Lcd_Cmd(char a) {
     Lcd_Port(a);
-    PORTBbits.RB3 = 0;
+    PORTEbits.RE1 = 0;
 
-    PORTBbits.RB5 = 1;
+    PORTEbits.RE0 = 1;
     _delay((unsigned long)((5)*(4000000/4000.0)));
-    PORTBbits.RB5 = 0;
+    PORTEbits.RE0 = 0;
 }
 
 Lcd_Clear() {
@@ -2696,12 +2696,12 @@ void Lcd_Init() {
 }
 
 void Lcd_Write_Char(char a) {
-    PORTBbits.RB3 = 1;
+    PORTEbits.RE1 = 1;
    Lcd_Port(a);
-   PORTBbits.RB5 = 1;
+   PORTEbits.RE0 = 1;
    _delay((unsigned long)((40)*(4000000/4000000.0)));
-   PORTBbits.RB5 = 0;
-   PORTBbits.RB3 = 0;
+   PORTEbits.RE0 = 0;
+   PORTEbits.RE1 = 0;
 }
 
 void Lcd_Write_String(char *a) {

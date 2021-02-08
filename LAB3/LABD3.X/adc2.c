@@ -8,6 +8,7 @@
 #include <pic16f887.h>
 #include <xc.h>
 #include "adc2.h"
+#define _XTAL_FREQ 4000000 
 
 //******************************************************************************
 // CONFIGURACION DEL ADC
@@ -108,6 +109,8 @@ void configADC2(uint8_t fosc, uint8_t chan) {
 
 
     }
+    
+    __delay_ms(10);
 
 
     ADCON0bits.GO_nDONE = 1;

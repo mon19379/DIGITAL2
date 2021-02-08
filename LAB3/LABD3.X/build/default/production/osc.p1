@@ -386,8 +386,8 @@ Version 4.0 HI-TECH Software Intermediate Code
 [; ;osc.c: 65:             OSCCONbits.IRCF2 = 1;
 [e = . . _OSCCONbits 1 3 -> -> 1 `i `uc ]
 "66
-[; ;osc.c: 66:             OSCCONbits.IRCF1 = 0;
-[e = . . _OSCCONbits 1 2 -> -> 0 `i `uc ]
+[; ;osc.c: 66:             OSCCONbits.IRCF1 = 1;
+[e = . . _OSCCONbits 1 2 -> -> 1 `i `uc ]
 "67
 [; ;osc.c: 67:             OSCCONbits.IRCF0 = 0;
 [e = . . _OSCCONbits 1 1 -> -> 0 `i `uc ]
