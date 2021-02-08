@@ -20,20 +20,22 @@
 [v ___eecpymem __eecpymem `(v  1 e 1 0 ]
 "39
 [v ___memcpyee __memcpyee `(v  1 e 1 0 ]
-"79 C:\Users\franc\Documents\GitHub\DIGITAL2\LAB3\LABD3.X\L3.c
+"86 C:\Users\franc\Documents\GitHub\DIGITAL2\LAB3\LABD3.X\L3.c
 [v _ISR ISR `II(v  1 e 1 0 ]
-"108
+"115
 [v _main main `(v  1 e 1 0 ]
-"171
+"185
 [v _Setup Setup `(v  1 e 1 0 ]
-"210
+"224
 [v _pots pots `(v  1 e 1 0 ]
-"223
+"237
 [v _map map `(v  1 e 1 0 ]
-"241
+"255
 [v _mandar mandar `(v  1 e 1 0 ]
-"303
+"317
 [v _recibir recibir `(v  1 e 1 0 ]
+"341
+[v _map2 map2 `(v  1 e 1 0 ]
 "12 C:\Users\franc\Documents\GitHub\DIGITAL2\LAB3\LABD3.X\LCD.c
 [v _Lcd_Port Lcd_Port `(v  1 e 1 0 ]
 "16
@@ -62,14 +64,14 @@
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
 "414
 [v _PORTE PORTE `VEuc  1 e 1 @9 ]
-[s S284 . 1 `uc 1 RE0 1 0 :1:0 
+[s S295 . 1 `uc 1 RE0 1 0 :1:0 
 `uc 1 RE1 1 0 :1:1 
 `uc 1 RE2 1 0 :1:2 
 `uc 1 RE3 1 0 :1:3 
 ]
 "427
-[u S289 . 1 `S284 1 . 1 0 ]
-[v _PORTEbits PORTEbits `VES289  1 e 1 @9 ]
+[u S300 . 1 `S295 1 . 1 0 ]
+[v _PORTEbits PORTEbits `VES300  1 e 1 @9 ]
 [s S22 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
@@ -98,7 +100,7 @@
 "553
 [u S63 . 1 `S55 1 . 1 0 ]
 [v _PIR1bits PIR1bits `VES63  1 e 1 @12 ]
-[s S428 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S439 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -108,31 +110,31 @@
 `uc 1 SPEN 1 0 :1:7 
 ]
 "1068
-[s S437 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S448 . 1 `uc 1 RCD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S441 . 1 `uc 1 . 1 0 :6:0 
+[s S452 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 nRC8 1 0 :1:6 
 ]
-[s S444 . 1 `uc 1 . 1 0 :6:0 
+[s S455 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[u S447 . 1 `S428 1 . 1 0 `S437 1 . 1 0 `S441 1 . 1 0 `S444 1 . 1 0 ]
-[v _RCSTAbits RCSTAbits `VES447  1 e 1 @24 ]
+[u S458 . 1 `S439 1 . 1 0 `S448 1 . 1 0 `S452 1 . 1 0 `S455 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES458  1 e 1 @24 ]
 "1133
 [v _TXREG TXREG `VEuc  1 e 1 @25 ]
 "1140
 [v _RCREG RCREG `VEuc  1 e 1 @26 ]
 "1238
 [v _ADRESH ADRESH `VEuc  1 e 1 @30 ]
-[s S125 . 1 `uc 1 ADON 1 0 :1:0 
+[s S129 . 1 `uc 1 ADON 1 0 :1:0 
 `uc 1 GO_nDONE 1 0 :1:1 
 `uc 1 CHS 1 0 :4:2 
 `uc 1 ADCS 1 0 :2:6 
 ]
 "1276
-[s S130 . 1 `uc 1 . 1 0 :1:0 
+[s S134 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO 1 0 :1:1 
 `uc 1 CHS0 1 0 :1:2 
 `uc 1 CHS1 1 0 :1:3 
@@ -141,14 +143,14 @@
 `uc 1 ADCS0 1 0 :1:6 
 `uc 1 ADCS1 1 0 :1:7 
 ]
-[s S139 . 1 `uc 1 . 1 0 :1:0 
+[s S143 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 nDONE 1 0 :1:1 
 ]
-[s S142 . 1 `uc 1 . 1 0 :1:0 
+[s S146 . 1 `uc 1 . 1 0 :1:0 
 `uc 1 GO_DONE 1 0 :1:1 
 ]
-[u S145 . 1 `S125 1 . 1 0 `S130 1 . 1 0 `S139 1 . 1 0 `S142 1 . 1 0 ]
-[v _ADCON0bits ADCON0bits `VES145  1 e 1 @31 ]
+[u S149 . 1 `S129 1 . 1 0 `S134 1 . 1 0 `S143 1 . 1 0 `S146 1 . 1 0 ]
+[v _ADCON0bits ADCON0bits `VES149  1 e 1 @31 ]
 "1346
 [v _OPTION_REG OPTION_REG `VEuc  1 e 1 @129 ]
 "1416
@@ -172,21 +174,21 @@
 "1718
 [u S95 . 1 `S87 1 . 1 0 ]
 [v _PIE1bits PIE1bits `VES95  1 e 1 @140 ]
-[s S497 . 1 `uc 1 SCS 1 0 :1:0 
+[s S508 . 1 `uc 1 SCS 1 0 :1:0 
 `uc 1 LTS 1 0 :1:1 
 `uc 1 HTS 1 0 :1:2 
 `uc 1 OSTS 1 0 :1:3 
 `uc 1 IRCF 1 0 :3:4 
 ]
 "1882
-[s S503 . 1 `uc 1 . 1 0 :4:0 
+[s S514 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 IRCF0 1 0 :1:4 
 `uc 1 IRCF1 1 0 :1:5 
 `uc 1 IRCF2 1 0 :1:6 
 ]
-[u S508 . 1 `S497 1 . 1 0 `S503 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES508  1 e 1 @143 ]
-[s S357 . 1 `uc 1 TX9D 1 0 :1:0 
+[u S519 . 1 `S508 1 . 1 0 `S514 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES519  1 e 1 @143 ]
+[s S368 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -196,22 +198,22 @@
 `uc 1 CSRC 1 0 :1:7 
 ]
 "2582
-[s S366 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S377 . 1 `uc 1 TXD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 nTX8 1 0 :1:6 
 ]
-[s S370 . 1 `uc 1 . 1 0 :6:0 
+[s S381 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[u S373 . 1 `S357 1 . 1 0 `S366 1 . 1 0 `S370 1 . 1 0 ]
-[v _TXSTAbits TXSTAbits `VES373  1 e 1 @152 ]
+[u S384 . 1 `S368 1 . 1 0 `S377 1 . 1 0 `S381 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES384  1 e 1 @152 ]
 "2642
 [v _SPBRG SPBRG `VEuc  1 e 1 @153 ]
 "2704
 [v _SPBRGH SPBRGH `VEuc  1 e 1 @154 ]
 "2977
 [v _ADCON1 ADCON1 `VEuc  1 e 1 @159 ]
-[s S394 . 1 `uc 1 ABDEN 1 0 :1:0 
+[s S405 . 1 `uc 1 ABDEN 1 0 :1:0 
 `uc 1 WUE 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 BRG16 1 0 :1:3 
@@ -221,8 +223,8 @@
 `uc 1 ABDOVF 1 0 :1:7 
 ]
 "3352
-[u S403 . 1 `S394 1 . 1 0 ]
-[v _BAUDCTLbits BAUDCTLbits `VES403  1 e 1 @391 ]
+[u S414 . 1 `S405 1 . 1 0 ]
+[v _BAUDCTLbits BAUDCTLbits `VES414  1 e 1 @391 ]
 "3387
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
 "3449
@@ -269,15 +271,32 @@
 [v _R1 R1 `uc  1 e 1 0 ]
 "61
 [v _R2 R2 `uc  1 e 1 0 ]
-"108
+"62
+[v _CONTC CONTC `uc  1 e 1 0 ]
+"63
+[v _CONTD CONTD `uc  1 e 1 0 ]
+"64
+[v _CONTU CONTU `uc  1 e 1 0 ]
+"65
+[v _CO1 CO1 `uc  1 e 1 0 ]
+"66
+[v _CO2 CO2 `uc  1 e 1 0 ]
+"67
+[v _CO3 CO3 `uc  1 e 1 0 ]
+"115
 [v _main main `(v  1 e 1 0 ]
 {
-"166
+"180
 } 0
-"223
+"341
+[v _map2 map2 `(v  1 e 1 0 ]
+{
+"349
+} 0
+"237
 [v _map map `(v  1 e 1 0 ]
 {
-"239
+"253
 } 0
 "15 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
@@ -315,10 +334,10 @@
 [v ___awdiv@dividend dividend `i  1 p 2 8 ]
 "41
 } 0
-"171 C:\Users\franc\Documents\GitHub\DIGITAL2\LAB3\LABD3.X\L3.c
+"185 C:\Users\franc\Documents\GitHub\DIGITAL2\LAB3\LABD3.X\L3.c
 [v _Setup Setup `(v  1 e 1 0 ]
 {
-"204
+"218
 } 0
 "5 C:\Users\franc\Documents\GitHub\DIGITAL2\LAB3\LABD3.X\usart.c
 [v _usart usart `(v  1 e 1 0 ]
@@ -396,20 +415,20 @@
 [v Lcd_Port@a a `uc  1 a 1 0 ]
 "14
 } 0
-"79 C:\Users\franc\Documents\GitHub\DIGITAL2\LAB3\LABD3.X\L3.c
+"86 C:\Users\franc\Documents\GitHub\DIGITAL2\LAB3\LABD3.X\L3.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"103
+"110
 } 0
-"303
+"317
 [v _recibir recibir `(v  1 e 1 0 ]
 {
-"325
+"339
 } 0
-"210
+"224
 [v _pots pots `(v  1 e 1 0 ]
 {
-"221
+"235
 } 0
 "17 C:\Users\franc\Documents\GitHub\DIGITAL2\LAB3\LABD3.X\adc2.c
 [v i1_configADC2 configADC2 `(v  1 e 1 0 ]
@@ -420,8 +439,8 @@
 [v i1configADC2@fosc fosc `uc  1 a 1 3 ]
 "123
 } 0
-"241 C:\Users\franc\Documents\GitHub\DIGITAL2\LAB3\LABD3.X\L3.c
+"255 C:\Users\franc\Documents\GitHub\DIGITAL2\LAB3\LABD3.X\L3.c
 [v _mandar mandar `(v  1 e 1 0 ]
 {
-"301
+"315
 } 0

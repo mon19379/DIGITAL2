@@ -2735,12 +2735,19 @@ uint8_t SEND = 0;
 uint8_t CONT = 0;
 uint8_t R1 = 0;
 uint8_t R2 = 0;
-# 70 "L3.c"
+uint8_t CONTC = 0;
+uint8_t CONTD = 0;
+uint8_t CONTU = 0;
+uint8_t CO1 = 0;
+uint8_t CO2 = 0;
+uint8_t CO3 = 0;
+# 76 "L3.c"
 void Setup(void);
 void pots(void);
 void mandar(void);
 void map(void);
 void recibir(void);
+void map2(void);
 
 
 
@@ -2783,9 +2790,10 @@ void main(void) {
     Lcd_Write_String("V2");
     Lcd_Set_Cursor(1, 13);
     Lcd_Write_String("CONT");
-# 126 "L3.c"
+# 133 "L3.c"
     while (1) {
         map();
+        map2();
         if (CONTADC > 20) {
             ADCON0bits.GO_nDONE = 1;
             CONTADC = 0;
@@ -2811,7 +2819,14 @@ void main(void) {
         Lcd_Write_Char(D2);
         Lcd_Set_Cursor(2, 10);
         Lcd_Write_Char(U2);
-# 165 "L3.c"
+
+        Lcd_Set_Cursor(2, 13);
+        Lcd_Write_Char(CO1);
+        Lcd_Set_Cursor(2, 14);
+        Lcd_Write_Char(CO2);
+        Lcd_Set_Cursor(2, 15);
+        Lcd_Write_Char(CO3);
+# 179 "L3.c"
     }
 }
 
@@ -2972,4 +2987,14 @@ void recibir(void) {
         R2 = 0;
         CONT--;
     }
+}
+
+void map2 (void){
+    CONTC = (CONT/100);
+    CONTD = (CONT- (CONTC*100))/10;
+    CONTU = (CONT - (CONTC*100)-(CONTD*10));
+
+    CO1 = (CONTC + 0x30);
+    CO2 = (CONTD + 0x30);
+    CO3 = (CONTU + 0x30);
 }
