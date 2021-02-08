@@ -2732,12 +2732,15 @@ uint8_t C2 = 0;
 uint8_t D2 = 0;
 uint8_t U2 = 0;
 uint8_t SEND = 0;
-# 68 "L3.c"
+uint8_t CONT = 0;
+uint8_t R1 = 0;
+uint8_t R2 = 0;
+# 70 "L3.c"
 void Setup(void);
 void pots(void);
 void mandar(void);
 void map(void);
-
+void recibir(void);
 
 
 
@@ -2757,6 +2760,7 @@ void __attribute__((picinterrupt(("")))) ISR(void) {
 
     if (PIR1bits.RCIF == 1) {
         REC = RCREG;
+        recibir();
     }
 
     if (PIR1bits.TXIF == 1) {
@@ -2775,18 +2779,11 @@ void main(void) {
     Setup();
     Lcd_Set_Cursor(1, 1);
     Lcd_Write_String("V1");
-    Lcd_Set_Cursor(1, 5);
+    Lcd_Set_Cursor(1, 7);
     Lcd_Write_String("V2");
-    Lcd_Set_Cursor(1, 10);
+    Lcd_Set_Cursor(1, 13);
     Lcd_Write_String("CONT");
-    Lcd_Set_Cursor(2, 2);
-
-
-
-
-
-
-
+# 126 "L3.c"
     while (1) {
         map();
         if (CONTADC > 20) {
@@ -2794,8 +2791,27 @@ void main(void) {
             CONTADC = 0;
             PIE1bits.TXIE = 1;
 
+
         }
-# 141 "L3.c"
+
+        Lcd_Set_Cursor(2, 1);
+        Lcd_Write_Char(C1);
+        Lcd_Set_Cursor(2, 2);
+        Lcd_Write_String(".");
+        Lcd_Write_Char(D1);
+        Lcd_Set_Cursor(2, 4);
+        Lcd_Write_Char(U1);
+
+
+        Lcd_Set_Cursor(2, 7);
+        Lcd_Write_Char(C2);
+        Lcd_Set_Cursor(2, 8);
+        Lcd_Write_String(".");
+        Lcd_Set_Cursor(2, 9);
+        Lcd_Write_Char(D2);
+        Lcd_Set_Cursor(2, 10);
+        Lcd_Write_Char(U2);
+# 165 "L3.c"
     }
 }
 
@@ -2924,7 +2940,7 @@ void mandar(void) {
 
         case 13:
             TXREG = 0x29;
-            SEND = 0;
+
 
         case 14:
             TXREG = 0x0D;
@@ -2932,4 +2948,28 @@ void mandar(void) {
             break;
     }
 
+}
+
+void recibir(void) {
+    if (REC == 43) {
+        R1 = 1;
+
+
+    }
+
+    if (REC != 43 && R1 == 1) {
+        R1 = 0;
+        CONT++;
+    }
+
+    if (REC == 45) {
+        R2 = 1;
+
+
+    }
+
+    if (REC != 45 && R2 == 1) {
+        R2 = 0;
+        CONT--;
+    }
 }
