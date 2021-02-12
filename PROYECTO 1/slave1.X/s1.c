@@ -1,0 +1,133 @@
+#include <xc.h>
+#include <stdint.h>
+#include <pic16f887.h>
+#include "adcs1.h"
+#include "oscs1.h"
+
+//******************************************************************************
+// Palabra de configuración
+//******************************************************************************
+// CONFIG1
+#pragma config FOSC = INTRC_NOCLKOUT        // Oscillator Selection bits (XT oscillator: Crystal/resonator on RA6/OSC2/CLKOUT and RA7/OSC1/CLKIN)
+#pragma config WDTE = OFF       // Watchdog Timer Enable bit (WDT disabled and can be enabled by SWDTEN bit of the WDTCON register)
+#pragma config PWRTE = OFF      // Power-up Timer Enable bit (PWRT disabled)
+#pragma config MCLRE = OFF      // RE3/MCLR pin function select bit (RE3/MCLR pin function is digital input, MCLR internally tied to VDD)
+#pragma config CP = OFF         // Code Protection bit (Program memory code protection is disabled)
+#pragma config CPD = OFF        // Data Code Protection bit (Data memory code protection is disabled)
+#pragma config BOREN = OFF      // Brown Out Reset Selection bits (BOR disabled)
+#pragma config IESO = OFF       // Internal External Switchover bit (Internal/External Switchover mode is disabled)
+#pragma config FCMEN = OFF      // Fail-Safe Clock Monitor Enabled bit (Fail-Safe Clock Monitor is disabled)
+#pragma config LVP = OFF        // Low Voltage Programming Enable bit (RB3 pin has digital I/O, HV on MCLR must be used for programming)
+
+// CONFIG2
+#pragma config BOR4V = BOR40V   // Brown-out Reset Selection bit (Brown-out Reset set to 4.0V)
+#pragma config WRT = OFF        // Flash Program Memory Self Write Enable bits (Write protection off)
+#define _XTAL_FREQ 4000000      //SE CONFIGURA EL OSCILADOR EXTERNO
+
+//******************************************************************************
+//Variables
+//******************************************************************************
+
+uint8_t pot = 0;
+uint8_t CONTADC = 0;
+
+
+
+//******************************************************************************
+// Prototipos de funciones
+//******************************************************************************
+void Setup(void);
+
+//******************************************************************************
+//Interrupción
+//******************************************************************************
+
+void __interrupt() ISR(void) {
+ 
+
+    if (PIR1bits.ADIF == 1) {
+        pot = ADRESH;
+        PIR1bits.ADIF = 0;
+    }
+
+}
+
+//******************************************************************************
+//Ciclo pincipal
+//******************************************************************************
+
+void main(void) {
+
+    Setup();
+
+
+
+
+
+
+
+
+
+    //**************************************************************************
+    // Loop principal
+    //**************************************************************************
+    while (1) {
+        
+        ADCON0bits.GO_nDONE = 1;
+        PORTD = pot;
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+}
+//******************************************************************************
+//Configuracion
+//******************************************************************************
+
+void Setup(void) {
+    configADC1(1, 12); //SE LLAMA LA CONFIG DEL ADC
+    initOscs1(6);
+    ANSEL = 0; // ENTRADAS DIGITALES Y BIT 0 ANALÓGICA
+    ANSELH = 0b00000001;
+    PORTA = 0; //PUERTO A EN 0
+    PORTB = 0; //PUERTO B EN 0
+    PORTC = 0; //PUERTO C EN 0
+    PORTD = 0; //PUERTO D EN 0
+    PORTE = 0; //PUERTO E EN 0
+    //PINES RA0 Y RA2 COMO ENTRADAS, LOS DEMAS COMO SALIDAS
+    TRISC = 0b00001000; //PUERTO C SALIDAS
+    TRISA = 0b00100000; //PUERTO A SALIDAS
+    TRISB = 0b00000011; //PUERTO B 
+    TRISD = 0;
+    TRISE = 0;
+    OPTION_REG = 0b10000111; //SE APAGAN LAS PULLUPS DEL PUERTO B
+    INTCONbits.GIE = 1; //SE HABILITAN LAS INTERRUPCIONES GLOBALES
+    INTCONbits.PEIE = 1; //SE HABILITAN LAS INTERRUPCIONES PERIFERICAS
+    PIE1bits.ADIE = 1; //SE HABILITA LA INTERRUPCION DEL ADC
+    PIR1bits.ADIF = 0; //SE LIMPIOA LA BANDERA DE INTERRUPCION DEL ADC
+    
+
+
+
+}
+
+//******************************************************************************
+// Subrutinas
+//******************************************************************************
+
+
+
+
+
+
+
+

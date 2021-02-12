@@ -10,6 +10,8 @@
 #include <xc.h>
 #include <stdint.h>
 #include <pic16f887.h>
+#include "LCDM.h"
+#include "oscm.h"
 
 //******************************************************************************
 // Palabra de configuración
@@ -60,7 +62,13 @@ void __interrupt() ISR(void) {
 void main(void) {
 
     Setup();
-    
+    Lcd_Set_Cursor(1, 1);
+    Lcd_Write_String("ADC");
+    Lcd_Set_Cursor(1, 7);
+    Lcd_Write_String("CONT");
+    Lcd_Set_Cursor(1, 13);
+    Lcd_Write_String("TEMP");
+
 
 
 
@@ -89,8 +97,11 @@ void main(void) {
 //******************************************************************************
 
 void Setup(void) {
-    TRISD = 0;
+    TRISA = 0;
     TRISE = 0; //PUERTO E SALIDAS
+    initOscm(6);
+    Lcd_Init();
+    Lcd_Cmd(0x8A);
     ANSEL = 0; // ENTRADAS DIGITALES Y BIT 0 ANALÓGICA
     ANSELH = 0b00000011;
     PORTA = 0; //PUERTO A EN 0
@@ -99,8 +110,8 @@ void Setup(void) {
     PORTD = 0; //PUERTO D EN 0
     PORTE = 0; //PUERTO E EN 0
     //PINES RA0 Y RA2 COMO ENTRADAS, LOS DEMAS COMO SALIDAS
-    TRISC = 0b10000000; //PUERTO C SALIDAS
-    TRISA = 0; //PUERTO A SALIDAS
+    TRISC = 0; //PUERTO C SALIDAS
+    TRISD = 0; //PUERTO D SALIDAS
     TRISB = 0b00000011; //PUERTO B 
     OPTION_REG = 0b10000111; //SE APAGAN LAS PULLUPS DEL PUERTO B
     INTCONbits.GIE = 1; //SE HABILITAN LAS INTERRUPCIONES GLOBALES
