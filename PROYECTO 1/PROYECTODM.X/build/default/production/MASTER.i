@@ -2666,6 +2666,43 @@ void Lcd_Shift_Left();
 void initOscm(uint8_t IRCF);
 # 14 "MASTER.c" 2
 
+# 1 "./SSP.h" 1
+# 18 "./SSP.h"
+typedef enum
+{
+    SPI_MASTER_OSC_DIV4 = 0b00100000,
+    SPI_MASTER_OSC_DIV16 = 0b00100001,
+    SPI_MASTER_OSC_DIV64 = 0b00100010,
+    SPI_MASTER_TMR2 = 0b00100011,
+    SPI_SLAVE_SS_EN = 0b00100100,
+    SPI_SLAVE_SS_DIS = 0b00100101
+}Spi_Type;
+
+typedef enum
+{
+    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+    SPI_DATA_SAMPLE_END = 0b10000000
+}Spi_Data_Sample;
+
+typedef enum
+{
+    SPI_CLOCK_IDLE_HIGH = 0b00010000,
+    SPI_CLOCK_IDLE_LOW = 0b00000000
+}Spi_Clock_Idle;
+
+typedef enum
+{
+    SPI_IDLE_2_ACTIVE = 0b00000000,
+    SPI_ACTIVE_2_IDLE = 0b01000000
+}Spi_Transmit_Edge;
+
+
+void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
+void spiWrite(char);
+unsigned spiDataReady();
+char spiRead();
+# 15 "MASTER.c" 2
+
 
 
 
@@ -2685,7 +2722,13 @@ void initOscm(uint8_t IRCF);
 
 #pragma config BOR4V = BOR40V
 #pragma config WRT = OFF
-# 48 "MASTER.c"
+
+
+
+
+
+uint8_t desecho = 0;
+# 49 "MASTER.c"
 void Setup(void);
 
 
@@ -2693,6 +2736,7 @@ void Setup(void);
 
 
 void __attribute__((picinterrupt(("")))) ISR(void) {
+
 
 
 }
@@ -2709,9 +2753,17 @@ void main(void) {
     Lcd_Write_String("CONT");
     Lcd_Set_Cursor(1, 13);
     Lcd_Write_String("TEMP");
-# 81 "MASTER.c"
+# 83 "MASTER.c"
     while (1) {
-# 93 "MASTER.c"
+
+        PORTCbits.RC0 = 0;
+        _delay((unsigned long)((1)*(4000000/4000.0)));
+        spiWrite(desecho);
+        PORTD = spiRead();
+
+        _delay((unsigned long)((1)*(4000000/4000.0)));
+        PORTCbits.RC0 = 1;
+# 104 "MASTER.c"
     }
 }
 
@@ -2724,6 +2776,7 @@ void Setup(void) {
     initOscm(6);
     Lcd_Init();
     Lcd_Cmd(0x8A);
+    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     ANSEL = 0;
     ANSELH = 0b00000011;
     PORTA = 0;
@@ -2744,8 +2797,7 @@ void Setup(void) {
     PIR1bits.ADIF = 0;
     PIR1bits.TXIF = 0;
     PIE1bits.TXIE = 1;
-    PIE1bits.RCIE = 1;
-    PIR1bits.RCIF = 0;
+
 
 
 

@@ -25,6 +25,8 @@
 //******************************************************************************
 //Variables
 //******************************************************************************
+uint8_t B1 = 0;
+uint8_t B2 = 0;
 
 
 
@@ -41,8 +43,33 @@ void Setup(void);
 //******************************************************************************
 
 void __interrupt() ISR(void) {
+    if (RBIF == 1) { //SE REVISA LA BANDERA DE INTERRUPCION DEL PUERTO B
+        if (PORTBbits.RB0 == 0) { //ANTIREBOTE, SI NO SE PRESIONA EL BOTON
+            B1 = 1; // SE ENCIENDE LA BANDERA DEL BOTON DE INCREMENTO
+        } else {
+            if (B1 == 1 && PORTBbits.RB0 == 1) { //SE  PRESIONA EL BOTON
+                B1 = 0; //SE APAGA LA BANDERA DE BOTON DE INCREMENTO
+                PORTD++; // SE INCREMENTA EL PUERTOD
 
-  
+            }
+        }
+
+        if (PORTBbits.RB1 == 0) { //ANTIREBOTE, SI NO SE PRESIONA EL BOTON
+            B2 = 1; // SE ENCIENDE LA BANDERA DEL BOTON DE DECREMENTO 
+        } else {
+            if (B2 == 1 && PORTBbits.RB1 == 1) { //SE PRESIONA EL BOTON
+                B2 = 0; //SE APAGA LA BANDERA DE BOTON DE DECREMENTO                
+                PORTD--; // SE DECREMENTA UN EL PUERTOD
+
+            }
+        }
+
+        INTCONbits.RBIF = 0; //SE APAGA LA BANDERA DE INTERRUPION DEL PUERTO B
+
+
+
+    }
+
 }
 //******************************************************************************
 //Ciclo pincipal
@@ -51,7 +78,7 @@ void __interrupt() ISR(void) {
 void main(void) {
 
     Setup();
-    
+
 
 
 
@@ -62,7 +89,7 @@ void main(void) {
     // Loop principal
     //**************************************************************************
     while (1) {
-       
+
 
 
 
@@ -83,27 +110,23 @@ void Setup(void) {
     TRISD = 0;
     TRISE = 0; //PUERTO E SALIDAS
     ANSEL = 0; // ENTRADAS DIGITALES Y BIT 0 ANALÓGICA
-    ANSELH = 0b00000011;
+    ANSELH = 0;
     PORTA = 0; //PUERTO A EN 0
     PORTB = 0; //PUERTO B EN 0
     PORTC = 0; //PUERTO C EN 0
     PORTD = 0; //PUERTO D EN 0
     PORTE = 0; //PUERTO E EN 0
     //PINES RA0 Y RA2 COMO ENTRADAS, LOS DEMAS COMO SALIDAS
-    TRISC = 0b10000000; //PUERTO C SALIDAS
-    TRISA = 0; //PUERTO A SALIDAS
+    TRISC = 0b00001000; //PUERTO C SALIDAS
+    TRISA = 0b00100000; //PUERTO A SALIDAS
     TRISB = 0b00000011; //PUERTO B 
-    OPTION_REG = 0b10000111; //SE APAGAN LAS PULLUPS DEL PUERTO B
+    OPTION_REG = 0b00000111; //SE ENCIENDEN LAS PULLUPS DEL PUERTO B
     INTCONbits.GIE = 1; //SE HABILITAN LAS INTERRUPCIONES GLOBALES
-    INTCONbits.T0IE = 1; //SE HABILITA LA INTERRUPCION DEL TIMER0
     INTCONbits.PEIE = 1; //SE HABILITAN LAS INTERRUPCIONES PERIFERICAS
-    PIE1bits.ADIE = 1; //SE HABILITA LA INTERRUPCION DEL ADC
-    INTCONbits.T0IF = 0; // SE LIMPIA LA BANDERA DE INTERRUPCION DEL TIMER 0
-    PIR1bits.ADIF = 0; //SE LIMPIOA LA BANDERA DE INTERRUPCION DEL ADC
-    PIR1bits.TXIF = 0;
-    PIE1bits.TXIE = 1;
-    PIE1bits.RCIE = 1;
-    PIR1bits.RCIF = 0;
+    INTCONbits.RBIE = 1; //SE HABILITA LA INTERRUPCION DEL PUERTO B
+    INTCONbits.RBIF = 0; //SE LIMPIA LA BANDERA DEL INTERRUPCION DEL PUERTO B
+    IOCB = 3; //SE HABILITA EL INTERRUPT ON CHANGE
+    WPUB = 0b0000011;
 
 
 

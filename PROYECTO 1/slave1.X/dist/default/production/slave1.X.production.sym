@@ -2,8 +2,6 @@ __S0 188 0 ABS 0
 __S1 79 0 ABS 0
 __S2 0 0 ABS 0
 __S3 0 0 ABS 0
-_CKE 4A6 0 ABS 0
-_SMP 4A7 0 ABS 0
 _ISR 168 0 CODE 0
 __Hintentry 10 0 CODE 0
 __Lintentry 4 0 CODE 0
@@ -36,7 +34,9 @@ _Setup 139 0 CODE 0
 __end_of_ISR 17A 0 CODE 0
 __Hfunctab 0 0 ENTRY 0
 __Lfunctab 0 0 ENTRY 0
+_TRISC3 43B 0 ABS 0
 _ADCON1 9F 0 ABS 0
+_TRISC5 43D 0 ABS 0
 _OPTION_REG 81 0 ABS 0
 __Hcommon 0 0 ABS 0
 __Lcommon 0 0 ABS 0
@@ -46,9 +46,11 @@ __Leeprom_data 0 0 EEDATA 3
 _PIR1bits C 0 ABS 0
 ___int_sp 0 0 STACK 2
 _ANSELH 189 0 ABS 0
+_SSPBUF 13 0 ABS 0
 _ADRESH 1E 0 ABS 0
 __Habs1 0 0 ABS 0
 __Labs1 0 0 ABS 0
+_SSPCON 14 0 ABS 0
 __Hsfr0 0 0 ABS 0
 __Lsfr0 0 0 ABS 0
 __Hsfr1 0 0 ABS 0
@@ -85,6 +87,7 @@ __Hbank3 0 0 ABS 0
 __Lbank3 0 0 ABS 0
 ___latbits 2 0 ABS 0
 __Hpowerup 0 0 CODE 0
+_SSPSTAT 94 0 ABS 0
 __Lpowerup 0 0 CODE 0
 initOscs1@IRCF 75 0 COMMON 1
 configADC1@fosc 76 0 COMMON 1
@@ -120,7 +123,6 @@ __LbssCOMMON 0 0 ABS 0
 __pbssCOMMON 77 0 COMMON 1
 _OSCCONbits 8F 0 ABS 0
 _INTCONbits B 0 ABS 0
-_SSPCONbits 14 0 ABS 0
 __Hend_init 13 0 CODE 0
 __Lend_init 10 0 CODE 0
 __Hreset_vec 3 0 CODE 0
@@ -146,14 +148,14 @@ intentry 8 30F CODE 8 0
 cstackCOMMON 70 78 COMMON 70 1
 %locals
 dist/default/production\slave1.X.production.o
-C:\Users\franc\AppData\Local\Temp\se2o.s
-946 13 0 CODE 0
-949 13 0 CODE 0
-963 13 0 CODE 0
-964 14 0 CODE 0
-970 15 0 CODE 0
-972 15 0 CODE 0
-973 16 0 CODE 0
+C:\Users\franc\AppData\Local\Temp\see4.s
+950 13 0 CODE 0
+953 13 0 CODE 0
+967 13 0 CODE 0
+968 14 0 CODE 0
+974 15 0 CODE 0
+976 15 0 CODE 0
+977 16 0 CODE 0
 s1.c
 59 17A 0 CODE 0
 61 17A 0 CODE 0

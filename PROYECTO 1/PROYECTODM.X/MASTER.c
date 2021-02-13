@@ -12,6 +12,7 @@
 #include <pic16f887.h>
 #include "LCDM.h"
 #include "oscm.h"
+#include "SSP.h"
 
 //******************************************************************************
 // Palabra de configuración
@@ -36,7 +37,7 @@
 //******************************************************************************
 //Variables
 //******************************************************************************
-
+uint8_t desecho = 0;
 
 
 
@@ -53,7 +54,8 @@ void Setup(void);
 
 void __interrupt() ISR(void) {
 
-  
+
+
 }
 //******************************************************************************
 //Ciclo pincipal
@@ -79,7 +81,16 @@ void main(void) {
     // Loop principal
     //**************************************************************************
     while (1) {
-       
+
+        PORTCbits.RC0 = 0;
+        __delay_ms(1);
+        spiWrite(desecho);
+        PORTD = spiRead();
+
+        __delay_ms(1);
+        PORTCbits.RC0 = 1;
+
+
 
 
 
@@ -102,6 +113,7 @@ void Setup(void) {
     initOscm(6);
     Lcd_Init();
     Lcd_Cmd(0x8A);
+    spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     ANSEL = 0; // ENTRADAS DIGITALES Y BIT 0 ANALÓGICA
     ANSELH = 0b00000011;
     PORTA = 0; //PUERTO A EN 0
@@ -122,8 +134,7 @@ void Setup(void) {
     PIR1bits.ADIF = 0; //SE LIMPIOA LA BANDERA DE INTERRUPCION DEL ADC
     PIR1bits.TXIF = 0;
     PIE1bits.TXIE = 1;
-    PIE1bits.RCIE = 1;
-    PIR1bits.RCIF = 0;
+
 
 
 
