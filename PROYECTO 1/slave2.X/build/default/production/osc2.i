@@ -1,4 +1,4 @@
-# 1 "s2.c"
+# 1 "osc2.c"
 # 1 "<built-in>" 1
 # 1 "<built-in>" 3
 # 288 "<built-in>" 3
@@ -6,46 +6,7 @@
 # 1 "<built-in>" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\language_support.h" 1 3
 # 2 "<built-in>" 2
-# 1 "s2.c" 2
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 1 3
-# 18 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 3
-extern const char __xc8_OPTIM_SPEED;
-
-extern double __fpnormalize(double);
-
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\xc8debug.h" 1 3
-# 13 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\xc8debug.h" 3
-#pragma intrinsic(__builtin_software_breakpoint)
-extern void __builtin_software_breakpoint(void);
-# 23 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 2 3
-
-
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\pic.h" 1 3
-
-
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\htc.h" 1 3
-
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 1 3
-# 4 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\htc.h" 2 3
-# 5 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\pic.h" 2 3
-
-
-
-
-
-
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\pic_chip_select.h" 1 3
-# 2733 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\pic_chip_select.h" 3
+# 1 "osc2.c" 2
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\proc\\pic16f887.h" 1 3
 # 44 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\proc\\pic16f887.h" 3
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\__at.h" 1 3
@@ -2457,7 +2418,46 @@ extern volatile __bit nW __attribute__((address(0x4A2)));
 
 
 extern volatile __bit nWRITE __attribute__((address(0x4A2)));
-# 2733 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\pic_chip_select.h" 2 3
+# 1 "osc2.c" 2
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 1 3
+# 18 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 3
+extern const char __xc8_OPTIM_SPEED;
+
+extern double __fpnormalize(double);
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\xc8debug.h" 1 3
+# 13 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\xc8debug.h" 3
+#pragma intrinsic(__builtin_software_breakpoint)
+extern void __builtin_software_breakpoint(void);
+# 23 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 2 3
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\pic.h" 1 3
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\htc.h" 1 3
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 1 3
+# 4 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\htc.h" 2 3
+# 5 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\pic.h" 2 3
+
+
+
+
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\pic_chip_select.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\pic.h" 2 3
 # 30 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\pic.h" 3
 #pragma intrinsic(__nop)
@@ -2491,7 +2491,15 @@ extern __bank0 unsigned char __resetbits;
 extern __bank0 __bit __powerdown;
 extern __bank0 __bit __timeout;
 # 27 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\xc.h" 2 3
-# 1 "s2.c" 2
+# 2 "osc2.c" 2
+
+# 1 "./osc2.h" 1
+
+
+
+
+
+
 
 # 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 1 3
 # 13 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 3
@@ -2626,173 +2634,81 @@ typedef int16_t intptr_t;
 
 
 typedef uint16_t uintptr_t;
-# 2 "s2.c" 2
-
-
-# 1 "./SSP2.h" 1
-# 17 "./SSP2.h"
-typedef enum
-{
-    SPI_MASTER_OSC_DIV4 = 0b00100000,
-    SPI_MASTER_OSC_DIV16 = 0b00100001,
-    SPI_MASTER_OSC_DIV64 = 0b00100010,
-    SPI_MASTER_TMR2 = 0b00100011,
-    SPI_SLAVE_SS_EN = 0b00100100,
-    SPI_SLAVE_SS_DIS = 0b00100101
-}Spi_Type;
-
-typedef enum
-{
-    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
-    SPI_DATA_SAMPLE_END = 0b10000000
-}Spi_Data_Sample;
-
-typedef enum
-{
-    SPI_CLOCK_IDLE_HIGH = 0b00010000,
-    SPI_CLOCK_IDLE_LOW = 0b00000000
-}Spi_Clock_Idle;
-
-typedef enum
-{
-    SPI_IDLE_2_ACTIVE = 0b00000000,
-    SPI_ACTIVE_2_IDLE = 0b01000000
-}Spi_Transmit_Edge;
-
-
-void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
-void spiWrite(char);
-unsigned spiDataReady();
-char spiRead();
-# 4 "s2.c" 2
-
-# 1 "./osc2.h" 1
-
-
-
-
-
-
-
-# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 1 3
 # 8 "./osc2.h" 2
 
 
 void initOscs2(uint8_t IRCF);
-# 5 "s2.c" 2
+# 3 "osc2.c" 2
 
 
 
 
+void initOscs2(uint8_t IRCF){
 
-#pragma config FOSC = INTRC_NOCLKOUT
-#pragma config WDTE = OFF
-#pragma config PWRTE = OFF
-#pragma config MCLRE = OFF
-#pragma config CP = OFF
-#pragma config CPD = OFF
-#pragma config BOREN = OFF
-#pragma config IESO = OFF
-#pragma config FCMEN = OFF
-#pragma config LVP = OFF
+    switch (IRCF){
 
+        case 0:
+            OSCCONbits.IRCF2 = 0;
+            OSCCONbits.IRCF1 = 0;
+            OSCCONbits.IRCF0 = 0;
 
-#pragma config BOR4V = BOR40V
-#pragma config WRT = OFF
+            break;
 
+        case 1:
+            OSCCONbits.IRCF2 = 0;
+            OSCCONbits.IRCF1 = 0;
+            OSCCONbits.IRCF0 = 1;
+            break;
 
+        case 2:
+            OSCCONbits.IRCF2 = 0;
+            OSCCONbits.IRCF1 = 1;
+            OSCCONbits.IRCF0 = 0;
+            break;
 
+        case 3:
+            OSCCONbits.IRCF2 = 0;
+            OSCCONbits.IRCF1 = 1;
+            OSCCONbits.IRCF0 = 1;
+            break;
 
+        case 4:
+            OSCCONbits.IRCF2 = 1;
+            OSCCONbits.IRCF1 = 0;
+            OSCCONbits.IRCF0 = 0;
+            break;
 
-uint8_t B1 = 0;
-uint8_t B2 = 0;
-uint8_t c1 = 0;
-# 40 "s2.c"
-void Setup(void);
-
-
-
-
-
-void __attribute__((picinterrupt(("")))) ISR(void) {
-    c1 = PORTD;
-    if (RBIF == 1) {
-        if (PORTBbits.RB0 == 0) {
-            B1 = 1;
-        } else {
-            if (B1 == 1 && PORTBbits.RB0 == 1) {
-                B1 = 0;
-                PORTD++;
-
-
-            }
-        }
-
-        if (PORTBbits.RB1 == 0) {
-            B2 = 1;
-        } else {
-            if (B2 == 1 && PORTBbits.RB1 == 1) {
-                B2 = 0;
-                PORTD--;
+        case 5:
+            OSCCONbits.IRCF2 = 1;
+            OSCCONbits.IRCF1 = 0;
+            OSCCONbits.IRCF0 = 1;
+            break;
 
 
-            }
-        }
+        case 6:
+            OSCCONbits.IRCF2 = 1;
+            OSCCONbits.IRCF1 = 1;
+            OSCCONbits.IRCF0 = 0;
+            break;
 
-        INTCONbits.RBIF = 0;
+        case 7:
+            OSCCONbits.IRCF2 = 1;
+            OSCCONbits.IRCF1 = 1;
+            OSCCONbits.IRCF0 = 1;
+            break;
 
 
+
+
+        default:
+            OSCCONbits.IRCF2 = 1;
+            OSCCONbits.IRCF1 = 1;
+            OSCCONbits.IRCF0 = 0;
+            break;
 
     }
 
-    if (PIR1bits.SSPIF == 1) {
-        spiWrite(c1);
-        PIR1bits.SSPIF = 0;
-    }
-
-}
-
-
-
-
-void main(void) {
-
-    Setup();
-# 100 "s2.c"
-    while (1) {
-# 112 "s2.c"
-    }
-}
-
-
-
-
-void Setup(void) {
-    initOscs2(6);
-    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
-    TRISD = 0;
-    TRISE = 0;
-    ANSEL = 0;
-    ANSELH = 0;
-    PORTA = 0;
-    PORTB = 0;
-    PORTC = 0;
-    PORTD = 0;
-    PORTE = 0;
-
-    TRISC = 0b00001000;
-    TRISA = 0b00100000;
-    TRISB = 0b00000011;
-    OPTION_REG = 0b00000111;
-    INTCONbits.GIE = 1;
-    INTCONbits.PEIE = 1;
-    INTCONbits.RBIE = 1;
-    INTCONbits.RBIF = 0;
-    IOCB = 3;
-    WPUB = 0b0000011;
-    PIR1bits.SSPIF = 0;
-    PIE1bits.SSPIE = 1;
-
+    OSCCONbits.SCS = 1;
 
 
 }

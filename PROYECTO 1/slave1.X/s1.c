@@ -3,6 +3,7 @@
 #include <pic16f887.h>
 #include "adcs1.h"
 #include "oscs1.h"
+#include "SSP1.h"
 
 //******************************************************************************
 // Palabra de configuración
@@ -43,7 +44,18 @@ void Setup(void);
 //******************************************************************************
 
 void __interrupt() ISR(void) {
- 
+    
+     if (INTCONbits.T0IF == 1) {
+        TMR0 = 236;
+        CONTADC++;
+        INTCONbits.T0IF = 0;
+    }
+
+    if (PIR1bits.SSPIF == 1) {
+        spiWrite(pot);
+        PIR1bits.SSPIF = 0;
+    }
+
 
     if (PIR1bits.ADIF == 1) {
         pot = ADRESH;
@@ -72,8 +84,11 @@ void main(void) {
     // Loop principal
     //**************************************************************************
     while (1) {
-        
-        ADCON0bits.GO_nDONE = 1;
+
+        if (CONTADC > 20) {
+            ADCON0bits.GO_nDONE = 1;
+            CONTADC = 0;
+        }
         PORTD = pot;
 
     }
@@ -96,6 +111,7 @@ void main(void) {
 void Setup(void) {
     configADC1(1, 12); //SE LLAMA LA CONFIG DEL ADC
     initOscs1(6);
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     ANSEL = 0; // ENTRADAS DIGITALES Y BIT 0 ANALÓGICA
     ANSELH = 0b00000001;
     PORTA = 0; //PUERTO A EN 0
@@ -106,7 +122,7 @@ void Setup(void) {
     //PINES RA0 Y RA2 COMO ENTRADAS, LOS DEMAS COMO SALIDAS
     TRISC = 0b00001000; //PUERTO C SALIDAS
     TRISA = 0b00100000; //PUERTO A SALIDAS
-    TRISB = 0b00000011; //PUERTO B 
+    TRISB = 0b00000001; //PUERTO B 
     TRISD = 0;
     TRISE = 0;
     OPTION_REG = 0b10000111; //SE APAGAN LAS PULLUPS DEL PUERTO B
@@ -114,8 +130,10 @@ void Setup(void) {
     INTCONbits.PEIE = 1; //SE HABILITAN LAS INTERRUPCIONES PERIFERICAS
     PIE1bits.ADIE = 1; //SE HABILITA LA INTERRUPCION DEL ADC
     PIR1bits.ADIF = 0; //SE LIMPIOA LA BANDERA DE INTERRUPCION DEL ADC
-    
-
+    PIR1bits.SSPIF = 0;
+    PIE1bits.SSPIE = 1;
+    INTCONbits.T0IE = 1;
+    INTCONbits.T0IF = 0;
 
 
 }

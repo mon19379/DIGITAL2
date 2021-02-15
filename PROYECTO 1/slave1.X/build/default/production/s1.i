@@ -2653,6 +2653,43 @@ void configADC1(uint8_t fosc, uint8_t chan);
 void initOscs1(uint8_t IRCF);
 # 5 "s1.c" 2
 
+# 1 "./SSP1.h" 1
+# 17 "./SSP1.h"
+typedef enum
+{
+    SPI_MASTER_OSC_DIV4 = 0b00100000,
+    SPI_MASTER_OSC_DIV16 = 0b00100001,
+    SPI_MASTER_OSC_DIV64 = 0b00100010,
+    SPI_MASTER_TMR2 = 0b00100011,
+    SPI_SLAVE_SS_EN = 0b00100100,
+    SPI_SLAVE_SS_DIS = 0b00100101
+}Spi_Type;
+
+typedef enum
+{
+    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+    SPI_DATA_SAMPLE_END = 0b10000000
+}Spi_Data_Sample;
+
+typedef enum
+{
+    SPI_CLOCK_IDLE_HIGH = 0b00010000,
+    SPI_CLOCK_IDLE_LOW = 0b00000000
+}Spi_Clock_Idle;
+
+typedef enum
+{
+    SPI_IDLE_2_ACTIVE = 0b00000000,
+    SPI_ACTIVE_2_IDLE = 0b01000000
+}Spi_Transmit_Edge;
+
+
+void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
+void spiWrite(char);
+unsigned spiDataReady();
+char spiRead();
+# 6 "s1.c" 2
+
 
 
 
@@ -2694,6 +2731,17 @@ void Setup(void);
 
 void __attribute__((picinterrupt(("")))) ISR(void) {
 
+     if (INTCONbits.T0IF == 1) {
+        TMR0 = 236;
+        CONTADC++;
+        INTCONbits.T0IF = 0;
+    }
+
+    if (PIR1bits.SSPIF = 1) {
+        spiWrite(pot);
+        PIR1bits.SSPIF = 0;
+    }
+
 
     if (PIR1bits.ADIF == 1) {
         pot = ADRESH;
@@ -2709,14 +2757,17 @@ void __attribute__((picinterrupt(("")))) ISR(void) {
 void main(void) {
 
     Setup();
-# 74 "s1.c"
+# 86 "s1.c"
     while (1) {
 
-        ADCON0bits.GO_nDONE = 1;
+        if (CONTADC > 20) {
+            ADCON0bits.GO_nDONE = 1;
+            CONTADC = 0;
+        }
         PORTD = pot;
 
     }
-# 91 "s1.c"
+# 106 "s1.c"
 }
 
 
@@ -2725,6 +2776,7 @@ void main(void) {
 void Setup(void) {
     configADC1(1, 12);
     initOscs1(6);
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     ANSEL = 0;
     ANSELH = 0b00000001;
     PORTA = 0;
@@ -2735,7 +2787,7 @@ void Setup(void) {
 
     TRISC = 0b00001000;
     TRISA = 0b00100000;
-    TRISB = 0b00000011;
+    TRISB = 0b00000001;
     TRISD = 0;
     TRISE = 0;
     OPTION_REG = 0b10000111;
@@ -2743,8 +2795,10 @@ void Setup(void) {
     INTCONbits.PEIE = 1;
     PIE1bits.ADIE = 1;
     PIR1bits.ADIF = 0;
-
-
+    PIR1bits.SSPIF = 0;
+    PIE1bits.SSPIE = 1;
+    INTCONbits.T0IE = 1;
+    INTCONbits.T0IF = 0;
 
 
 }

@@ -2728,9 +2728,31 @@ char spiRead();
 
 
 uint8_t desecho = 0;
-# 49 "MASTER.c"
-void Setup(void);
+uint8_t pot1 = 0;
+uint8_t cont1 = 0;
+uint8_t CP1 = 0;
+uint8_t DP1 = 0;
+uint8_t UP1 = 0;
+uint8_t C1 = 0;
+uint8_t D1 = 0;
+uint8_t U1 = 0;
+uint8_t INDIC = 0;
+uint8_t CONTC = 0;
+uint8_t CONTD = 0;
+uint8_t CONTU = 0;
+uint8_t CO1 = 0;
+uint8_t CO2 = 0;
+uint8_t CO3 = 0;
 
+
+
+
+
+
+
+void Setup(void);
+void map(void);
+void map2(void);
 
 
 
@@ -2753,17 +2775,48 @@ void main(void) {
     Lcd_Write_String("CONT");
     Lcd_Set_Cursor(1, 13);
     Lcd_Write_String("TEMP");
-# 83 "MASTER.c"
+# 98 "MASTER.c"
     while (1) {
+        INDIC++;
+        map();
+        map2();
 
-        PORTCbits.RC0 = 0;
-        _delay((unsigned long)((1)*(4000000/4000.0)));
-        spiWrite(desecho);
-        PORTD = spiRead();
+        if (INDIC == 1) {
+            PORTCbits.RC0 = 0;
+            _delay((unsigned long)((1)*(4000000/4000.0)));
+            spiWrite(desecho);
+            pot1 = spiRead();
 
-        _delay((unsigned long)((1)*(4000000/4000.0)));
-        PORTCbits.RC0 = 1;
-# 104 "MASTER.c"
+            _delay((unsigned long)((1)*(4000000/4000.0)));
+            PORTCbits.RC0 = 1;
+        }
+
+        if (INDIC == 2) {
+            PORTCbits.RC1 = 0;
+            _delay((unsigned long)((1)*(4000000/4000.0)));
+            spiWrite(desecho);
+            cont1 = spiRead();
+
+            _delay((unsigned long)((1)*(4000000/4000.0)));
+            PORTCbits.RC1 = 1;
+            INDIC = 0;
+        }
+# 137 "MASTER.c"
+        Lcd_Set_Cursor(2, 1);
+        Lcd_Write_Char(C1);
+        Lcd_Set_Cursor(2, 2);
+        Lcd_Write_String(".");
+        Lcd_Write_Char(D1);
+        Lcd_Set_Cursor(2, 4);
+        Lcd_Write_Char(U1);
+
+        Lcd_Set_Cursor(2, 7);
+        Lcd_Write_Char(CO1);
+        Lcd_Set_Cursor(2, 8);
+        Lcd_Write_Char(CO2);
+        Lcd_Set_Cursor(2, 9);
+        Lcd_Write_Char(CO3);
+# 159 "MASTER.c"
     }
 }
 
@@ -2778,27 +2831,44 @@ void Setup(void) {
     Lcd_Cmd(0x8A);
     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     ANSEL = 0;
-    ANSELH = 0b00000011;
+    ANSELH = 0;
     PORTA = 0;
     PORTB = 0;
     PORTC = 0;
     PORTD = 0;
     PORTE = 0;
 
-    TRISC = 0;
+    TRISC = 0b00010000;
     TRISD = 0;
-    TRISB = 0b00000011;
+    TRISB = 0;
     OPTION_REG = 0b10000111;
-    INTCONbits.GIE = 1;
-    INTCONbits.T0IE = 1;
-    INTCONbits.PEIE = 1;
-    PIE1bits.ADIE = 1;
-    INTCONbits.T0IF = 0;
-    PIR1bits.ADIF = 0;
-    PIR1bits.TXIF = 0;
-    PIE1bits.TXIE = 1;
+# 196 "MASTER.c"
+}
 
 
 
+
+
+void map(void) {
+
+    CP1 = ((pot1) / 51);
+    DP1 = (((pot1 * 100) / 51)-(CP1 * 100)) / 10;
+    UP1 = (((pot1 * 100) / 51)-(CP1 * 100)-(DP1 * 10));
+
+    C1 = (CP1 + 0x30);
+    D1 = (DP1 + 0x30);
+    U1 = (UP1 + 0x30);
+
+
+}
+
+void map2(void) {
+    CONTC = (cont1 / 100);
+    CONTD = (cont1 - (CONTC * 100)) / 10;
+    CONTU = (cont1 - (CONTC * 100)-(CONTD * 10));
+
+    CO1 = (CONTC + 0x30);
+    CO2 = (CONTD + 0x30);
+    CO3 = (CONTU + 0x30);
 
 }

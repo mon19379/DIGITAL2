@@ -4,6 +4,8 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>osc2.h</itemPath>
+      <itemPath>SSP2.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -13,6 +15,8 @@
                    displayName="Source Files"
                    projectFiles="true">
       <itemPath>s2.c</itemPath>
+      <itemPath>SSP2.c</itemPath>
+      <itemPath>osc2.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

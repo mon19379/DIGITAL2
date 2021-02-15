@@ -38,7 +38,21 @@
 //Variables
 //******************************************************************************
 uint8_t desecho = 0;
-
+uint8_t pot1 = 0;
+uint8_t cont1 = 0;
+uint8_t CP1 = 0;
+uint8_t DP1 = 0;
+uint8_t UP1 = 0;
+uint8_t C1 = 0;
+uint8_t D1 = 0;
+uint8_t U1 = 0;
+uint8_t INDIC = 0;
+uint8_t CONTC = 0;
+uint8_t CONTD = 0;
+uint8_t CONTU = 0;
+uint8_t CO1 = 0;
+uint8_t CO2 = 0;
+uint8_t CO3 = 0;
 
 
 
@@ -47,7 +61,8 @@ uint8_t desecho = 0;
 // Prototipos de funciones
 //******************************************************************************
 void Setup(void);
-
+void map(void);
+void map2(void);
 //******************************************************************************
 //Interrupción
 //******************************************************************************
@@ -81,18 +96,58 @@ void main(void) {
     // Loop principal
     //**************************************************************************
     while (1) {
+        INDIC++;
+        map();
+        map2();
 
-        PORTCbits.RC0 = 0;
-        __delay_ms(1);
-        spiWrite(desecho);
-        PORTD = spiRead();
+        if (INDIC == 1) {
+            PORTCbits.RC0 = 0;
+            __delay_ms(1);
+            spiWrite(desecho);
+            pot1 = spiRead();
 
-        __delay_ms(1);
-        PORTCbits.RC0 = 1;
+            __delay_ms(1);
+            PORTCbits.RC0 = 1;
+        }
+
+        if (INDIC == 2) {
+            PORTCbits.RC1 = 0;
+            __delay_ms(1);
+            spiWrite(desecho);
+            cont1 = spiRead();
+
+            __delay_ms(1);
+            PORTCbits.RC1 = 1;
+            INDIC = 0;
+        }
+
+        //        if (INDIC == 3) {
+        //            PORTCbits.RC2 = 0;
+        //            __delay_ms(1);
+        //            spiWrite(desecho);
+        //            pot1 = spiRead();
+        //
+        //            __delay_ms(1);
+        //            PORTCbits.RC2 = 1;
+        //        }
 
 
 
 
+        Lcd_Set_Cursor(2, 1);
+        Lcd_Write_Char(C1);
+        Lcd_Set_Cursor(2, 2);
+        Lcd_Write_String(".");
+        Lcd_Write_Char(D1);
+        Lcd_Set_Cursor(2, 4);
+        Lcd_Write_Char(U1);
+
+        Lcd_Set_Cursor(2, 7);
+        Lcd_Write_Char(CO1);
+        Lcd_Set_Cursor(2, 8);
+        Lcd_Write_Char(CO2);
+        Lcd_Set_Cursor(2, 9);
+        Lcd_Write_Char(CO3);
 
 
 
@@ -115,25 +170,25 @@ void Setup(void) {
     Lcd_Cmd(0x8A);
     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     ANSEL = 0; // ENTRADAS DIGITALES Y BIT 0 ANALÓGICA
-    ANSELH = 0b00000011;
+    ANSELH = 0;
     PORTA = 0; //PUERTO A EN 0
     PORTB = 0; //PUERTO B EN 0
     PORTC = 0; //PUERTO C EN 0
     PORTD = 0; //PUERTO D EN 0
     PORTE = 0; //PUERTO E EN 0
     //PINES RA0 Y RA2 COMO ENTRADAS, LOS DEMAS COMO SALIDAS
-    TRISC = 0; //PUERTO C SALIDAS
+    TRISC = 0b00010000; //PUERTO C SALIDAS
     TRISD = 0; //PUERTO D SALIDAS
-    TRISB = 0b00000011; //PUERTO B 
+    TRISB = 0; //PUERTO B 
     OPTION_REG = 0b10000111; //SE APAGAN LAS PULLUPS DEL PUERTO B
-    INTCONbits.GIE = 1; //SE HABILITAN LAS INTERRUPCIONES GLOBALES
-    INTCONbits.T0IE = 1; //SE HABILITA LA INTERRUPCION DEL TIMER0
-    INTCONbits.PEIE = 1; //SE HABILITAN LAS INTERRUPCIONES PERIFERICAS
-    PIE1bits.ADIE = 1; //SE HABILITA LA INTERRUPCION DEL ADC
-    INTCONbits.T0IF = 0; // SE LIMPIA LA BANDERA DE INTERRUPCION DEL TIMER 0
-    PIR1bits.ADIF = 0; //SE LIMPIOA LA BANDERA DE INTERRUPCION DEL ADC
-    PIR1bits.TXIF = 0;
-    PIE1bits.TXIE = 1;
+    //    INTCONbits.GIE = 1; //SE HABILITAN LAS INTERRUPCIONES GLOBALES
+    //    INTCONbits.T0IE = 1; //SE HABILITA LA INTERRUPCION DEL TIMER0
+    //    INTCONbits.PEIE = 1; //SE HABILITAN LAS INTERRUPCIONES PERIFERICAS
+    //    PIE1bits.ADIE = 1; //SE HABILITA LA INTERRUPCION DEL ADC
+    //    INTCONbits.T0IF = 0; // SE LIMPIA LA BANDERA DE INTERRUPCION DEL TIMER 0
+    //    PIR1bits.ADIF = 0; //SE LIMPIOA LA BANDERA DE INTERRUPCION DEL ADC
+    //    PIR1bits.TXIF = 0;
+    //    PIE1bits.TXIE = 1;
 
 
 
@@ -144,9 +199,26 @@ void Setup(void) {
 // Subrutinas
 //******************************************************************************
 
+void map(void) {
+
+    CP1 = ((pot1) / 51);
+    DP1 = (((pot1 * 100) / 51)-(CP1 * 100)) / 10;
+    UP1 = (((pot1 * 100) / 51)-(CP1 * 100)-(DP1 * 10));
+
+    C1 = (CP1 + 0x30);
+    D1 = (DP1 + 0x30);
+    U1 = (UP1 + 0x30);
 
 
+}
 
+void map2(void) {
+    CONTC = (cont1 / 100);
+    CONTD = (cont1 - (CONTC * 100)) / 10;
+    CONTU = (cont1 - (CONTC * 100)-(CONTD * 10));
 
+    CO1 = (CONTC + 0x30);
+    CO2 = (CONTD + 0x30);
+    CO3 = (CONTU + 0x30);
 
-
+}

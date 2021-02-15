@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16F887 ]
 [d frameptr 0 ]
-"116 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\MASTER.c
+"171 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\MASTER.c
 [e E1308 . `uc
 SPI_MASTER_OSC_DIV4 32
 SPI_MASTER_OSC_DIV16 33
@@ -45,8 +45,14 @@ SPI_CLOCK_IDLE_LOW 0
 SPI_IDLE_2_ACTIVE 0
 SPI_ACTIVE_2_IDLE 64
 ]
+"5 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
 "10 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\sprcadd.c
 [v ___fladd __fladd `(d  1 e 4 0 ]
+"15 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+"4 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
 "4 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\Umul8_16.c
 [v __Umul8_16 _Umul8_16 `(ui  1 e 2 0 ]
 "6 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\pic\__eeprom.c
@@ -65,12 +71,16 @@ SPI_ACTIVE_2_IDLE 64
 [v _Lcd_Write_Char Lcd_Write_Char `(v  1 e 1 0 ]
 "60
 [v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
-"55 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\MASTER.c
+"70 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\MASTER.c
 [v _ISR ISR `II(v  1 e 1 0 ]
-"64
+"79
 [v _main main `(v  1 e 1 0 ]
-"110
+"165
 [v _Setup Setup `(v  1 e 1 0 ]
+"202
+[v _map map `(v  1 e 1 0 ]
+"215
+[v _map2 map2 `(v  1 e 1 0 ]
 "7 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\oscm.c
 [v _initOscm initOscm `(v  1 e 1 0 ]
 "13 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\SSP.c
@@ -87,7 +97,7 @@ SPI_ACTIVE_2_IDLE 64
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
 "290
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
-[s S37 . 1 `uc 1 RC0 1 0 :1:0 
+[s S45 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -97,48 +107,20 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 RC7 1 0 :1:7 
 ]
 "307
-[u S46 . 1 `S37 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES46  1 e 1 @7 ]
+[u S54 . 1 `S45 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES54  1 e 1 @7 ]
 "352
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
 "414
 [v _PORTE PORTE `VEuc  1 e 1 @9 ]
-[s S369 . 1 `uc 1 RE0 1 0 :1:0 
+[s S308 . 1 `uc 1 RE0 1 0 :1:0 
 `uc 1 RE1 1 0 :1:1 
 `uc 1 RE2 1 0 :1:2 
 `uc 1 RE3 1 0 :1:3 
 ]
 "427
-[u S374 . 1 `S369 1 . 1 0 ]
-[v _PORTEbits PORTEbits `VES374  1 e 1 @9 ]
-[s S124 . 1 `uc 1 RBIF 1 0 :1:0 
-`uc 1 INTF 1 0 :1:1 
-`uc 1 T0IF 1 0 :1:2 
-`uc 1 RBIE 1 0 :1:3 
-`uc 1 INTE 1 0 :1:4 
-`uc 1 T0IE 1 0 :1:5 
-`uc 1 PEIE 1 0 :1:6 
-`uc 1 GIE 1 0 :1:7 
-]
-"482
-[s S133 . 1 `uc 1 . 1 0 :2:0 
-`uc 1 TMR0IF 1 0 :1:2 
-`uc 1 . 1 0 :2:3 
-`uc 1 TMR0IE 1 0 :1:5 
-]
-[u S138 . 1 `S124 1 . 1 0 `S133 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES138  1 e 1 @11 ]
-[s S175 . 1 `uc 1 TMR1IF 1 0 :1:0 
-`uc 1 TMR2IF 1 0 :1:1 
-`uc 1 CCP1IF 1 0 :1:2 
-`uc 1 SSPIF 1 0 :1:3 
-`uc 1 TXIF 1 0 :1:4 
-`uc 1 RCIF 1 0 :1:5 
-`uc 1 ADIF 1 0 :1:6 
-]
-"553
-[u S183 . 1 `S175 1 . 1 0 ]
-[v _PIR1bits PIR1bits `VES183  1 e 1 @12 ]
+[u S313 . 1 `S308 1 . 1 0 ]
+[v _PORTEbits PORTEbits `VES313  1 e 1 @9 ]
 "843
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
 "850
@@ -155,34 +137,23 @@ SPI_ACTIVE_2_IDLE 64
 [v _TRISD TRISD `VEuc  1 e 1 @136 ]
 "1664
 [v _TRISE TRISE `VEuc  1 e 1 @137 ]
-[s S156 . 1 `uc 1 TMR1IE 1 0 :1:0 
-`uc 1 TMR2IE 1 0 :1:1 
-`uc 1 CCP1IE 1 0 :1:2 
-`uc 1 SSPIE 1 0 :1:3 
-`uc 1 TXIE 1 0 :1:4 
-`uc 1 RCIE 1 0 :1:5 
-`uc 1 ADIE 1 0 :1:6 
-]
-"1718
-[u S164 . 1 `S156 1 . 1 0 ]
-[v _PIE1bits PIE1bits `VES164  1 e 1 @140 ]
-[s S407 . 1 `uc 1 SCS 1 0 :1:0 
+[s S345 . 1 `uc 1 SCS 1 0 :1:0 
 `uc 1 LTS 1 0 :1:1 
 `uc 1 HTS 1 0 :1:2 
 `uc 1 OSTS 1 0 :1:3 
 `uc 1 IRCF 1 0 :3:4 
 ]
 "1882
-[s S413 . 1 `uc 1 . 1 0 :4:0 
+[s S351 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 IRCF0 1 0 :1:4 
 `uc 1 IRCF1 1 0 :1:5 
 `uc 1 IRCF2 1 0 :1:6 
 ]
-[u S418 . 1 `S407 1 . 1 0 `S413 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES418  1 e 1 @143 ]
+[u S356 . 1 `S345 1 . 1 0 `S351 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES356  1 e 1 @143 ]
 "2177
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
-[s S259 . 1 `uc 1 BF 1 0 :1:0 
+[s S198 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -192,39 +163,39 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 SMP 1 0 :1:7 
 ]
 "2231
-[s S268 . 1 `uc 1 . 1 0 :2:0 
+[s S207 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S273 . 1 `uc 1 . 1 0 :2:0 
+[s S212 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DATA 1 0 :1:5 
 ]
-[s S279 . 1 `uc 1 . 1 0 :2:0 
+[s S218 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S284 . 1 `uc 1 . 1 0 :2:0 
+[s S223 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S289 . 1 `uc 1 . 1 0 :2:0 
+[s S228 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S294 . 1 `uc 1 . 1 0 :2:0 
+[s S233 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[u S299 . 1 `S259 1 . 1 0 `S268 1 . 1 0 `S273 1 . 1 0 `S279 1 . 1 0 `S284 1 . 1 0 `S289 1 . 1 0 `S294 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES299  1 e 1 @148 ]
+[u S238 . 1 `S198 1 . 1 0 `S207 1 . 1 0 `S212 1 . 1 0 `S218 1 . 1 0 `S223 1 . 1 0 `S228 1 . 1 0 `S233 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES238  1 e 1 @148 ]
 "3387
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
 "3449
@@ -233,10 +204,40 @@ SPI_ACTIVE_2_IDLE 64
 [v _TRISC3 TRISC3 `VEb  1 e 0 @1083 ]
 "4463
 [v _TRISC5 TRISC5 `VEb  1 e 0 @1085 ]
-"64 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\MASTER.c
+"41 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\MASTER.c
+[v _pot1 pot1 `uc  1 e 1 0 ]
+"42
+[v _cont1 cont1 `uc  1 e 1 0 ]
+"43
+[v _CP1 CP1 `uc  1 e 1 0 ]
+"44
+[v _DP1 DP1 `uc  1 e 1 0 ]
+"45
+[v _UP1 UP1 `uc  1 e 1 0 ]
+"46
+[v _C1 C1 `uc  1 e 1 0 ]
+"47
+[v _D1 D1 `uc  1 e 1 0 ]
+"48
+[v _U1 U1 `uc  1 e 1 0 ]
+"49
+[v _INDIC INDIC `uc  1 e 1 0 ]
+"50
+[v _CONTC CONTC `uc  1 e 1 0 ]
+"51
+[v _CONTD CONTD `uc  1 e 1 0 ]
+"52
+[v _CONTU CONTU `uc  1 e 1 0 ]
+"53
+[v _CO1 CO1 `uc  1 e 1 0 ]
+"54
+[v _CO2 CO2 `uc  1 e 1 0 ]
+"55
+[v _CO3 CO3 `uc  1 e 1 0 ]
+"79
 [v _main main `(v  1 e 1 0 ]
 {
-"105
+"160
 } 0
 "35 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\SSP.c
 [v _spiWrite spiWrite `(v  1 e 1 0 ]
@@ -257,10 +258,56 @@ SPI_ACTIVE_2_IDLE 64
 {
 "33
 } 0
-"110 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\MASTER.c
+"215 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\MASTER.c
+[v _map2 map2 `(v  1 e 1 0 ]
+{
+"224
+} 0
+"202
+[v _map map `(v  1 e 1 0 ]
+{
+"213
+} 0
+"15 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\Umul16.c
+[v ___wmul __wmul `(ui  1 e 2 0 ]
+{
+"17
+[v ___wmul@product product `ui  1 a 2 6 ]
+"15
+[v ___wmul@multiplier multiplier `ui  1 p 2 2 ]
+[v ___wmul@multiplicand multiplicand `ui  1 p 2 4 ]
+"53
+} 0
+"4 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\Umul8.c
+[v ___bmul __bmul `(uc  1 e 1 0 ]
+{
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+"6
+[v ___bmul@product product `uc  1 a 1 3 ]
+"4
+[v ___bmul@multiplier multiplier `uc  1 a 1 wreg ]
+[v ___bmul@multiplicand multiplicand `uc  1 p 1 2 ]
+"6
+[v ___bmul@multiplier multiplier `uc  1 a 1 4 ]
+"51
+} 0
+"5 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\awdiv.c
+[v ___awdiv __awdiv `(i  1 e 2 0 ]
+{
+"10
+[v ___awdiv@quotient quotient `i  1 a 2 6 ]
+"11
+[v ___awdiv@sign sign `uc  1 a 1 5 ]
+[v ___awdiv@counter counter `uc  1 a 1 4 ]
+"5
+[v ___awdiv@divisor divisor `i  1 p 2 0 ]
+[v ___awdiv@dividend dividend `i  1 p 2 2 ]
+"41
+} 0
+"165 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\MASTER.c
 [v _Setup Setup `(v  1 e 1 0 ]
 {
-"141
+"196
 } 0
 "13 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\SSP.c
 [v _spiInit spiInit `(v  1 e 1 0 ]
@@ -336,8 +383,8 @@ SPI_ACTIVE_2_IDLE 64
 [v Lcd_Port@a a `uc  1 a 1 2 ]
 "14
 } 0
-"55 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\MASTER.c
+"70 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\MASTER.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"59
+"74
 } 0

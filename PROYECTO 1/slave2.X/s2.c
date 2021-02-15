@@ -1,7 +1,8 @@
 #include <xc.h>
 #include <stdint.h>
 #include <pic16f887.h>
-
+#include "SSP2.h"
+#include "osc2.h"
 //******************************************************************************
 // Palabra de configuración
 //******************************************************************************
@@ -27,7 +28,7 @@
 //******************************************************************************
 uint8_t B1 = 0;
 uint8_t B2 = 0;
-
+uint8_t c1 = 0;
 
 
 
@@ -43,6 +44,7 @@ void Setup(void);
 //******************************************************************************
 
 void __interrupt() ISR(void) {
+    c1 = PORTD;
     if (RBIF == 1) { //SE REVISA LA BANDERA DE INTERRUPCION DEL PUERTO B
         if (PORTBbits.RB0 == 0) { //ANTIREBOTE, SI NO SE PRESIONA EL BOTON
             B1 = 1; // SE ENCIENDE LA BANDERA DEL BOTON DE INCREMENTO
@@ -50,6 +52,7 @@ void __interrupt() ISR(void) {
             if (B1 == 1 && PORTBbits.RB0 == 1) { //SE  PRESIONA EL BOTON
                 B1 = 0; //SE APAGA LA BANDERA DE BOTON DE INCREMENTO
                 PORTD++; // SE INCREMENTA EL PUERTOD
+               
 
             }
         }
@@ -60,6 +63,7 @@ void __interrupt() ISR(void) {
             if (B2 == 1 && PORTBbits.RB1 == 1) { //SE PRESIONA EL BOTON
                 B2 = 0; //SE APAGA LA BANDERA DE BOTON DE DECREMENTO                
                 PORTD--; // SE DECREMENTA UN EL PUERTOD
+               
 
             }
         }
@@ -68,6 +72,11 @@ void __interrupt() ISR(void) {
 
 
 
+    }
+    
+    if (PIR1bits.SSPIF == 1) {
+        spiWrite(c1);
+        PIR1bits.SSPIF = 0;
     }
 
 }
@@ -107,6 +116,8 @@ void main(void) {
 //******************************************************************************
 
 void Setup(void) {
+    initOscs2(6);
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     TRISD = 0;
     TRISE = 0; //PUERTO E SALIDAS
     ANSEL = 0; // ENTRADAS DIGITALES Y BIT 0 ANALÓGICA
@@ -127,6 +138,8 @@ void Setup(void) {
     INTCONbits.RBIF = 0; //SE LIMPIA LA BANDERA DEL INTERRUPCION DEL PUERTO B
     IOCB = 3; //SE HABILITA EL INTERRUPT ON CHANGE
     WPUB = 0b0000011;
+    PIR1bits.SSPIF = 0;
+    PIE1bits.SSPIE = 1;
 
 
 
