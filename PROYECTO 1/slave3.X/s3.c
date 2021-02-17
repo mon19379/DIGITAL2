@@ -1,6 +1,9 @@
 #include <xc.h>
 #include <stdint.h>
 #include <pic16f887.h>
+#include "oscs3.h"
+#include "adcs3.h"
+#include "SSP3.h"
 
 //******************************************************************************
 // Palabra de configuración
@@ -26,7 +29,8 @@
 //Variables
 //******************************************************************************
 
-
+uint8_t term = 0;
+uint8_t CONTERM = 0;
 
 
 
@@ -41,8 +45,25 @@ void Setup(void);
 //******************************************************************************
 
 void __interrupt() ISR(void) {
+    
+    
+     if (INTCONbits.T0IF == 1) {
+        TMR0 = 236;
+        CONTERM++;
+        INTCONbits.T0IF = 0;
+    }
 
-  
+    if (PIR1bits.SSPIF == 1) {
+        spiWrite(term);
+        PIR1bits.SSPIF = 0;
+    }
+
+
+     if (PIR1bits.ADIF == 1) {
+        term = ADRESH;
+        PIR1bits.ADIF = 0;
+    }
+
 }
 //******************************************************************************
 //Ciclo pincipal
@@ -51,7 +72,7 @@ void __interrupt() ISR(void) {
 void main(void) {
 
     Setup();
-    
+
 
 
 
@@ -62,7 +83,12 @@ void main(void) {
     // Loop principal
     //**************************************************************************
     while (1) {
-       
+         if (CONTERM > 20) {
+            ADCON0bits.GO_nDONE = 1;
+            CONTERM = 0;
+        }
+        PORTD = term;
+
 
 
 
@@ -80,34 +106,37 @@ void main(void) {
 //******************************************************************************
 
 void Setup(void) {
-    TRISD = 0;
-    TRISE = 0; //PUERTO E SALIDAS
+    configADC3(1, 10); //SE LLAMA LA CONFIG DEL ADC
+    initOscs3(6);
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     ANSEL = 0; // ENTRADAS DIGITALES Y BIT 0 ANALÓGICA
-    ANSELH = 0b00000011;
+    ANSELH = 0b00000010;
     PORTA = 0; //PUERTO A EN 0
     PORTB = 0; //PUERTO B EN 0
     PORTC = 0; //PUERTO C EN 0
     PORTD = 0; //PUERTO D EN 0
     PORTE = 0; //PUERTO E EN 0
     //PINES RA0 Y RA2 COMO ENTRADAS, LOS DEMAS COMO SALIDAS
-    TRISC = 0b10000000; //PUERTO C SALIDAS
-    TRISA = 0; //PUERTO A SALIDAS
-    TRISB = 0b00000011; //PUERTO B 
+    TRISC = 0b00001000; //PUERTO C SALIDAS
+    TRISA = 0b00100000; //PUERTO A SALIDAS
+    TRISB = 0b00000010; //PUERTO B 
+    TRISD = 0;
+    TRISE = 0;
     OPTION_REG = 0b10000111; //SE APAGAN LAS PULLUPS DEL PUERTO B
     INTCONbits.GIE = 1; //SE HABILITAN LAS INTERRUPCIONES GLOBALES
-    INTCONbits.T0IE = 1; //SE HABILITA LA INTERRUPCION DEL TIMER0
     INTCONbits.PEIE = 1; //SE HABILITAN LAS INTERRUPCIONES PERIFERICAS
     PIE1bits.ADIE = 1; //SE HABILITA LA INTERRUPCION DEL ADC
-    INTCONbits.T0IF = 0; // SE LIMPIA LA BANDERA DE INTERRUPCION DEL TIMER 0
     PIR1bits.ADIF = 0; //SE LIMPIOA LA BANDERA DE INTERRUPCION DEL ADC
-    PIR1bits.TXIF = 0;
-    PIE1bits.TXIE = 1;
-    PIE1bits.RCIE = 1;
-    PIR1bits.RCIF = 0;
-
+    PIR1bits.SSPIF = 0;
+    PIE1bits.SSPIE = 1;
+    INTCONbits.T0IE = 1;
+    INTCONbits.T0IF = 0;
 
 
 }
+
+
+
 
 //******************************************************************************
 // Subrutinas

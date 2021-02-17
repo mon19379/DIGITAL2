@@ -2629,6 +2629,66 @@ typedef uint16_t uintptr_t;
 # 2 "s3.c" 2
 
 
+# 1 "./oscs3.h" 1
+
+
+
+
+
+
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 1 3
+# 7 "./oscs3.h" 2
+
+
+void initOscs3(uint8_t IRCF);
+# 4 "s3.c" 2
+
+# 1 "./adcs3.h" 1
+# 14 "./adcs3.h"
+# 1 "C:\\Program Files\\Microchip\\xc8\\v2.20\\pic\\include\\c90\\stdint.h" 1 3
+# 14 "./adcs3.h" 2
+
+
+void configADC3(uint8_t fosc, uint8_t chan);
+# 5 "s3.c" 2
+
+# 1 "./SSP3.h" 1
+# 17 "./SSP3.h"
+typedef enum
+{
+    SPI_MASTER_OSC_DIV4 = 0b00100000,
+    SPI_MASTER_OSC_DIV16 = 0b00100001,
+    SPI_MASTER_OSC_DIV64 = 0b00100010,
+    SPI_MASTER_TMR2 = 0b00100011,
+    SPI_SLAVE_SS_EN = 0b00100100,
+    SPI_SLAVE_SS_DIS = 0b00100101
+}Spi_Type;
+
+typedef enum
+{
+    SPI_DATA_SAMPLE_MIDDLE = 0b00000000,
+    SPI_DATA_SAMPLE_END = 0b10000000
+}Spi_Data_Sample;
+
+typedef enum
+{
+    SPI_CLOCK_IDLE_HIGH = 0b00010000,
+    SPI_CLOCK_IDLE_LOW = 0b00000000
+}Spi_Clock_Idle;
+
+typedef enum
+{
+    SPI_IDLE_2_ACTIVE = 0b00000000,
+    SPI_ACTIVE_2_IDLE = 0b01000000
+}Spi_Transmit_Edge;
+
+
+void spiInit(Spi_Type, Spi_Data_Sample, Spi_Clock_Idle, Spi_Transmit_Edge);
+void spiWrite(char);
+unsigned spiDataReady();
+char spiRead();
+# 6 "s3.c" 2
+
 
 
 
@@ -2648,7 +2708,21 @@ typedef uint16_t uintptr_t;
 
 #pragma config BOR4V = BOR40V
 #pragma config WRT = OFF
-# 37 "s3.c"
+
+
+
+
+
+
+uint8_t term = 0;
+uint8_t CONTERM = 0;
+
+
+
+
+
+
+
 void Setup(void);
 
 
@@ -2658,6 +2732,23 @@ void Setup(void);
 void __attribute__((picinterrupt(("")))) ISR(void) {
 
 
+     if (INTCONbits.T0IF == 1) {
+        TMR0 = 236;
+        CONTERM++;
+        INTCONbits.T0IF = 0;
+    }
+
+    if (PIR1bits.SSPIF == 1) {
+        spiWrite(term);
+        PIR1bits.SSPIF = 0;
+    }
+
+
+     if (PIR1bits.ADIF == 1) {
+        term = ADRESH;
+        PIR1bits.ADIF = 0;
+    }
+
 }
 
 
@@ -2666,9 +2757,14 @@ void __attribute__((picinterrupt(("")))) ISR(void) {
 void main(void) {
 
     Setup();
-# 64 "s3.c"
+# 85 "s3.c"
     while (1) {
-# 76 "s3.c"
+         if (CONTERM > 20) {
+            ADCON0bits.GO_nDONE = 1;
+            CONTERM = 0;
+        }
+        PORTD = term;
+# 102 "s3.c"
     }
 }
 
@@ -2676,31 +2772,31 @@ void main(void) {
 
 
 void Setup(void) {
-    TRISD = 0;
-    TRISE = 0;
+    configADC3(1, 10);
+    initOscs3(6);
+    spiInit(SPI_SLAVE_SS_EN, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
     ANSEL = 0;
-    ANSELH = 0b00000011;
+    ANSELH = 0b00000010;
     PORTA = 0;
     PORTB = 0;
     PORTC = 0;
     PORTD = 0;
     PORTE = 0;
 
-    TRISC = 0b10000000;
-    TRISA = 0;
-    TRISB = 0b00000011;
+    TRISC = 0b00001000;
+    TRISA = 0b00100000;
+    TRISB = 0b00000010;
+    TRISD = 0;
+    TRISE = 0;
     OPTION_REG = 0b10000111;
     INTCONbits.GIE = 1;
-    INTCONbits.T0IE = 1;
     INTCONbits.PEIE = 1;
     PIE1bits.ADIE = 1;
-    INTCONbits.T0IF = 0;
     PIR1bits.ADIF = 0;
-    PIR1bits.TXIF = 0;
-    PIE1bits.TXIE = 1;
-    PIE1bits.RCIE = 1;
-    PIR1bits.RCIF = 0;
-
+    PIR1bits.SSPIF = 0;
+    PIE1bits.SSPIE = 1;
+    INTCONbits.T0IE = 1;
+    INTCONbits.T0IF = 0;
 
 
 }

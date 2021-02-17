@@ -13,6 +13,7 @@
 #include "LCDM.h"
 #include "oscm.h"
 #include "SSP.h"
+#include "usartm.h"
 
 //******************************************************************************
 // Palabra de configuración
@@ -53,7 +54,20 @@ uint8_t CONTU = 0;
 uint8_t CO1 = 0;
 uint8_t CO2 = 0;
 uint8_t CO3 = 0;
-
+uint8_t SEND = 0;
+uint8_t term1 = 0;
+uint8_t TEMPC = 0;
+uint8_t TEMPD = 0;
+uint8_t TEMPU = 0;
+uint8_t TEMPND = 0;
+uint8_t TEMPNU = 0;
+uint8_t T1 = 0;
+uint8_t T2 = 0;
+uint8_t T3 = 0;
+uint8_t TN1 = 0;
+uint8_t TN2 = 0;
+uint8_t TEMP = 0;
+uint8_t TEMPN = 0;
 
 
 
@@ -63,12 +77,24 @@ uint8_t CO3 = 0;
 void Setup(void);
 void map(void);
 void map2(void);
+void map3(void);
+void map4(void);
+void mandar(void);
+void temperatura(void);
+void temperatura2(void);
 //******************************************************************************
 //Interrupción
 //******************************************************************************
 
 void __interrupt() ISR(void) {
 
+    if (PIR1bits.TXIF == 1) {
+        mandar();
+        SEND++;
+        PIE1bits.TXIE = 0;
+        PIR1bits.TXIF = 0;
+
+    }
 
 
 }
@@ -92,6 +118,7 @@ void main(void) {
 
 
 
+
     //**************************************************************************
     // Loop principal
     //**************************************************************************
@@ -99,6 +126,11 @@ void main(void) {
         INDIC++;
         map();
         map2();
+        map3();
+
+
+        PIE1bits.TXIE = 1;
+
 
         if (INDIC == 1) {
             PORTCbits.RC0 = 0;
@@ -118,19 +150,21 @@ void main(void) {
 
             __delay_ms(1);
             PORTCbits.RC1 = 1;
-            INDIC = 0;
+
         }
 
-        //        if (INDIC == 3) {
-        //            PORTCbits.RC2 = 0;
-        //            __delay_ms(1);
-        //            spiWrite(desecho);
-        //            pot1 = spiRead();
-        //
-        //            __delay_ms(1);
-        //            PORTCbits.RC2 = 1;
-        //        }
 
+
+        if (INDIC == 3) {
+            PORTCbits.RC2 = 0;
+            __delay_ms(1);
+            spiWrite(desecho);
+            term1 = spiRead();
+
+            __delay_ms(1);
+            PORTCbits.RC2 = 1;
+            INDIC = 0;
+        }
 
 
 
@@ -154,8 +188,6 @@ void main(void) {
 
 
 
-
-
     }
 }
 //******************************************************************************
@@ -166,6 +198,7 @@ void Setup(void) {
     TRISA = 0;
     TRISE = 0; //PUERTO E SALIDAS
     initOscm(6);
+    usartm();
     Lcd_Init();
     Lcd_Cmd(0x8A);
     spiInit(SPI_MASTER_OSC_DIV4, SPI_DATA_SAMPLE_MIDDLE, SPI_CLOCK_IDLE_LOW, SPI_IDLE_2_ACTIVE);
@@ -181,14 +214,14 @@ void Setup(void) {
     TRISD = 0; //PUERTO D SALIDAS
     TRISB = 0; //PUERTO B 
     OPTION_REG = 0b10000111; //SE APAGAN LAS PULLUPS DEL PUERTO B
-    //    INTCONbits.GIE = 1; //SE HABILITAN LAS INTERRUPCIONES GLOBALES
+    INTCONbits.GIE = 1; //SE HABILITAN LAS INTERRUPCIONES GLOBALES
     //    INTCONbits.T0IE = 1; //SE HABILITA LA INTERRUPCION DEL TIMER0
-    //    INTCONbits.PEIE = 1; //SE HABILITAN LAS INTERRUPCIONES PERIFERICAS
+    INTCONbits.PEIE = 1; //SE HABILITAN LAS INTERRUPCIONES PERIFERICAS
     //    PIE1bits.ADIE = 1; //SE HABILITA LA INTERRUPCION DEL ADC
     //    INTCONbits.T0IF = 0; // SE LIMPIA LA BANDERA DE INTERRUPCION DEL TIMER 0
     //    PIR1bits.ADIF = 0; //SE LIMPIOA LA BANDERA DE INTERRUPCION DEL ADC
-    //    PIR1bits.TXIF = 0;
-    //    PIE1bits.TXIE = 1;
+    PIR1bits.TXIF = 0;
+    PIE1bits.TXIE = 1;
 
 
 
@@ -222,3 +255,163 @@ void map2(void) {
     CO3 = (CONTU + 0x30);
 
 }
+
+void map3(void) {
+
+
+    if (term1 >= 68) {
+
+        TEMP = (((term1 - 68)*150) / 187);
+
+        TEMPC = (TEMP / 100);
+        TEMPD = (TEMP - (TEMPC * 100)) / 10;
+        TEMPU = (TEMP - (TEMPC * 100)-(TEMPD * 10));
+
+        T1 = (TEMPC + 0x30);
+        T2 = (TEMPD + 0x30);
+        T3 = (TEMPU + 0x30);
+        temperatura();
+
+    } else if (term1 < 68) {
+
+        TEMPN = (((term1 * (-55)) / 68) + 55);
+
+        TEMPND = (TEMPN / 10);
+        TEMPNU = (TEMPN - (TEMPND * 10));
+
+        TN1 = (TEMPND + 0x30);
+        TN2 = (TEMPNU + 0x30);
+
+        temperatura2();
+
+    }
+
+
+
+
+
+}
+
+void mandar(void) {
+    switch (SEND) {
+
+        case 0:
+            TXREG = 0x20;
+            break;
+        case 1:
+            TXREG = 0x28;
+            break;
+
+        case 2:
+            TXREG = C1;
+            break;
+
+        case 3:
+            TXREG = 0x2E;
+            break;
+        case 4:
+            TXREG = D1;
+            break;
+        case 5:
+            TXREG = U1;
+            break;
+        case 6:
+            TXREG = 0x29;
+            break;
+
+        case 7:
+            TXREG = 0x2C;
+            break;
+
+        case 8:
+            TXREG = 0x20;
+            break;
+
+        case 9:
+            TXREG = 0x28;
+            break;
+
+        case 10:
+            TXREG = CO1;
+            break;
+
+        case 11:
+            TXREG = CO2;
+            break;
+        case 12:
+            TXREG = CO3;
+            break;
+
+        case 13:
+            TXREG = 0x29;
+            break;
+        case 14:
+            TXREG = 0x2C;
+            break;
+
+        case 15:
+            TXREG = 0x20;
+            break;
+        case 16:
+            TXREG = 0x28;
+            break;
+        case 17:
+            if (term1 >= 68) {
+                TXREG = T1;
+            } else if (term1 < 68) {
+                TXREG = 45;
+            }
+            break;
+        case 18:
+            if (term1 >= 68) {
+                TXREG = T2;
+            } else if (term1 < 68) {
+                TXREG = TN1;
+            }
+            break;
+
+        case 19:
+            if (term1 >= 68) {
+                TXREG = T3;
+            } else if (term1 < 68) {
+                TXREG = TN2;
+            }
+            break;
+
+        case 20:
+            TXREG = 0x29;
+            break;
+
+        case 21:
+            TXREG = 0x0D;
+            SEND = 0;
+            break;
+    }
+
+}
+
+void temperatura(void) {
+    Lcd_Set_Cursor(2, 12);
+    Lcd_Write_String("+");
+    Lcd_Set_Cursor(2, 13);
+    Lcd_Write_Char(T1);
+    Lcd_Set_Cursor(2, 14);
+    Lcd_Write_Char(T2);
+    Lcd_Set_Cursor(2, 15);
+    Lcd_Write_Char(T3);
+
+}
+
+void temperatura2(void) {
+    Lcd_Set_Cursor(2, 12);
+    Lcd_Write_String("-");
+    Lcd_Set_Cursor(2, 14);
+    Lcd_Write_Char(TN1);
+    Lcd_Set_Cursor(2, 15);
+    Lcd_Write_Char(TN2);
+}
+
+
+
+
+

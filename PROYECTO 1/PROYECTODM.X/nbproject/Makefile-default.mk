@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=MASTER.c SSP.c LCDM.c oscm.c
+SOURCEFILES_QUOTED_IF_SPACED=MASTER.c SSP.c LCDM.c oscm.c usartm.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/MASTER.p1 ${OBJECTDIR}/SSP.p1 ${OBJECTDIR}/LCDM.p1 ${OBJECTDIR}/oscm.p1
-POSSIBLE_DEPFILES=${OBJECTDIR}/MASTER.p1.d ${OBJECTDIR}/SSP.p1.d ${OBJECTDIR}/LCDM.p1.d ${OBJECTDIR}/oscm.p1.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/MASTER.p1 ${OBJECTDIR}/SSP.p1 ${OBJECTDIR}/LCDM.p1 ${OBJECTDIR}/oscm.p1 ${OBJECTDIR}/usartm.p1
+POSSIBLE_DEPFILES=${OBJECTDIR}/MASTER.p1.d ${OBJECTDIR}/SSP.p1.d ${OBJECTDIR}/LCDM.p1.d ${OBJECTDIR}/oscm.p1.d ${OBJECTDIR}/usartm.p1.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/MASTER.p1 ${OBJECTDIR}/SSP.p1 ${OBJECTDIR}/LCDM.p1 ${OBJECTDIR}/oscm.p1
+OBJECTFILES=${OBJECTDIR}/MASTER.p1 ${OBJECTDIR}/SSP.p1 ${OBJECTDIR}/LCDM.p1 ${OBJECTDIR}/oscm.p1 ${OBJECTDIR}/usartm.p1
 
 # Source Files
-SOURCEFILES=MASTER.c SSP.c LCDM.c oscm.c
+SOURCEFILES=MASTER.c SSP.c LCDM.c oscm.c usartm.c
 
 
 CFLAGS=
@@ -121,6 +121,13 @@ ${OBJECTDIR}/oscm.p1: oscm.c  nbproject/Makefile-${CND_CONF}.mk
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/oscm.p1 oscm.c 
 	@${FIXDEPS} ${OBJECTDIR}/oscm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
+${OBJECTDIR}/usartm.p1: usartm.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/usartm.p1.d 
+	@${RM} ${OBJECTDIR}/usartm.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -D__DEBUG=1  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/usartm.p1 usartm.c 
+	@${FIXDEPS} ${OBJECTDIR}/usartm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
 else
 ${OBJECTDIR}/MASTER.p1: MASTER.c  nbproject/Makefile-${CND_CONF}.mk
 	@${MKDIR} "${OBJECTDIR}" 
@@ -149,6 +156,13 @@ ${OBJECTDIR}/oscm.p1: oscm.c  nbproject/Makefile-${CND_CONF}.mk
 	@${RM} ${OBJECTDIR}/oscm.p1 
 	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/oscm.p1 oscm.c 
 	@${FIXDEPS} ${OBJECTDIR}/oscm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
+	
+${OBJECTDIR}/usartm.p1: usartm.c  nbproject/Makefile-${CND_CONF}.mk
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/usartm.p1.d 
+	@${RM} ${OBJECTDIR}/usartm.p1 
+	${MP_CC} $(MP_EXTRA_CC_PRE) -mcpu=$(MP_PROCESSOR_OPTION) -c  -fno-short-double -fno-short-float -O0 -fasmfile -maddrqual=ignore -xassembler-with-cpp -Wa,-a -DXPRJ_default=$(CND_CONF)  -msummary=-psect,-class,+mem,-hex,-file  -ginhx032 -Wl,--data-init -mno-keep-startup -mno-osccal -mno-resetbits -mno-save-resetbits -mno-download -mno-stackcall $(COMPARISON_BUILD)  -std=c99 -gdwarf-3 -mstack=compiled:auto:auto     -o ${OBJECTDIR}/usartm.p1 usartm.c 
+	@${FIXDEPS} ${OBJECTDIR}/usartm.p1.d $(SILENT) -rsi ${MP_CC_DIR}../  
 	
 endif
 
