@@ -3,7 +3,7 @@
 [d edition pro ]
 [d chip 16F887 ]
 [d frameptr 0 ]
-"204 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\MASTER.c
+"220 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\MASTER.c
 [e E1308 . `uc
 SPI_MASTER_OSC_DIV4 32
 SPI_MASTER_OSC_DIV16 33
@@ -73,21 +73,21 @@ SPI_ACTIVE_2_IDLE 64
 [v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
 "89 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\MASTER.c
 [v _ISR ISR `II(v  1 e 1 0 ]
-"105
+"119
 [v _main main `(v  1 e 1 0 ]
-"197
+"213
 [v _Setup Setup `(v  1 e 1 0 ]
-"235
+"251
 [v _map map `(v  1 e 1 0 ]
-"248
+"264
 [v _map2 map2 `(v  1 e 1 0 ]
-"259
+"275
 [v _map3 map3 `(v  1 e 1 0 ]
-"295
+"311
 [v _mandar mandar `(v  1 e 1 0 ]
-"393
+"409
 [v _temperatura temperatura `(v  1 e 1 0 ]
-"405
+"421
 [v _temperatura2 temperatura2 `(v  1 e 1 0 ]
 "7 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\oscm.c
 [v _initOscm initOscm `(v  1 e 1 0 ]
@@ -107,7 +107,7 @@ SPI_ACTIVE_2_IDLE 64
 [v _PORTB PORTB `VEuc  1 e 1 @6 ]
 "290
 [v _PORTC PORTC `VEuc  1 e 1 @7 ]
-[s S91 . 1 `uc 1 RC0 1 0 :1:0 
+[s S104 . 1 `uc 1 RC0 1 0 :1:0 
 `uc 1 RC1 1 0 :1:1 
 `uc 1 RC2 1 0 :1:2 
 `uc 1 RC3 1 0 :1:3 
@@ -117,21 +117,21 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 RC7 1 0 :1:7 
 ]
 "307
-[u S100 . 1 `S91 1 . 1 0 ]
-[v _PORTCbits PORTCbits `VES100  1 e 1 @7 ]
+[u S113 . 1 `S104 1 . 1 0 ]
+[v _PORTCbits PORTCbits `VES113  1 e 1 @7 ]
 "352
 [v _PORTD PORTD `VEuc  1 e 1 @8 ]
 "414
 [v _PORTE PORTE `VEuc  1 e 1 @9 ]
-[s S441 . 1 `uc 1 RE0 1 0 :1:0 
+[s S64 . 1 `uc 1 RE0 1 0 :1:0 
 `uc 1 RE1 1 0 :1:1 
 `uc 1 RE2 1 0 :1:2 
 `uc 1 RE3 1 0 :1:3 
 ]
 "427
-[u S446 . 1 `S441 1 . 1 0 ]
-[v _PORTEbits PORTEbits `VES446  1 e 1 @9 ]
-[s S187 . 1 `uc 1 RBIF 1 0 :1:0 
+[u S69 . 1 `S64 1 . 1 0 ]
+[v _PORTEbits PORTEbits `VES69  1 e 1 @9 ]
+[s S200 . 1 `uc 1 RBIF 1 0 :1:0 
 `uc 1 INTF 1 0 :1:1 
 `uc 1 T0IF 1 0 :1:2 
 `uc 1 RBIE 1 0 :1:3 
@@ -141,13 +141,13 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 GIE 1 0 :1:7 
 ]
 "482
-[s S196 . 1 `uc 1 . 1 0 :2:0 
+[s S209 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 TMR0IF 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 TMR0IE 1 0 :1:5 
 ]
-[u S201 . 1 `S187 1 . 1 0 `S196 1 . 1 0 ]
-[v _INTCONbits INTCONbits `VES201  1 e 1 @11 ]
+[u S214 . 1 `S200 1 . 1 0 `S209 1 . 1 0 ]
+[v _INTCONbits INTCONbits `VES214  1 e 1 @11 ]
 [s S22 . 1 `uc 1 TMR1IF 1 0 :1:0 
 `uc 1 TMR2IF 1 0 :1:1 
 `uc 1 CCP1IF 1 0 :1:2 
@@ -163,7 +163,7 @@ SPI_ACTIVE_2_IDLE 64
 [v _SSPBUF SSPBUF `VEuc  1 e 1 @19 ]
 "850
 [v _SSPCON SSPCON `VEuc  1 e 1 @20 ]
-[s S586 . 1 `uc 1 RX9D 1 0 :1:0 
+[s S594 . 1 `uc 1 RX9D 1 0 :1:0 
 `uc 1 OERR 1 0 :1:1 
 `uc 1 FERR 1 0 :1:2 
 `uc 1 ADDEN 1 0 :1:3 
@@ -173,18 +173,18 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 SPEN 1 0 :1:7 
 ]
 "1068
-[s S595 . 1 `uc 1 RCD8 1 0 :1:0 
+[s S603 . 1 `uc 1 RCD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 RC9 1 0 :1:6 
 ]
-[s S599 . 1 `uc 1 . 1 0 :6:0 
+[s S607 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 nRC8 1 0 :1:6 
 ]
-[s S602 . 1 `uc 1 . 1 0 :6:0 
+[s S610 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 RC8_9 1 0 :1:6 
 ]
-[u S605 . 1 `S586 1 . 1 0 `S595 1 . 1 0 `S599 1 . 1 0 `S602 1 . 1 0 ]
-[v _RCSTAbits RCSTAbits `VES605  1 e 1 @24 ]
+[u S613 . 1 `S594 1 . 1 0 `S603 1 . 1 0 `S607 1 . 1 0 `S610 1 . 1 0 ]
+[v _RCSTAbits RCSTAbits `VES613  1 e 1 @24 ]
 "1133
 [v _TXREG TXREG `VEuc  1 e 1 @25 ]
 "1346
@@ -210,23 +210,23 @@ SPI_ACTIVE_2_IDLE 64
 "1718
 [u S53 . 1 `S45 1 . 1 0 ]
 [v _PIE1bits PIE1bits `VES53  1 e 1 @140 ]
-[s S478 . 1 `uc 1 SCS 1 0 :1:0 
+[s S486 . 1 `uc 1 SCS 1 0 :1:0 
 `uc 1 LTS 1 0 :1:1 
 `uc 1 HTS 1 0 :1:2 
 `uc 1 OSTS 1 0 :1:3 
 `uc 1 IRCF 1 0 :3:4 
 ]
 "1882
-[s S484 . 1 `uc 1 . 1 0 :4:0 
+[s S492 . 1 `uc 1 . 1 0 :4:0 
 `uc 1 IRCF0 1 0 :1:4 
 `uc 1 IRCF1 1 0 :1:5 
 `uc 1 IRCF2 1 0 :1:6 
 ]
-[u S489 . 1 `S478 1 . 1 0 `S484 1 . 1 0 ]
-[v _OSCCONbits OSCCONbits `VES489  1 e 1 @143 ]
+[u S497 . 1 `S486 1 . 1 0 `S492 1 . 1 0 ]
+[v _OSCCONbits OSCCONbits `VES497  1 e 1 @143 ]
 "2177
 [v _SSPSTAT SSPSTAT `VEuc  1 e 1 @148 ]
-[s S331 . 1 `uc 1 BF 1 0 :1:0 
+[s S348 . 1 `uc 1 BF 1 0 :1:0 
 `uc 1 UA 1 0 :1:1 
 `uc 1 R_nW 1 0 :1:2 
 `uc 1 S 1 0 :1:3 
@@ -236,40 +236,40 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 SMP 1 0 :1:7 
 ]
 "2231
-[s S340 . 1 `uc 1 . 1 0 :2:0 
+[s S357 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D 1 0 :1:5 
 ]
-[s S345 . 1 `uc 1 . 1 0 :2:0 
+[s S362 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 I2C_READ 1 0 :1:2 
 `uc 1 I2C_START 1 0 :1:3 
 `uc 1 I2C_STOP 1 0 :1:4 
 `uc 1 I2C_DATA 1 0 :1:5 
 ]
-[s S351 . 1 `uc 1 . 1 0 :2:0 
+[s S368 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nW 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nA 1 0 :1:5 
 ]
-[s S356 . 1 `uc 1 . 1 0 :2:0 
+[s S373 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 nWRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 nADDRESS 1 0 :1:5 
 ]
-[s S361 . 1 `uc 1 . 1 0 :2:0 
+[s S378 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 R_W 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 D_A 1 0 :1:5 
 ]
-[s S366 . 1 `uc 1 . 1 0 :2:0 
+[s S383 . 1 `uc 1 . 1 0 :2:0 
 `uc 1 READ_WRITE 1 0 :1:2 
 `uc 1 . 1 0 :2:3 
 `uc 1 DATA_ADDRESS 1 0 :1:5 
 ]
-[u S371 . 1 `S331 1 . 1 0 `S340 1 . 1 0 `S345 1 . 1 0 `S351 1 . 1 0 `S356 1 . 1 0 `S361 1 . 1 0 `S366 1 . 1 0 ]
-[v _SSPSTATbits SSPSTATbits `VES371  1 e 1 @148 ]
-[s S515 . 1 `uc 1 TX9D 1 0 :1:0 
+[u S388 . 1 `S348 1 . 1 0 `S357 1 . 1 0 `S362 1 . 1 0 `S368 1 . 1 0 `S373 1 . 1 0 `S378 1 . 1 0 `S383 1 . 1 0 ]
+[v _SSPSTATbits SSPSTATbits `VES388  1 e 1 @148 ]
+[s S523 . 1 `uc 1 TX9D 1 0 :1:0 
 `uc 1 TRMT 1 0 :1:1 
 `uc 1 BRGH 1 0 :1:2 
 `uc 1 SENDB 1 0 :1:3 
@@ -279,20 +279,20 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 CSRC 1 0 :1:7 
 ]
 "2582
-[s S524 . 1 `uc 1 TXD8 1 0 :1:0 
+[s S532 . 1 `uc 1 TXD8 1 0 :1:0 
 `uc 1 . 1 0 :5:1 
 `uc 1 nTX8 1 0 :1:6 
 ]
-[s S528 . 1 `uc 1 . 1 0 :6:0 
+[s S536 . 1 `uc 1 . 1 0 :6:0 
 `uc 1 TX8_9 1 0 :1:6 
 ]
-[u S531 . 1 `S515 1 . 1 0 `S524 1 . 1 0 `S528 1 . 1 0 ]
-[v _TXSTAbits TXSTAbits `VES531  1 e 1 @152 ]
+[u S539 . 1 `S523 1 . 1 0 `S532 1 . 1 0 `S536 1 . 1 0 ]
+[v _TXSTAbits TXSTAbits `VES539  1 e 1 @152 ]
 "2642
 [v _SPBRG SPBRG `VEuc  1 e 1 @153 ]
 "2704
 [v _SPBRGH SPBRGH `VEuc  1 e 1 @154 ]
-[s S552 . 1 `uc 1 ABDEN 1 0 :1:0 
+[s S560 . 1 `uc 1 ABDEN 1 0 :1:0 
 `uc 1 WUE 1 0 :1:1 
 `uc 1 . 1 0 :1:2 
 `uc 1 BRG16 1 0 :1:3 
@@ -302,8 +302,8 @@ SPI_ACTIVE_2_IDLE 64
 `uc 1 ABDOVF 1 0 :1:7 
 ]
 "3352
-[u S561 . 1 `S552 1 . 1 0 ]
-[v _BAUDCTLbits BAUDCTLbits `VES561  1 e 1 @391 ]
+[u S569 . 1 `S560 1 . 1 0 ]
+[v _BAUDCTLbits BAUDCTLbits `VES569  1 e 1 @391 ]
 "3387
 [v _ANSEL ANSEL `VEuc  1 e 1 @392 ]
 "3449
@@ -370,10 +370,10 @@ SPI_ACTIVE_2_IDLE 64
 [v _TEMP TEMP `uc  1 e 1 0 ]
 "70
 [v _TEMPN TEMPN `uc  1 e 1 0 ]
-"105
+"119
 [v _main main `(v  1 e 1 0 ]
 {
-"192
+"208
 } 0
 "35 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\SSP.c
 [v _spiWrite spiWrite `(v  1 e 1 0 ]
@@ -394,20 +394,20 @@ SPI_ACTIVE_2_IDLE 64
 {
 "33
 } 0
-"259 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\MASTER.c
+"275 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\MASTER.c
 [v _map3 map3 `(v  1 e 1 0 ]
 {
-"293
+"309
 } 0
-"405
+"421
 [v _temperatura2 temperatura2 `(v  1 e 1 0 ]
 {
-"412
+"428
 } 0
-"393
+"409
 [v _temperatura temperatura `(v  1 e 1 0 ]
 {
-"403
+"419
 } 0
 "60 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\LCDM.c
 [v _Lcd_Write_String Lcd_Write_String `(v  1 e 1 0 ]
@@ -442,15 +442,15 @@ SPI_ACTIVE_2_IDLE 64
 [v Lcd_Set_Cursor@a a `uc  1 a 1 4 ]
 "39
 } 0
-"248 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\MASTER.c
+"264 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\MASTER.c
 [v _map2 map2 `(v  1 e 1 0 ]
 {
-"257
+"273
 } 0
-"235
+"251
 [v _map map `(v  1 e 1 0 ]
 {
-"246
+"262
 } 0
 "15 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\Umul16.c
 [v ___wmul __wmul `(ui  1 e 2 0 ]
@@ -488,10 +488,10 @@ SPI_ACTIVE_2_IDLE 64
 [v ___awdiv@dividend dividend `i  1 p 2 8 ]
 "41
 } 0
-"197 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\MASTER.c
+"213 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\MASTER.c
 [v _Setup Setup `(v  1 e 1 0 ]
 {
-"229
+"245
 } 0
 "5 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\usartm.c
 [v _usartm usartm `(v  1 e 1 0 ]
@@ -542,10 +542,10 @@ SPI_ACTIVE_2_IDLE 64
 "89 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\PROYECTODM.X\MASTER.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"100
+"114
 } 0
-"295
+"311
 [v _mandar mandar `(v  1 e 1 0 ]
 {
-"391
+"407
 } 0

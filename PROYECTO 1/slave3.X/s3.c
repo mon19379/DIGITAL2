@@ -63,6 +63,25 @@ void __interrupt() ISR(void) {
         term = ADRESH;
         PIR1bits.ADIF = 0;
     }
+     
+     if (term < 100) {
+        PORTEbits.RE2 = 1;
+        PORTEbits.RE1 = 0;
+        PORTEbits.RE0 = 0;
+    }
+
+    if (term > 100 && term < 113) {
+        PORTEbits.RE2 = 0;
+        PORTEbits.RE1 = 1;
+        PORTEbits.RE0 = 0;
+
+    }
+    if (term > 113) {
+        PORTEbits.RE2 = 0;
+        PORTEbits.RE1 = 0;
+        PORTEbits.RE0 = 1;
+
+    }
 
 }
 //******************************************************************************
@@ -87,7 +106,7 @@ void main(void) {
             ADCON0bits.GO_nDONE = 1;
             CONTERM = 0;
         }
-        PORTD = term;
+       
 
 
 

@@ -2749,6 +2749,25 @@ void __attribute__((picinterrupt(("")))) ISR(void) {
         PIR1bits.ADIF = 0;
     }
 
+     if (term < 100) {
+        PORTEbits.RE2 = 1;
+        PORTEbits.RE1 = 0;
+        PORTEbits.RE0 = 0;
+    }
+
+    if (term > 100 && term < 113) {
+        PORTEbits.RE2 = 0;
+        PORTEbits.RE1 = 1;
+        PORTEbits.RE0 = 0;
+
+    }
+    if (term > 113) {
+        PORTEbits.RE2 = 0;
+        PORTEbits.RE1 = 0;
+        PORTEbits.RE0 = 1;
+
+    }
+
 }
 
 
@@ -2757,14 +2776,13 @@ void __attribute__((picinterrupt(("")))) ISR(void) {
 void main(void) {
 
     Setup();
-# 85 "s3.c"
+# 104 "s3.c"
     while (1) {
          if (CONTERM > 20) {
             ADCON0bits.GO_nDONE = 1;
             CONTERM = 0;
         }
-        PORTD = term;
-# 102 "s3.c"
+# 121 "s3.c"
     }
 }
 

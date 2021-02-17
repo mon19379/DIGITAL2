@@ -2796,6 +2796,20 @@ void __attribute__((picinterrupt(("")))) ISR(void) {
 
     }
 
+    if (term1 < 83) {
+        PORTEbits.RE2 = 1;
+
+    }
+
+    if (term1 > 83 && term1 < 113) {
+        PORTEbits.RE1 = 1;
+
+    }
+    if (term1 > 113) {
+        PORTEbits.RE0 = 1;
+
+    }
+
 
 }
 
@@ -2811,7 +2825,7 @@ void main(void) {
     Lcd_Write_String("CONT");
     Lcd_Set_Cursor(1, 13);
     Lcd_Write_String("TEMP");
-# 125 "MASTER.c"
+# 139 "MASTER.c"
     while (1) {
         INDIC++;
         map();
@@ -2855,6 +2869,8 @@ void main(void) {
             PORTCbits.RC2 = 1;
             INDIC = 0;
         }
+
+
 
 
 
