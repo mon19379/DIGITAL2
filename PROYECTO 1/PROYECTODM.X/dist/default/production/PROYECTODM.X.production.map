@@ -5,7 +5,7 @@ Linker command line:
 -W-3 --edf=C:\Program Files\Microchip\xc8\v2.20\pic\dat\en_msgs.txt -cn \
   -h+dist/default/production\PROYECTODM.X.production.sym \
   --cmf=dist/default/production\PROYECTODM.X.production.cmf -z -Q16F887 \
-  -oC:\Users\franc\AppData\Local\Temp\s680.3 --defsym=__MPLAB_BUILD=1 \
+  -oC:\Users\franc\AppData\Local\Temp\sklo.2 --defsym=__MPLAB_BUILD=1 \
   -Mdist/default/production/PROYECTODM.X.production.map -E1 \
   -ver=XC8 Compiler --acfsm=1493 -ASTACK=0110h-016Fh -pstack=STACK \
   -ACODE=00h-07FFhx4 -ASTRCODE=00h-01FFFh -ASTRING=00h-0FFhx32 \
@@ -18,7 +18,7 @@ Linker command line:
   -preset_vec=00h,intentry=04h,init,end_init -ppowerup=CODE -pcinit=CODE \
   -pfunctab=ENTRY -AEEDATA=00h-0FFh/02100h -peeprom_data=EEDATA -DEEDATA=2 \
   -DCODE=2 -DSTRCODE=2 -DSTRING=2 -DCONST=2 -DENTRY=2 -k \
-  C:\Users\franc\AppData\Local\Temp\s680.o \
+  C:\Users\franc\AppData\Local\Temp\sklo.o \
   dist/default/production\PROYECTODM.X.production.o 
 
 Object code version is 3.11
@@ -28,7 +28,7 @@ Machine type is 16F887
 
 
                 Name                               Link     Load   Length Selector   Space Scale
-C:\Users\franc\AppData\Local\Temp\s680.o
+C:\Users\franc\AppData\Local\Temp\sklo.o
                 end_init                             12       12        3        8       0
                 reset_vec                             0        0        3        0       0
                 config                             2007     2007        2        0       4
@@ -37,35 +37,35 @@ dist/default/production\PROYECTODM.X.production.o
                 intentry                              4        4        E        8       0
                 config                             2007     2007        2        0       4
                 text23                              272      272       C7        8       0
-                text22                              5F6      5F6       39        8       0
-                text21                              775      775        6      DF2       0
-                text20                              6C3      6C3       1C        8       0
-                text19                              712      712       19      DF2       0
+                text22                              68A      68A       1E        8       0
+                text21                              75A      75A        6      DBC       0
+                text20                              6A8      6A8       1C        8       0
+                text19                              6F7      6F7       19      DBC       0
                 text18                              4CD      4CD       5E        8       0
-                text17                              6A5      6A5       1E        8       0
-                text16                              742      742       15      DF2       0
+                text17                              66C      66C       1E        8       0
+                text16                              727      727       15      DBC       0
                 text15                              57A      57A       41        8       0
                 text14                              464      464       69        8       0
-                text13                              72B      72B       17      DF2       0
-                text12                              658      658       27        8       0
+                text13                              710      710       17      DBC       0
+                text12                              61F      61F       27        8       0
                 text11                              339      339       BD        8       0
                 text10                              3F6      3F6       6E        8       0
-                text9                               67F      67F       26        8       0
-                text8                               6F9      6F9       19      DF2       0
-                text7                               62F      62F       29        8       0
+                text9                               646      646       26        8       0
+                text8                               6DE      6DE       19      DBC       0
+                text7                               5F6      5F6       29        8       0
                 text6                               52B      52B       4F        8       0
                 text5                               5BB      5BB       3B        8       0
                 text4                               172      172      100        8       0
-                text3                               768      768        7      DF2       0
-                text2                               757      757        9      DF2       0
-                text1                               76F      76F        6      DF2       0
+                text3                               74D      74D        7      DBC       0
+                text2                               73C      73C        9      DBC       0
+                text1                               754      754        6      DBC       0
                 maintext                             23       23      14F        8       0
                 cstackBANK0                          3D       3D       17       20       1
                 cstackCOMMON                         70       70        7       70       1
-                clrtext                             760      760        8      DF2       0
+                clrtext                             745      745        8      DBC       0
                 bssBANK0                             20       20       1D       20       1
                 bssCOMMON                            77       77        1       70       1
-                strings                             6DF      6DF       1A      DBE       0
+                strings                             6C4      6C4       1A      D88       0
 
 TOTAL           Name                               Link     Load   Length     Space
         CLASS   STACK          
@@ -76,35 +76,35 @@ TOTAL           Name                               Link     Load   Length     Sp
                 intentry                              4        4        E         0
                 reset_vec                             0        0        3         0
                 text23                              272      272       C7         0
-                text22                              5F6      5F6       39         0
-                text21                              775      775        6         0
-                text20                              6C3      6C3       1C         0
-                text19                              712      712       19         0
+                text22                              68A      68A       1E         0
+                text21                              75A      75A        6         0
+                text20                              6A8      6A8       1C         0
+                text19                              6F7      6F7       19         0
                 text18                              4CD      4CD       5E         0
-                text17                              6A5      6A5       1E         0
-                text16                              742      742       15         0
+                text17                              66C      66C       1E         0
+                text16                              727      727       15         0
                 text15                              57A      57A       41         0
                 text14                              464      464       69         0
-                text13                              72B      72B       17         0
-                text12                              658      658       27         0
+                text13                              710      710       17         0
+                text12                              61F      61F       27         0
                 text11                              339      339       BD         0
                 text10                              3F6      3F6       6E         0
-                text9                               67F      67F       26         0
-                text8                               6F9      6F9       19         0
-                text7                               62F      62F       29         0
+                text9                               646      646       26         0
+                text8                               6DE      6DE       19         0
+                text7                               5F6      5F6       29         0
                 text6                               52B      52B       4F         0
                 text5                               5BB      5BB       3B         0
                 text4                               172      172      100         0
-                text3                               768      768        7         0
-                text2                               757      757        9         0
-                text1                               76F      76F        6         0
+                text3                               74D      74D        7         0
+                text2                               73C      73C        9         0
+                text1                               754      754        6         0
                 maintext                             23       23      14F         0
-                clrtext                             760      760        8         0
+                clrtext                             745      745        8         0
 
         CLASS   STRCODE        
 
         CLASS   STRING         
-                strings                             6DF      6DF       1A         0
+                strings                             6C4      6C4       1A         0
 
         CLASS   CONST          
 
@@ -149,11 +149,11 @@ TOTAL           Name                               Link     Load   Length     Sp
 SEGMENTS        Name                           Load    Length   Top    Selector   Space  Class     Delta
 
                 reset_vec                      000000  000003  000003         0       0  CODE        2
-                intentry                       000004  0006DB  0006DF         8       0  CODE        2
+                intentry                       000004  0006C0  0006C4         8       0  CODE        2
                 bssBANK0                       000020  000034  000054        20       1  BANK0       1
                 cstackCOMMON                   000070  000008  000078        70       1  COMMON      1
-                strings                        0006DF  00001A  0006F9       DBE       0  STRING      2
-                text8                          0006F9  000082  00077B       DF2       0  CODE        2
+                strings                        0006C4  00001A  0006DE       D88       0  STRING      2
+                text8                          0006DE  000082  000760       DBC       0  CODE        2
 
 
 UNUSED ADDRESS RANGES
@@ -164,13 +164,13 @@ UNUSED ADDRESS RANGES
         BANK2            0110-016F             60           1
         BANK3            0190-01EF             60           1
         CODE             0003-0003              1           2
-                         077B-1FFF            800
+                         0760-1FFF            800
         COMMON           0078-007D              6           1
         CONST            0003-0003              1           2
-                         077B-1FFF            100
+                         0760-1FFF            100
         EEDATA           2100-21FF            100           2
         ENTRY            0003-0003              1           2
-                         077B-1FFF            100
+                         0760-1FFF            100
         IDLOC            2000-2003              4           2
         RAM              0054-006F             1C           1
                          00A0-00EF             50
@@ -182,9 +182,9 @@ UNUSED ADDRESS RANGES
         SFR3             0180-018F             10           1
         STACK            0110-016F             60           1
         STRCODE          0003-0003              1           2
-                         077B-1FFF           1885
+                         0760-1FFF           18A0
         STRING           0003-0003              1           2
-                         077B-1FFF            100
+                         0760-1FFF            100
 
                                   Symbol Table
 
@@ -213,13 +213,13 @@ _D1                        bssBANK0     0035
 _DP1                       bssBANK0     0038
 _INDIC                     bssBANK0     0033
 _INTCONbits                (abs)        000B
-_ISR                       text22       05F6
-_Lcd_Cmd                   text20       06C3
-_Lcd_Init                  text19       0712
-_Lcd_Port                  text21       0775
-_Lcd_Set_Cursor            text9        067F
-_Lcd_Write_Char            text8        06F9
-_Lcd_Write_String          text7        062F
+_ISR                       text22       068A
+_Lcd_Cmd                   text20       06A8
+_Lcd_Init                  text19       06F7
+_Lcd_Port                  text21       075A
+_Lcd_Set_Cursor            text9        0646
+_Lcd_Write_Char            text8        06DE
+_Lcd_Write_String          text7        05F6
 _OPTION_REG                (abs)        0081
 _OSCCONbits                (abs)        008F
 _PIE1bits                  (abs)        008C
@@ -290,7 +290,7 @@ __Hsfr0                    sfr0         0000
 __Hsfr1                    sfr1         0000
 __Hsfr2                    sfr2         0000
 __Hsfr3                    sfr3         0000
-__Hspace_0                 (abs)        077B
+__Hspace_0                 (abs)        0760
 __Hspace_1                 (abs)        0078
 __Hspace_2                 (abs)        0000
 __Hspace_3                 (abs)        0000
@@ -333,7 +333,7 @@ __Lspace_4                 (abs)        0000
 __Lstack                   stack        0000
 __Lstrings                 strings      0000
 __Ltext                    text         0000
-__S0                       (abs)        077B
+__S0                       (abs)        0760
 __S1                       (abs)        0078
 __S2                       (abs)        0000
 __S3                       (abs)        0000
@@ -343,7 +343,7 @@ ___awdiv@dividend          cstackBANK0  0045
 ___awdiv@divisor           cstackBANK0  0043
 ___awdiv@quotient          cstackBANK0  0049
 ___awdiv@sign              cstackBANK0  0048
-___bmul                    text13       072B
+___bmul                    text13       0710
 ___bmul@multiplicand       cstackCOMMON 0076
 ___bmul@multiplier         cstackBANK0  003E
 ___bmul@product            cstackBANK0  003D
@@ -352,36 +352,36 @@ ___latbits                 (abs)        0002
 ___sp                      stack        0000
 ___stackhi                 (abs)        0000
 ___stacklo                 (abs)        0000
-___wmul                    text12       0658
+___wmul                    text12       061F
 ___wmul@multiplicand       cstackBANK0  003F
 ___wmul@multiplier         cstackBANK0  003D
 ___wmul@product            cstackBANK0  0041
-__end_of_ISR               text22       062F
-__end_of_Lcd_Cmd           text20       06DF
-__end_of_Lcd_Init          text19       072B
-__end_of_Lcd_Port          text21       077B
-__end_of_Lcd_Set_Cursor    text9        06A5
-__end_of_Lcd_Write_Char    text8        0712
-__end_of_Lcd_Write_String  text7        0658
+__end_of_ISR               text22       06A8
+__end_of_Lcd_Cmd           text20       06C4
+__end_of_Lcd_Init          text19       0710
+__end_of_Lcd_Port          text21       0760
+__end_of_Lcd_Set_Cursor    text9        066C
+__end_of_Lcd_Write_Char    text8        06F7
+__end_of_Lcd_Write_String  text7        061F
 __end_of_Setup             text15       05BB
 __end_of___awdiv           text14       04CD
-__end_of___bmul            text13       0742
-__end_of___wmul            text12       067F
+__end_of___bmul            text13       0727
+__end_of___wmul            text12       0646
 __end_of__initialization   cinit        001F
-__end_of__stringtab        strings      06E5
+__end_of__stringtab        strings      06CA
 __end_of_initOscm          text18       052B
 __end_of_main              maintext     0172
 __end_of_mandar            text23       0339
 __end_of_map               text11       03F6
 __end_of_map2              text10       0464
 __end_of_map3              text4        0272
-__end_of_spiInit           text17       06C3
-__end_of_spiRead           text2        0760
-__end_of_spiReceiveWait    text3        076F
-__end_of_spiWrite          text1        0775
+__end_of_spiInit           text17       068A
+__end_of_spiRead           text2        0745
+__end_of_spiReceiveWait    text3        0754
+__end_of_spiWrite          text1        075A
 __end_of_temperatura       text6        057A
 __end_of_temperatura2      text5        05F6
-__end_of_usartm            text16       0757
+__end_of_usartm            text16       073C
 __initialization           cinit        0015
 __pbssBANK0                bssBANK0     0020
 __pbssCOMMON               bssCOMMON    0077
@@ -389,30 +389,30 @@ __pcstackBANK0             cstackBANK0  003D
 __pcstackCOMMON            cstackCOMMON 0070
 __pintentry                intentry     0004
 __pmaintext                maintext     0023
-__pstrings                 strings      06DF
-__ptext1                   text1        076F
+__pstrings                 strings      06C4
+__ptext1                   text1        0754
 __ptext10                  text10       03F6
 __ptext11                  text11       0339
-__ptext12                  text12       0658
-__ptext13                  text13       072B
+__ptext12                  text12       061F
+__ptext13                  text13       0710
 __ptext14                  text14       0464
 __ptext15                  text15       057A
-__ptext16                  text16       0742
-__ptext17                  text17       06A5
+__ptext16                  text16       0727
+__ptext17                  text17       066C
 __ptext18                  text18       04CD
-__ptext19                  text19       0712
-__ptext2                   text2        0757
-__ptext20                  text20       06C3
-__ptext21                  text21       0775
-__ptext22                  text22       05F6
+__ptext19                  text19       06F7
+__ptext2                   text2        073C
+__ptext20                  text20       06A8
+__ptext21                  text21       075A
+__ptext22                  text22       068A
 __ptext23                  text23       0272
-__ptext3                   text3        0768
+__ptext3                   text3        074D
 __ptext4                   text4        0172
 __ptext5                   text5        05BB
 __ptext6                   text6        052B
-__ptext7                   text7        062F
-__ptext8                   text8        06F9
-__ptext9                   text9        067F
+__ptext7                   text7        05F6
+__ptext8                   text8        06DE
+__ptext9                   text9        0646
 __size_of_ISR              (abs)        0000
 __size_of_Lcd_Cmd          (abs)        0000
 __size_of_Lcd_Init         (abs)        0000
@@ -437,27 +437,27 @@ __size_of_spiWrite         (abs)        0000
 __size_of_temperatura      (abs)        0000
 __size_of_temperatura2     (abs)        0000
 __size_of_usartm           (abs)        0000
-__stringbase               strings      06E4
-__stringtab                strings      06DF
+__stringbase               strings      06C9
+__stringtab                strings      06C4
 _cont1                     bssBANK0     003A
 _initOscm                  text18       04CD
 _main                      maintext     0023
 _mandar                    text23       0272
 _map                       text11       0339
-_map$1260                  cstackBANK0  0051
+_map$1252                  cstackBANK0  0051
 _map2                      text10       03F6
 _map3                      text4        0172
 _pot1                      bssBANK0     003B
-_spiInit                   text17       06A5
-_spiRead                   text2        0757
-_spiReceiveWait            text3        0768
-_spiWrite                  text1        076F
+_spiInit                   text17       066C
+_spiRead                   text2        073C
+_spiReceiveWait            text3        074D
+_spiWrite                  text1        0754
 _temperatura               text6        052B
 _temperatura2              text5        05BB
 _term1                     bssBANK0     002C
-_usartm                    text16       0742
+_usartm                    text16       0727
 btemp                      (abs)        007E
-clear_ram0                 clrtext      0760
+clear_ram0                 clrtext      0745
 end_of_initialization      cinit        001F
 initOscm@IRCF              cstackCOMMON 0076
 interrupt_function         intentry     0004
@@ -483,7 +483,7 @@ FUNCTION INFORMATION:
 
  *************** function _main *****************
  Defined at:
-		line 119 in file "MASTER.c"
+		line 107 in file "MASTER.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -610,7 +610,7 @@ Total ram usage:        0 bytes
 
  *************** function _map3 *****************
  Defined at:
-		line 275 in file "MASTER.c"
+		line 263 in file "MASTER.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -644,7 +644,7 @@ Total ram usage:        2 bytes
 
  *************** function _temperatura2 *****************
  Defined at:
-		line 421 in file "MASTER.c"
+		line 409 in file "MASTER.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -676,7 +676,7 @@ Total ram usage:        0 bytes
 
  *************** function _temperatura *****************
  Defined at:
-		line 409 in file "MASTER.c"
+		line 397 in file "MASTER.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -812,7 +812,7 @@ Total ram usage:        3 bytes
 
  *************** function _map2 *****************
  Defined at:
-		line 264 in file "MASTER.c"
+		line 252 in file "MASTER.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -844,7 +844,7 @@ Total ram usage:        2 bytes
 
  *************** function _map *****************
  Defined at:
-		line 251 in file "MASTER.c"
+		line 239 in file "MASTER.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -978,7 +978,7 @@ Total ram usage:        8 bytes
 
  *************** function _Setup *****************
  Defined at:
-		line 213 in file "MASTER.c"
+		line 201 in file "MASTER.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1231,7 +1231,7 @@ Total ram usage:        4 bytes
 
  *************** function _mandar *****************
  Defined at:
-		line 311 in file "MASTER.c"
+		line 299 in file "MASTER.c"
  Parameters:    Size  Location     Type
 		None
  Auto vars:     Size  Location     Type
@@ -1263,12 +1263,12 @@ MODULE INFORMATION
 
 Module		Function		Class		Link	Load	Size
 usartm.c
-		_usartm        		CODE           	0742	0000	22
+		_usartm        		CODE           	0727	0000	22
 
 usartm.c estimated size: 22
 
 shared
-		__stringtab    		STRING         	06DF	0000	7
+		__stringtab    		STRING         	06C4	0000	7
 		__initialization		CODE           	0015	0000	11
 
 shared estimated size: 18
@@ -1279,14 +1279,14 @@ oscm.c
 oscm.c estimated size: 95
 
 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\Umul16.c
-		___wmul        		CODE           	0658	0000	40
+		___wmul        		CODE           	061F	0000	40
 
 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\Umul16.c estimated size: 40
 
 MASTER.c
 		_map           		CODE           	0339	0000	190
 		_temperatura   		CODE           	052B	0000	80
-		_ISR           		CODE           	05F6	0000	58
+		_ISR           		CODE           	068A	0000	31
 		_temperatura2  		CODE           	05BB	0000	60
 		_main          		CODE           	0023	0000	336
 		_map2          		CODE           	03F6	0000	111
@@ -1294,28 +1294,28 @@ MASTER.c
 		_map3          		CODE           	0172	0000	257
 		_mandar        		CODE           	0272	0000	200
 
-MASTER.c estimated size: 1358
+MASTER.c estimated size: 1331
 
 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\Umul8.c
-		___bmul        		CODE           	072B	0000	24
+		___bmul        		CODE           	0710	0000	24
 
 C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\Umul8.c estimated size: 24
 
 SSP.c
-		_spiWrite      		CODE           	076F	0000	7
-		_spiInit       		CODE           	06A5	0000	31
-		_spiReceiveWait		CODE           	0768	0000	8
-		_spiRead       		CODE           	0757	0000	10
+		_spiWrite      		CODE           	0754	0000	7
+		_spiInit       		CODE           	066C	0000	31
+		_spiReceiveWait		CODE           	074D	0000	8
+		_spiRead       		CODE           	073C	0000	10
 
 SSP.c estimated size: 56
 
 LCDM.c
-		_Lcd_Write_String		CODE           	062F	0000	42
-		_Lcd_Init      		CODE           	0712	0000	26
-		_Lcd_Write_Char		CODE           	06F9	0000	26
-		_Lcd_Cmd       		CODE           	06C3	0000	29
-		_Lcd_Set_Cursor		CODE           	067F	0000	39
-		_Lcd_Port      		CODE           	0775	0000	7
+		_Lcd_Write_String		CODE           	05F6	0000	42
+		_Lcd_Init      		CODE           	06F7	0000	26
+		_Lcd_Write_Char		CODE           	06DE	0000	26
+		_Lcd_Cmd       		CODE           	06A8	0000	29
+		_Lcd_Set_Cursor		CODE           	0646	0000	39
+		_Lcd_Port      		CODE           	075A	0000	7
 
 LCDM.c estimated size: 169
 
