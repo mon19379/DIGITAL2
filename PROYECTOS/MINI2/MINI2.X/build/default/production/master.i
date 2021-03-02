@@ -2708,19 +2708,76 @@ void initOsc(uint8_t IRCF);
 
 #pragma config BOR4V = BOR40V
 #pragma config WRT = OFF
-# 44 "master.c"
+
+
+
+
+
+uint8_t CONT = 0;
+uint8_t SEND = 0;
+uint8_t SEC = 0;
+uint8_t MIN = 0;
+uint8_t H = 0;
+uint8_t DAY = 0;
+uint8_t MONTH = 0;
+uint8_t YEAR = 0;
+uint8_t NADA = 0;
+uint8_t SECU = 0;
+uint8_t SECD = 0;
+uint8_t MINU = 0;
+uint8_t MIND = 0;
+uint8_t HORAU = 0;
+uint8_t HORAD = 0;
+uint8_t DAYU = 0;
+uint8_t DAYD = 0;
+uint8_t MONTHU = 0;
+uint8_t MONTHD = 0;
+uint8_t YEARU = 0;
+uint8_t YEARD = 0;
+uint8_t SU = 0;
+uint8_t SD = 0;
+uint8_t MU = 0;
+uint8_t MD = 0;
+uint8_t HU = 0;
+uint8_t HD = 0;
+uint8_t DU = 0;
+uint8_t DD = 0;
+uint8_t MOU = 0;
+uint8_t MOD = 0;
+uint8_t YU = 0;
+uint8_t YD = 0;
+
+
+
+
+
+
+
 void Setup(void);
+void mandar(void);
+void timeout(void);
+void timein(void);
+void conver(void);
 
 
 
 
 
 void __attribute__((picinterrupt(("")))) ISR(void) {
+    if (INTCONbits.T0IF == 1) {
+        TMR0 = 236;
+        CONT++;
+        INTCONbits.T0IF = 0;
+    }
+    if (PIR1bits.TXIF == 1) {
+        mandar();
+        SEND++;
+        PIE1bits.TXIE = 0;
 
 
 
 
-
+    }
 }
 
 
@@ -2729,10 +2786,17 @@ void __attribute__((picinterrupt(("")))) ISR(void) {
 void main(void) {
 
     Setup();
-# 74 "master.c"
-    while (1) {
-# 83 "master.c"
+    timeout();
+    if (CONT > 20) {
+        ADCON0bits.GO_nDONE = 1;
+        CONT = 0;
+        PIE1bits.TXIE = 1;
+# 125 "master.c"
+        while (1) {
+# 134 "master.c"
+        }
     }
+
 }
 
 
@@ -2759,6 +2823,153 @@ void Setup(void) {
     PIR1bits.TXIF = 0;
     PIE1bits.TXIE = 1;
 
+
+
+
+
+}
+
+
+
+
+
+void mandar(void) {
+    switch (SEND) {
+
+        case 0:
+            TXREG = SU;
+            break;
+        case 1:
+            TXREG = SD;
+            break;
+
+        case 2:
+            TXREG = 0x3A;
+            break;
+
+        case 3:
+            TXREG = MU;
+            break;
+        case 4:
+            TXREG = MD;
+            break;
+        case 5:
+            TXREG = 0x3A;
+            break;
+        case 6:
+            TXREG = HU;
+            break;
+
+        case 7:
+            TXREG = HD;
+            break;
+
+        case 8:
+            TXREG = 0x20;
+            break;
+
+        case 9:
+            TXREG = DAYU;
+            break;
+
+        case 10:
+            TXREG = DAYD;
+            break;
+
+        case 11:
+            TXREG = 0x2F;
+            break;
+        case 12:
+            TXREG = MOU;
+            break;
+
+        case 13:
+            TXREG = MOD;
+            break;
+        case 14:
+            TXREG = 0x2F;
+            break;
+
+        case 15:
+            TXREG = YU;
+            break;
+
+        case 16:
+            TXREG = YD;
+            break;
+
+        case 17:
+            TXREG = 0x0D;
+            SEND = 0;
+            break;
+    }
+}
+
+void timeout(void) {
+    I2C_Master_Start();
+    I2C_Master_Write(0xD0);
+    I2C_Master_Write(0);
+    I2C_Master_Write(0b00000000);
+    I2C_Master_Write(0b00000011);
+    I2C_Master_Write(0b01010011);
+    I2C_Master_Write(1);
+    I2C_Master_Write(0x20);
+    I2C_Master_Write(0x10);
+    I2C_Master_Write(0x21);
+    I2C_Master_Stop();
+
+
+
+
+}
+
+void timein(void) {
+    I2C_Master_Start();
+    I2C_Master_Write(0xD1);
+    I2C_Master_Write(0);
+
+    I2C_Master_Start();
+    I2C_Master_Write(0xD1);
+    SEC = I2C_Master_Read(0);
+    MIN = I2C_Master_Read(0);
+    H = I2C_Master_Read(0);
+    NADA = I2C_Master_Read(0);
+    DAY = I2C_Master_Read(0);
+    MONTH = I2C_Master_Read(0);
+    YEAR = I2C_Master_Read(1);
+    I2C_Master_Stop();
+
+
+
+}
+
+void conver(void) {
+    SECU = (SEC & 0b00001111);
+    SECD = ((SEC & 0b00001111) >> 4);
+    MINU = (MIN & 0b00001111);
+    MIND = ((MIN & 0b00001111) >> 4);
+    HORAU = (H & 0b00001111);
+    HORAD = ((H & 0b00001111) >> 4);
+    DAYU = (DAY & 0b00001111);
+    DAYD = ((DAY & 0b00001111) >> 4);
+    MONTHU = (MONTH & 0b00001111);
+    MONTHD = ((MONTH & 0b00001111) >> 4);
+    YEARU = (YEAR & 0b00001111);
+    YEARD = ((YEAR & 0b00001111) >> 4);
+
+
+    SU = (SECU + 0x30);
+    SD = (SECD + 0x30);
+    MU = (MINU + 0x30);
+    MD = (MIND + 0x30);
+    HU = (HORAU + 0x30);
+    HD = (HORAD + 0x30);
+    DU = (DAYU + 0x30);
+    DD = (DAYD + 0x30);
+    MOU = (MONTHU + 0x30);
+    MOD = (MONTHD + 0x30);
+    YU = (YEARU + 0x30);
+    YD = (YEARD + 0x30);
 
 
 

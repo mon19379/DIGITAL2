@@ -11,21 +11,30 @@
 # All addresses and the length are given in unqualified hexadecimal
 # in delta units.  Any other numeric values are decimal.
 %PSECTS
-$C:\Users\franc\AppData\Local\Temp\s9uo.o
+$C:\Users\franc\AppData\Local\Temp\siuk.o
 reset_vec CODE 0 0 0 3 2
-end_init CODE 0 C C 3 2
+end_init CODE 0 12 12 3 2
 config CONFIG 4 2007 2007 2 2
 $dist/default/production\MINI2.X.production.o
-cinit CODE 0 F F 4 2
-text1 CODE 0 10F 10F 33 2
-text2 CODE 0 7B 7B 5C 2
-text3 CODE 0 D7 D7 38 2
-text4 CODE 0 13 13 68 2
-text5 CODE 0 14B 14B 7 2
-maintext CODE 0 142 142 9 2
-cstackCOMMON COMMON 1 70 70 B 1
-cstackBANK0 BANK0 1 20 20 D 1
-intentry CODE 0 4 4 8 2
+cinit CODE 0 15 15 13 2
+text1 CODE 0 BB BB 6C 2
+text2 CODE 0 2A9 2A9 A 2
+text3 CODE 0 2B3 2B3 9 2
+text4 CODE 0 2BC 2BC 9 2
+text5 CODE 0 29C 29C D 2
+text6 CODE 0 227 227 33 2
+text7 CODE 0 18F 18F 5E 2
+text8 CODE 0 1ED 1ED 3A 2
+text9 CODE 0 127 127 68 2
+text10 CODE 0 25A 25A 27 2
+text11 CODE 0 28 28 93 2
+maintext CODE 0 281 281 1B 2
+cstackCOMMON COMMON 1 76 76 6 1
+cstackBANK0 BANK0 1 3B 3B 16 1
+intentry CODE 0 4 4 E 2
+bssBANK0 BANK0 1 20 20 1B 1
+clrtext CODE 0 2C5 2C5 8 2
+bssCOMMON COMMON 1 70 70 6 1
 config CONFIG 4 2007 2007 2 2
 # %UNUSED Section
 # This section enumerates the unused ranges of each CLASS. Each entry
@@ -33,32 +42,32 @@ config CONFIG 4 2007 2007 2 2
 #    <class name> <range> <delta>
 # Addresses given in the range are in hexadecimal and units of delta.
 %UNUSED
-RAM 2D-6F 1
+RAM 51-6F 1
 RAM A0-EF 1
 RAM 110-16F 1
 RAM 190-1EF 1
-BANK0 2D-6F 1
+BANK0 51-6F 1
 BANK1 A0-EF 1
 BANK2 110-16F 1
 BANK3 190-1EF 1
 CONST 3-3 2
-CONST 152-1FFF 2
+CONST 2CD-1FFF 2
 ENTRY 3-3 2
-ENTRY 152-1FFF 2
+ENTRY 2CD-1FFF 2
 IDLOC 2000-2003 2
 STACK 110-16F 1
 CODE 3-3 2
-CODE 152-1FFF 2
+CODE 2CD-1FFF 2
 SFR0 0-1F 1
 SFR1 80-9F 1
 SFR2 100-10F 1
 SFR3 180-18F 1
-COMMON 7B-7D 1
+COMMON 7C-7D 1
 EEDATA 2100-21FF 2
 STRCODE 3-3 2
-STRCODE 152-1FFF 2
+STRCODE 2CD-1FFF 2
 STRING 3-3 2
-STRING 152-1FFF 2
+STRING 2CD-1FFF 2
 # %LINETAB Section
 # This section enumerates the file/line to address mappings.
 # The beginning of the section is indicated by %LINETAB.
@@ -73,112 +82,212 @@ STRING 152-1FFF 2
 # All other numeric values are in decimal.
 %LINETAB
 $dist/default/production\MINI2.X.production.o
-F cinit CODE >966:C:\Users\franc\AppData\Local\Temp\s9uo.s
-F cinit CODE >969:C:\Users\franc\AppData\Local\Temp\s9uo.s
-F cinit CODE >975:C:\Users\franc\AppData\Local\Temp\s9uo.s
-F cinit CODE >977:C:\Users\franc\AppData\Local\Temp\s9uo.s
-10 cinit CODE >978:C:\Users\franc\AppData\Local\Temp\s9uo.s
-4 intentry CODE >50:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-14B text5 CODE >50:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-14B text5 CODE >56:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-13 text4 CODE >5:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
-13 text4 CODE >13:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
-1D text4 CODE >14:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
-25 text4 CODE >15:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
-27 text4 CODE >16:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
-28 text4 CODE >17:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
-31 text4 CODE >18:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
-35 text4 CODE >16:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
-39 text4 CODE >21:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
-42 text4 CODE >22:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
-54 text4 CODE >23:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
-62 text4 CODE >24:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
-63 text4 CODE >26:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
-6C text4 CODE >27:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
-72 text4 CODE >29:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
-7A text4 CODE >30:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
-D7 text3 CODE >16:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\I2C.c
-D7 text3 CODE >18:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\I2C.c
-DB text3 CODE >19:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\I2C.c
-DE text3 CODE >20:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\I2C.c
-10B text3 CODE >21:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\I2C.c
-10C text3 CODE >22:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\I2C.c
-10D text3 CODE >23:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\I2C.c
-10E text3 CODE >24:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\I2C.c
-7B text2 CODE >7:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-7C text2 CODE >9:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-7D text2 CODE >11:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-7D text2 CODE >12:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-80 text2 CODE >13:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-81 text2 CODE >14:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-82 text2 CODE >16:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-83 text2 CODE >18:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-83 text2 CODE >19:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-86 text2 CODE >20:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-87 text2 CODE >21:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-88 text2 CODE >22:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-89 text2 CODE >24:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-89 text2 CODE >25:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-8C text2 CODE >26:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-8D text2 CODE >27:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-8E text2 CODE >28:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-8F text2 CODE >30:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-8F text2 CODE >31:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-92 text2 CODE >32:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-93 text2 CODE >33:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-94 text2 CODE >34:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-95 text2 CODE >36:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-95 text2 CODE >37:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-98 text2 CODE >38:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-99 text2 CODE >39:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-9A text2 CODE >40:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-9B text2 CODE >42:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-9B text2 CODE >43:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-9E text2 CODE >44:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-9F text2 CODE >45:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-A0 text2 CODE >46:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-A1 text2 CODE >49:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-A1 text2 CODE >50:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-A4 text2 CODE >51:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-A5 text2 CODE >52:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-A6 text2 CODE >53:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-A7 text2 CODE >55:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-A7 text2 CODE >56:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-AA text2 CODE >57:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-AB text2 CODE >58:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-AC text2 CODE >59:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-AD text2 CODE >64:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-AD text2 CODE >65:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-B0 text2 CODE >66:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-B1 text2 CODE >67:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-B2 text2 CODE >68:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-B3 text2 CODE >70:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-D5 text2 CODE >72:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-D6 text2 CODE >75:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OSC.c
-10F text1 CODE >89:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-10F text1 CODE >90:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-11E text1 CODE >91:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-124 text1 CODE >92:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-127 text1 CODE >93:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-128 text1 CODE >94:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-12B text1 CODE >95:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-12C text1 CODE >96:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-12F text1 CODE >97:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-130 text1 CODE >98:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-131 text1 CODE >99:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-132 text1 CODE >100:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-133 text1 CODE >102:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-136 text1 CODE >103:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-137 text1 CODE >104:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-139 text1 CODE >105:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-13A text1 CODE >106:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-13B text1 CODE >107:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-13E text1 CODE >108:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-141 text1 CODE >114:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-142 maintext CODE >61:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-142 maintext CODE >63:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-147 maintext CODE >74:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
-147 maintext CODE >83:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\master.c
+15 cinit CODE >1013:C:\Users\franc\AppData\Local\Temp\siuk.s
+15 cinit CODE >1016:C:\Users\franc\AppData\Local\Temp\siuk.s
+15 cinit CODE >1141:C:\Users\franc\AppData\Local\Temp\siuk.s
+16 cinit CODE >1142:C:\Users\franc\AppData\Local\Temp\siuk.s
+17 cinit CODE >1143:C:\Users\franc\AppData\Local\Temp\siuk.s
+18 cinit CODE >1144:C:\Users\franc\AppData\Local\Temp\siuk.s
+19 cinit CODE >1145:C:\Users\franc\AppData\Local\Temp\siuk.s
+1A cinit CODE >1146:C:\Users\franc\AppData\Local\Temp\siuk.s
+1B cinit CODE >1149:C:\Users\franc\AppData\Local\Temp\siuk.s
+1C cinit CODE >1150:C:\Users\franc\AppData\Local\Temp\siuk.s
+1D cinit CODE >1151:C:\Users\franc\AppData\Local\Temp\siuk.s
+1E cinit CODE >1152:C:\Users\franc\AppData\Local\Temp\siuk.s
+1F cinit CODE >1153:C:\Users\franc\AppData\Local\Temp\siuk.s
+24 cinit CODE >1159:C:\Users\franc\AppData\Local\Temp\siuk.s
+24 cinit CODE >1161:C:\Users\franc\AppData\Local\Temp\siuk.s
+25 cinit CODE >1162:C:\Users\franc\AppData\Local\Temp\siuk.s
+4 intentry CODE >89:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+28 text11 CODE >173:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+28 text11 CODE >174:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+29 text11 CODE >177:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+2D text11 CODE >178:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+2E text11 CODE >180:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+32 text11 CODE >181:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+33 text11 CODE >184:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+37 text11 CODE >185:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+38 text11 CODE >188:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+3C text11 CODE >189:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+3D text11 CODE >191:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+41 text11 CODE >192:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+42 text11 CODE >197:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+46 text11 CODE >198:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+47 text11 CODE >201:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+4B text11 CODE >202:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+4C text11 CODE >205:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+50 text11 CODE >206:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+51 text11 CODE >209:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+55 text11 CODE >210:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+56 text11 CODE >213:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+5A text11 CODE >214:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+5B text11 CODE >217:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+5F text11 CODE >218:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+60 text11 CODE >220:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+64 text11 CODE >221:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+65 text11 CODE >224:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+69 text11 CODE >225:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+6A text11 CODE >231:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+6E text11 CODE >232:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+6F text11 CODE >235:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+73 text11 CODE >236:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+74 text11 CODE >239:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+78 text11 CODE >240:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+79 text11 CODE >241:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+7A text11 CODE >242:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+BA text11 CODE >243:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+25A text10 CODE >89:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+25A text10 CODE >90:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+25E text10 CODE >91:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+260 text10 CODE >92:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+264 text10 CODE >93:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+265 text10 CODE >95:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+269 text10 CODE >96:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+26E text10 CODE >97:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+272 text10 CODE >98:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+275 text10 CODE >104:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+127 text9 CODE >5:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
+127 text9 CODE >13:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
+131 text9 CODE >14:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
+139 text9 CODE >15:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
+13B text9 CODE >16:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
+13C text9 CODE >17:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
+145 text9 CODE >18:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
+149 text9 CODE >16:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
+14D text9 CODE >21:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
+156 text9 CODE >22:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
+168 text9 CODE >23:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
+176 text9 CODE >24:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
+177 text9 CODE >26:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
+180 text9 CODE >27:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
+186 text9 CODE >29:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
+18E text9 CODE >30:C:\Program Files\Microchip\xc8\v2.20\pic\sources\c90\common\__lldiv.c
+1ED text8 CODE >16:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+1ED text8 CODE >18:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+1F1 text8 CODE >19:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+1F4 text8 CODE >20:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+223 text8 CODE >21:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+224 text8 CODE >22:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+225 text8 CODE >23:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+226 text8 CODE >24:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+18F text7 CODE >7:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+192 text7 CODE >9:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+193 text7 CODE >11:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+193 text7 CODE >12:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+196 text7 CODE >13:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+197 text7 CODE >14:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+198 text7 CODE >16:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+199 text7 CODE >18:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+199 text7 CODE >19:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+19C text7 CODE >20:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+19D text7 CODE >21:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+19E text7 CODE >22:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+19F text7 CODE >24:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+19F text7 CODE >25:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1A2 text7 CODE >26:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1A3 text7 CODE >27:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1A4 text7 CODE >28:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1A5 text7 CODE >30:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1A5 text7 CODE >31:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1A8 text7 CODE >32:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1A9 text7 CODE >33:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1AA text7 CODE >34:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1AB text7 CODE >36:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1AB text7 CODE >37:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1AE text7 CODE >38:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1AF text7 CODE >39:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1B0 text7 CODE >40:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1B1 text7 CODE >42:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1B1 text7 CODE >43:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1B4 text7 CODE >44:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1B5 text7 CODE >45:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1B6 text7 CODE >46:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1B7 text7 CODE >49:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1B7 text7 CODE >50:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1BA text7 CODE >51:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1BB text7 CODE >52:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1BC text7 CODE >53:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1BD text7 CODE >55:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1BD text7 CODE >56:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1C0 text7 CODE >57:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1C1 text7 CODE >58:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1C2 text7 CODE >59:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1C3 text7 CODE >64:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1C3 text7 CODE >65:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1C6 text7 CODE >66:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1C7 text7 CODE >67:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1C8 text7 CODE >68:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1C9 text7 CODE >70:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1EB text7 CODE >72:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+1EC text7 CODE >75:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
+227 text6 CODE >142:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+227 text6 CODE >143:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+236 text6 CODE >144:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+23C text6 CODE >145:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+23F text6 CODE >146:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+240 text6 CODE >147:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+243 text6 CODE >148:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+244 text6 CODE >149:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+247 text6 CODE >150:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+248 text6 CODE >151:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+249 text6 CODE >152:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+24A text6 CODE >153:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+24B text6 CODE >155:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+24E text6 CODE >156:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+24F text6 CODE >157:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+251 text6 CODE >158:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+252 text6 CODE >159:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+253 text6 CODE >160:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+256 text6 CODE >161:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+259 text6 CODE >167:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+29C text5 CODE >32:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+29C text5 CODE >34:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+2A8 text5 CODE >35:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+2BC text4 CODE >39:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+2BC text4 CODE >41:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+2C1 text4 CODE >42:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+2C4 text4 CODE >43:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+2B3 text3 CODE >55:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+2B3 text3 CODE >57:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+2B8 text3 CODE >58:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+2BB text3 CODE >59:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+2A9 text2 CODE >65:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+2A9 text2 CODE >67:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+2AE text2 CODE >68:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+2B2 text2 CODE >69:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
+BB text1 CODE >245:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+BB text1 CODE >246:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+C0 text1 CODE >247:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+CB text1 CODE >248:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+D5 text1 CODE >249:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+DF text1 CODE >250:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+EA text1 CODE >251:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+F5 text1 CODE >252:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+100 text1 CODE >253:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+10B text1 CODE >254:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+116 text1 CODE >255:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+121 text1 CODE >256:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+126 text1 CODE >261:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+281 maintext CODE >109:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+281 maintext CODE >111:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+286 maintext CODE >112:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+28B maintext CODE >113:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+291 maintext CODE >114:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+294 maintext CODE >115:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+295 maintext CODE >116:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+298 maintext CODE >125:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+298 maintext CODE >134:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+299 maintext CODE >137:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+2C5 clrtext CODE >1128:C:\Users\franc\AppData\Local\Temp\siuk.s
+2C5 clrtext CODE >1129:C:\Users\franc\AppData\Local\Temp\siuk.s
+2C6 clrtext CODE >1130:C:\Users\franc\AppData\Local\Temp\siuk.s
+2C6 clrtext CODE >1131:C:\Users\franc\AppData\Local\Temp\siuk.s
+2C7 clrtext CODE >1132:C:\Users\franc\AppData\Local\Temp\siuk.s
+2C8 clrtext CODE >1133:C:\Users\franc\AppData\Local\Temp\siuk.s
+2C9 clrtext CODE >1134:C:\Users\franc\AppData\Local\Temp\siuk.s
+2CA clrtext CODE >1135:C:\Users\franc\AppData\Local\Temp\siuk.s
+2CB clrtext CODE >1136:C:\Users\franc\AppData\Local\Temp\siuk.s
+2CC clrtext CODE >1137:C:\Users\franc\AppData\Local\Temp\siuk.s
 # %SYMTAB Section
 # An enumeration of all symbols in the program.
 # The beginning of the section is indicated by %SYMTAB.
@@ -191,29 +300,54 @@ D6 text2 CODE >75:C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTO 1\MINI2.X\OS
 # was defined in a psect then <psect> will be "-". File-name
 # is the name of the object file in which the symbol was defined.
 %SYMTAB
+_H 3A 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
 ___latbits 2 0 ABS 0 - dist/default/production\MINI2.X.production.o
-__Hspace_0 152 0 ABS 0 - -
-__Hspace_1 7B 0 ABS 0 - -
+__Hspace_0 2CD 0 ABS 0 - -
+__Hspace_1 7C 0 ABS 0 - -
 __Hspace_2 0 0 ABS 0 - -
 __Hspace_3 0 0 ABS 0 - -
 __Hspace_4 4010 0 ABS 0 - -
-I2C_Master_Init@c 25 0 BANK0 1 cstackBANK0 dist/default/production\MINI2.X.production.o
+_timeout 176 0 CODE 0 text1 dist/default/production\MINI2.X.production.o
+I2C_Master_Init@c 49 0 BANK0 1 cstackBANK0 dist/default/production\MINI2.X.production.o
 __Heeprom_data 0 0 EEDATA 3 eeprom_data -
+_DD 24 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
+_DU 25 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
+_HD 26 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
+_HU 27 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
+_MD 28 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
+_MU 29 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
+_SD 2A 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
+_SU 2B 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
+_YD 20 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
+_YU 21 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
 __Hstrings 0 0 ABS 0 strings -
+_CONT 75 0 COMMON 1 bssCOMMON dist/default/production\MINI2.X.production.o
+_DAYD 70 0 COMMON 1 bssCOMMON dist/default/production\MINI2.X.production.o
+_DAYU 71 0 COMMON 1 bssCOMMON dist/default/production\MINI2.X.production.o
+_MIND 32 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
+_MINU 33 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
+_NADA 36 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
 _PEIE 5E 0 ABS 0 - dist/default/production\MINI2.X.production.o
-___sp 0 0 STACK 2 stack C:\Users\franc\AppData\Local\Temp\s9uo.o
-_main 284 0 CODE 0 maintext dist/default/production\MINI2.X.production.o
+_SECD 34 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
+_SECU 35 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
+_SEND 74 0 COMMON 1 bssCOMMON dist/default/production\MINI2.X.production.o
+_TMR0 1 0 ABS 0 - dist/default/production\MINI2.X.production.o
+_YEAR 37 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
+___sp 0 0 STACK 2 stack C:\Users\franc\AppData\Local\Temp\siuk.o
+_main 502 0 CODE 0 maintext dist/default/production\MINI2.X.production.o
 btemp 7E 0 ABS 0 - dist/default/production\MINI2.X.production.o
-start 18 0 CODE 0 init C:\Users\franc\AppData\Local\Temp\s9uo.o
+start 24 0 CODE 0 init C:\Users\franc\AppData\Local\Temp\siuk.o
 __size_of_main 0 0 ABS 0 - dist/default/production\MINI2.X.production.o
 __size_of___lldiv 0 0 ABS 0 - dist/default/production\MINI2.X.production.o
+__HbssCOMMON 0 0 ABS 0 bssCOMMON -
 __Hpowerup 0 0 CODE 0 powerup -
-intlevel0 0 0 ENTRY 0 functab C:\Users\franc\AppData\Local\Temp\s9uo.o
-intlevel1 0 0 ENTRY 0 functab C:\Users\franc\AppData\Local\Temp\s9uo.o
-intlevel2 0 0 ENTRY 0 functab C:\Users\franc\AppData\Local\Temp\s9uo.o
-intlevel3 0 0 ENTRY 0 functab C:\Users\franc\AppData\Local\Temp\s9uo.o
-intlevel4 0 0 ENTRY 0 functab C:\Users\franc\AppData\Local\Temp\s9uo.o
-intlevel5 0 0 ENTRY 0 functab C:\Users\franc\AppData\Local\Temp\s9uo.o
+intlevel0 0 0 ENTRY 0 functab C:\Users\franc\AppData\Local\Temp\siuk.o
+intlevel1 0 0 ENTRY 0 functab C:\Users\franc\AppData\Local\Temp\siuk.o
+intlevel2 0 0 ENTRY 0 functab C:\Users\franc\AppData\Local\Temp\siuk.o
+intlevel3 0 0 ENTRY 0 functab C:\Users\franc\AppData\Local\Temp\siuk.o
+intlevel4 0 0 ENTRY 0 functab C:\Users\franc\AppData\Local\Temp\siuk.o
+intlevel5 0 0 ENTRY 0 functab C:\Users\franc\AppData\Local\Temp\siuk.o
+__LbssCOMMON 0 0 ABS 0 bssCOMMON -
 _OSCCONbits 8F 0 ABS 0 - dist/default/production\MINI2.X.production.o
 wtemp0 7E 0 ABS 0 - dist/default/production\MINI2.X.production.o
 __Hfunctab 0 0 ENTRY 0 functab -
@@ -221,31 +355,36 @@ __Hclrtext 0 0 ABS 0 clrtext -
 _ANSELH 189 0 ABS 0 - dist/default/production\MINI2.X.production.o
 __size_of_initOsc 0 0 ABS 0 - dist/default/production\MINI2.X.production.o
 __Lmaintext 0 0 ABS 0 maintext -
-__end_of___lldiv F6 0 CODE 0 text4 dist/default/production\MINI2.X.production.o
+__end_of___lldiv 31E 0 CODE 0 text9 dist/default/production\MINI2.X.production.o
 _OPTION_REG 81 0 ABS 0 - dist/default/production\MINI2.X.production.o
-___stackhi 0 0 ABS 0 - C:\Users\franc\AppData\Local\Temp\s9uo.o
-___stacklo 0 0 ABS 0 - C:\Users\franc\AppData\Local\Temp\s9uo.o
+___stackhi 0 0 ABS 0 - C:\Users\franc\AppData\Local\Temp\siuk.o
+___stacklo 0 0 ABS 0 - C:\Users\franc\AppData\Local\Temp\siuk.o
 _BAUDCTLbits 187 0 ABS 0 - dist/default/production\MINI2.X.production.o
 __size_of_Setup 0 0 ABS 0 - dist/default/production\MINI2.X.production.o
-___lldiv@counter 24 0 BANK0 1 cstackBANK0 dist/default/production\MINI2.X.production.o
-start_initialization 1E 0 CODE 0 cinit dist/default/production\MINI2.X.production.o
+_MONTHD 2E 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
+_MONTHU 2F 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
+___lldiv@counter 48 0 BANK0 1 cstackBANK0 dist/default/production\MINI2.X.production.o
+start_initialization 2A 0 CODE 0 cinit dist/default/production\MINI2.X.production.o
 _TRISCbits 87 0 ABS 0 - dist/default/production\MINI2.X.production.o
-___lldiv@dividend 76 0 COMMON 1 cstackCOMMON dist/default/production\MINI2.X.production.o
+___lldiv@dividend 3F 0 BANK0 1 cstackBANK0 dist/default/production\MINI2.X.production.o
+__end_of_mandar 176 0 CODE 0 text11 dist/default/production\MINI2.X.production.o
+clear_ram0 58A 0 CODE 0 clrtext dist/default/production\MINI2.X.production.o
 _SPBRGH 9A 0 ABS 0 - dist/default/production\MINI2.X.production.o
-__pcstackBANK0 20 0 BANK0 1 cstackBANK0 dist/default/production\MINI2.X.production.o
+__pcstackBANK0 3B 0 BANK0 1 cstackBANK0 dist/default/production\MINI2.X.production.o
 _SSPADD 93 0 ABS 0 - dist/default/production\MINI2.X.production.o
 _SSPBUF 13 0 ABS 0 - dist/default/production\MINI2.X.production.o
 _SSPCON 14 0 ABS 0 - dist/default/production\MINI2.X.production.o
 _TRISC3 43B 0 ABS 0 - dist/default/production\MINI2.X.production.o
 _TRISC4 43C 0 ABS 0 - dist/default/production\MINI2.X.production.o
-__end_of_initOsc 1AE 0 CODE 0 text2 dist/default/production\MINI2.X.production.o
-___int_sp 0 0 STACK 2 stack C:\Users\franc\AppData\Local\Temp\s9uo.o
+__end_of_initOsc 3DA 0 CODE 0 text7 dist/default/production\MINI2.X.production.o
+___int_sp 0 0 STACK 2 stack C:\Users\franc\AppData\Local\Temp\siuk.o
 __Hbank0 0 0 ABS 0 bank0 -
 __Hbank1 0 0 ABS 0 bank1 -
 __Hbank2 0 0 ABS 0 bank2 -
 __Hbank3 0 0 ABS 0 bank3 -
-__Hcinit 26 0 CODE 0 cinit -
+__Hcinit 50 0 CODE 0 cinit -
 __Hstack 0 0 STACK 2 stack -
+I2C_Master_Write@d 3B 0 BANK0 1 cstackBANK0 dist/default/production\MINI2.X.production.o
 __Hmaintext 0 0 ABS 0 maintext -
 __Hcommon 0 0 ABS 0 common -
 __Hconfig 4012 0 CONFIG 4 config -
@@ -253,12 +392,12 @@ __Lbank0 0 0 ABS 0 bank0 -
 __Lbank1 0 0 ABS 0 bank1 -
 __Lbank2 0 0 ABS 0 bank2 -
 __Lbank3 0 0 ABS 0 bank3 -
-__Lcinit 1E 0 CODE 0 cinit -
+__Lcinit 2A 0 CODE 0 cinit -
 __Lstack 0 0 STACK 2 stack -
 _INTCONbits B 0 ABS 0 - dist/default/production\MINI2.X.production.o
 __Habs1 0 0 ABS 0 abs1 -
 __Hcode 0 0 ABS 0 code -
-__Hinit 18 0 CODE 0 init -
+__Hinit 24 0 CODE 0 init -
 __Hsfr0 0 0 ABS 0 sfr0 -
 __Hsfr1 0 0 ABS 0 sfr1 -
 __Hsfr2 0 0 ABS 0 sfr2 -
@@ -266,70 +405,102 @@ __Hsfr3 0 0 ABS 0 sfr3 -
 __Htext 0 0 ABS 0 text -
 __Labs1 0 0 ABS 0 abs1 -
 __Lcode 0 0 ABS 0 code -
-__Linit 18 0 CODE 0 init -
+__Linit 24 0 CODE 0 init -
 __Lsfr0 0 0 ABS 0 sfr0 -
 __Lsfr1 0 0 ABS 0 sfr1 -
 __Lsfr2 0 0 ABS 0 sfr2 -
 __Lsfr3 0 0 ABS 0 sfr3 -
 __Ltext 0 0 ABS 0 text -
+__size_of_timeout 0 0 ABS 0 - dist/default/production\MINI2.X.production.o
 __LcstackBANK0 0 0 ABS 0 cstackBANK0 -
 __HcstackCOMMON 0 0 ABS 0 cstackCOMMON -
+_DAY 39 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
 _GIE 5F 0 ABS 0 - dist/default/production\MINI2.X.production.o
-_ISR 296 0 CODE 0 text5 dist/default/production\MINI2.X.production.o
-__S0 152 0 ABS 0 - -
-__S1 7B 0 ABS 0 - -
+_ISR 4B4 0 CODE 0 text10 dist/default/production\MINI2.X.production.o
+_MIN 72 0 COMMON 1 bssCOMMON dist/default/production\MINI2.X.production.o
+_MOD 22 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
+_MOU 23 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
+_SEC 73 0 COMMON 1 bssCOMMON dist/default/production\MINI2.X.production.o
+__S0 2CD 0 ABS 0 - -
+__S1 7C 0 ABS 0 - -
 __S2 0 0 ABS 0 - -
 __S3 0 0 ABS 0 - -
 saved_w 7E 0 ABS 0 - dist/default/production\MINI2.X.production.o
-__end_of_ISR 2A4 0 CODE 0 text5 dist/default/production\MINI2.X.production.o
+_I2C_Master_Start 578 0 CODE 0 text4 dist/default/production\MINI2.X.production.o
+_I2C_Master_Write 552 0 CODE 0 text2 dist/default/production\MINI2.X.production.o
+__end_of_ISR 502 0 CODE 0 text10 dist/default/production\MINI2.X.production.o
 __Lintentry 8 0 CODE 0 intentry -
-___lldiv@divisor 72 0 COMMON 1 cstackCOMMON dist/default/production\MINI2.X.production.o
-reset_vec 0 0 CODE 0 reset_vec C:\Users\franc\AppData\Local\Temp\s9uo.o
-initOsc@IRCF 74 0 COMMON 1 cstackCOMMON dist/default/production\MINI2.X.production.o
+___lldiv@divisor 3B 0 BANK0 1 cstackBANK0 dist/default/production\MINI2.X.production.o
+reset_vec 0 0 CODE 0 reset_vec C:\Users\franc\AppData\Local\Temp\siuk.o
+initOsc@IRCF 3D 0 BANK0 1 cstackBANK0 dist/default/production\MINI2.X.production.o
+__LbssBANK0 0 0 ABS 0 bssBANK0 -
 _RCSTAbits 18 0 ABS 0 - dist/default/production\MINI2.X.production.o
 _PIE1bits 8C 0 ABS 0 - dist/default/production\MINI2.X.production.o
-___lldiv 26 0 CODE 0 text4 dist/default/production\MINI2.X.production.o
-__pmaintext 284 0 CODE 0 maintext dist/default/production\MINI2.X.production.o
+_mandar 50 0 CODE 0 text11 dist/default/production\MINI2.X.production.o
+__ptext10 4B4 0 CODE 0 text10 dist/default/production\MINI2.X.production.o
+__ptext11 50 0 CODE 0 text11 dist/default/production\MINI2.X.production.o
+___lldiv 24E 0 CODE 0 text9 dist/default/production\MINI2.X.production.o
+__pmaintext 502 0 CODE 0 maintext dist/default/production\MINI2.X.production.o
 __Lcommon 0 0 ABS 0 common -
 __Lconfig 0 0 CONFIG 4 config -
-__end_of_I2C_Master_Init 21E 0 CODE 0 text3 dist/default/production\MINI2.X.production.o
+__end_of_timeout 24E 0 CODE 0 text1 dist/default/production\MINI2.X.production.o
+__end_of_I2C_Master_Init 44E 0 CODE 0 text8 dist/default/production\MINI2.X.production.o
+__end_of_I2C_Master_Stop 578 0 CODE 0 text3 dist/default/production\MINI2.X.production.o
+__end_of_I2C_Master_Wait 552 0 CODE 0 text5 dist/default/production\MINI2.X.production.o
+_ADCON0bits 1F 0 ABS 0 - dist/default/production\MINI2.X.production.o
+__end_of_I2C_Master_Start 58A 0 CODE 0 text4 dist/default/production\MINI2.X.production.o
 __Lspace_0 0 0 ABS 0 - -
 __Lspace_1 0 0 ABS 0 - -
 __Lspace_2 0 0 ABS 0 - -
 __Lspace_3 0 0 ABS 0 - -
 __Lspace_4 0 0 ABS 0 - -
+__end_of_I2C_Master_Write 566 0 CODE 0 text2 dist/default/production\MINI2.X.production.o
+__pbssCOMMON 70 0 COMMON 1 bssCOMMON dist/default/production\MINI2.X.production.o
+__size_of_mandar 0 0 ABS 0 - dist/default/production\MINI2.X.production.o
 __HcstackBANK0 0 0 ABS 0 cstackBANK0 -
 _PIR1bits C 0 ABS 0 - dist/default/production\MINI2.X.production.o
-__Lend_init 18 0 CODE 0 end_init -
+__Lend_init 24 0 CODE 0 end_init -
 __LcstackCOMMON 0 0 ABS 0 cstackCOMMON -
-end_of_initialization 1E 0 CODE 0 cinit dist/default/production\MINI2.X.production.o
-__Hintentry 18 0 CODE 0 intentry -
+__size_of_I2C_Master_Start 0 0 ABS 0 - dist/default/production\MINI2.X.production.o
+__size_of_I2C_Master_Write 0 0 ABS 0 - dist/default/production\MINI2.X.production.o
+end_of_initialization 48 0 CODE 0 cinit dist/default/production\MINI2.X.production.o
+__Hintentry 24 0 CODE 0 intentry -
 __Lstrings 0 0 ABS 0 strings -
-?___lldiv 72 0 COMMON 1 cstackCOMMON dist/default/production\MINI2.X.production.o
+?___lldiv 3B 0 BANK0 1 cstackBANK0 dist/default/production\MINI2.X.production.o
 __Hreset_vec 6 0 CODE 0 reset_vec -
-_initOsc F6 0 CODE 0 text2 dist/default/production\MINI2.X.production.o
+__HbssBANK0 0 0 ABS 0 bssBANK0 -
+_initOsc 31E 0 CODE 0 text7 dist/default/production\MINI2.X.production.o
 _SSPCON2bits 91 0 ABS 0 - dist/default/production\MINI2.X.production.o
-__ptext1 21E 0 CODE 0 text1 dist/default/production\MINI2.X.production.o
-__ptext2 F6 0 CODE 0 text2 dist/default/production\MINI2.X.production.o
-__ptext3 1AE 0 CODE 0 text3 dist/default/production\MINI2.X.production.o
-__ptext4 26 0 CODE 0 text4 dist/default/production\MINI2.X.production.o
-__ptext5 296 0 CODE 0 text5 dist/default/production\MINI2.X.production.o
+__ptext1 176 0 CODE 0 text1 dist/default/production\MINI2.X.production.o
+__ptext2 552 0 CODE 0 text2 dist/default/production\MINI2.X.production.o
+__ptext3 566 0 CODE 0 text3 dist/default/production\MINI2.X.production.o
+__ptext4 578 0 CODE 0 text4 dist/default/production\MINI2.X.production.o
+__ptext5 538 0 CODE 0 text5 dist/default/production\MINI2.X.production.o
+__ptext6 44E 0 CODE 0 text6 dist/default/production\MINI2.X.production.o
+__ptext7 31E 0 CODE 0 text7 dist/default/production\MINI2.X.production.o
+__ptext8 3DA 0 CODE 0 text8 dist/default/production\MINI2.X.production.o
+__ptext9 24E 0 CODE 0 text9 dist/default/production\MINI2.X.production.o
 __Lpowerup 0 0 CODE 0 powerup -
 __Leeprom_data 0 0 EEDATA 3 eeprom_data -
-_I2C_Master_Init 1AE 0 CODE 0 text3 dist/default/production\MINI2.X.production.o
+_I2C_Master_Init 3DA 0 CODE 0 text8 dist/default/production\MINI2.X.production.o
+_I2C_Master_Stop 566 0 CODE 0 text3 dist/default/production\MINI2.X.production.o
+_I2C_Master_Wait 538 0 CODE 0 text5 dist/default/production\MINI2.X.production.o
 __Lreset_vec 0 0 CODE 0 reset_vec -
-__end_of__initialization 1E 0 CODE 0 cinit dist/default/production\MINI2.X.production.o
+__end_of__initialization 48 0 CODE 0 cinit dist/default/production\MINI2.X.production.o
 __Lfunctab 0 0 ENTRY 0 functab -
 __Lclrtext 0 0 ABS 0 clrtext -
-___lldiv@quotient 20 0 BANK0 1 cstackBANK0 dist/default/production\MINI2.X.production.o
-__pcstackCOMMON 70 0 COMMON 1 cstackCOMMON dist/default/production\MINI2.X.production.o
+___lldiv@quotient 44 0 BANK0 1 cstackBANK0 dist/default/production\MINI2.X.production.o
+__pcstackCOMMON 76 0 COMMON 1 cstackCOMMON dist/default/production\MINI2.X.production.o
 _TXSTAbits 98 0 ABS 0 - dist/default/production\MINI2.X.production.o
 _SSPCON2 91 0 ABS 0 - dist/default/production\MINI2.X.production.o
 _SSPSTAT 94 0 ABS 0 - dist/default/production\MINI2.X.production.o
-__Hend_init 1E 0 CODE 0 end_init -
-__end_of_main 296 0 CODE 0 maintext dist/default/production\MINI2.X.production.o
-__end_of_Setup 284 0 CODE 0 text1 dist/default/production\MINI2.X.production.o
+__Hend_init 2A 0 CODE 0 end_init -
+__end_of_main 538 0 CODE 0 maintext dist/default/production\MINI2.X.production.o
+__end_of_Setup 4B4 0 CODE 0 text6 dist/default/production\MINI2.X.production.o
 _ANSEL 188 0 ABS 0 - dist/default/production\MINI2.X.production.o
+_HORAD 30 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
+_HORAU 31 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
+_MONTH 38 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
 _PORTA 5 0 ABS 0 - dist/default/production\MINI2.X.production.o
 _PORTB 6 0 ABS 0 - dist/default/production\MINI2.X.production.o
 _PORTC 7 0 ABS 0 - dist/default/production\MINI2.X.production.o
@@ -338,18 +509,24 @@ _PORTE 9 0 ABS 0 - dist/default/production\MINI2.X.production.o
 _SPBRG 99 0 ABS 0 - dist/default/production\MINI2.X.production.o
 _SSPIE 463 0 ABS 0 - dist/default/production\MINI2.X.production.o
 _SSPIF 63 0 ABS 0 - dist/default/production\MINI2.X.production.o
-_Setup 21E 0 CODE 0 text1 dist/default/production\MINI2.X.production.o
+_Setup 44E 0 CODE 0 text6 dist/default/production\MINI2.X.production.o
 _TRISA 85 0 ABS 0 - dist/default/production\MINI2.X.production.o
 _TRISB 86 0 ABS 0 - dist/default/production\MINI2.X.production.o
 _TRISD 88 0 ABS 0 - dist/default/production\MINI2.X.production.o
 _TRISE 89 0 ABS 0 - dist/default/production\MINI2.X.production.o
+_TXREG 19 0 ABS 0 - dist/default/production\MINI2.X.production.o
+_YEARD 2C 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
+_YEARU 2D 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
 __Hram 0 0 ABS 0 ram -
 __Lram 0 0 ABS 0 ram -
 interrupt_function 8 0 CODE 0 intentry dist/default/production\MINI2.X.production.o
 __pintentry 8 0 CODE 0 intentry dist/default/production\MINI2.X.production.o
 __size_of_ISR 0 0 ABS 0 - dist/default/production\MINI2.X.production.o
-__initialization 1E 0 CODE 0 cinit dist/default/production\MINI2.X.production.o
+__initialization 2A 0 CODE 0 cinit dist/default/production\MINI2.X.production.o
+__pbssBANK0 20 0 BANK0 1 bssBANK0 dist/default/production\MINI2.X.production.o
 __size_of_I2C_Master_Init 0 0 ABS 0 - dist/default/production\MINI2.X.production.o
+__size_of_I2C_Master_Stop 0 0 ABS 0 - dist/default/production\MINI2.X.production.o
+__size_of_I2C_Master_Wait 0 0 ABS 0 - dist/default/production\MINI2.X.production.o
 # %SPLITSTAB Section
 # This section enumerates all the psect splits performed by the assembler.
 # The beginning of the section is indicated by %SPLITSTAB.
@@ -375,10 +552,10 @@ __size_of_I2C_Master_Init 0 0 ABS 0 - dist/default/production\MINI2.X.production
 # and size are in units of delta. The file address is in units of bytes.
 # All other numeric quantities are in decimal.
 %SEGMENTS
-cstackCOMMON 1 70 70 B 1
-cstackBANK0 1 20 20 D 1
-intentry 0 4 8 14E 2
+intentry 0 4 8 2C9 2
 reset_vec 0 0 0 3 2
+bssBANK0 1 20 20 31 1
+bssCOMMON 1 70 70 C 1
 # %NOTES Section
 # This section contains data of all the note-psects.  The beginning of the section
 # is indicated by %NOTES. The first line indicates the name and decimal
