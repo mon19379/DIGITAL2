@@ -112,21 +112,22 @@ void main(void) {
 
     Setup();
     timeout();
-    if (CONT > 20) {
-        CONT = 0;
-        PIE1bits.TXIE = 1;
 
 
 
 
 
-        //**************************************************************************
-        // Loop principal
-        //**************************************************************************
-        while (1) {
 
-            timein();
-            conver();
+    //**************************************************************************
+    // Loop principal
+    //**************************************************************************
+    while (1) {
+
+        timein();
+        conver();
+        if (CONT > 30) {
+            CONT = 0;
+            PIE1bits.TXIE = 1;
 
 
 
@@ -180,10 +181,10 @@ void mandar(void) {
             TXREG = 0x20;
             break;
         case 1:
-            TXREG = SU;
+            TXREG = HD;
             break;
         case 2:
-            TXREG = SD;
+            TXREG = HU;
             break;
 
         case 3:
@@ -191,20 +192,20 @@ void mandar(void) {
             break;
 
         case 4:
-            TXREG = MU;
+            TXREG = MD;
             break;
         case 5:
-            TXREG = MD;
+            TXREG = MU;
             break;
         case 6:
             TXREG = 0x3A;
             break;
         case 7:
-            TXREG = HU;
+            TXREG = SD;
             break;
 
         case 8:
-            TXREG = HD;
+            TXREG = SU;
             break;
 
         case 9:
@@ -212,33 +213,33 @@ void mandar(void) {
             break;
 
         case 10:
-            TXREG = DAYU;
+            TXREG = DD;
             break;
 
         case 11:
-            TXREG = DAYD;
+            TXREG = DU;
             break;
 
         case 12:
             TXREG = 0x2F;
             break;
         case 13:
-            TXREG = MOU;
+            TXREG = MOD;
             break;
 
         case 14:
-            TXREG = MOD;
+            TXREG = MOU;
             break;
         case 15:
             TXREG = 0x2F;
             break;
 
         case 16:
-            TXREG = YU;
+            TXREG = YD;
             break;
 
         case 17:
-            TXREG = YD;
+            TXREG = YU;
             break;
 
         case 18:
@@ -253,8 +254,8 @@ void timeout(void) {
     I2C_Master_Write(0xD0);
     I2C_Master_Write(0);
     I2C_Master_Write(0b00000000);
-    I2C_Master_Write(0b00000011);
-    I2C_Master_Write(0b01010011);
+    I2C_Master_Write(0b00000000);
+    I2C_Master_Write(0b00000000);
     I2C_Master_Write(1);
     I2C_Master_Write(0x20);
     I2C_Master_Write(0x10);
@@ -268,7 +269,7 @@ void timeout(void) {
 
 void timein(void) {
     I2C_Master_Start();
-    I2C_Master_Write(0xD1);
+    I2C_Master_Write(0xD0);
     I2C_Master_Write(0);
 
     I2C_Master_Start();
@@ -292,7 +293,7 @@ void conver(void) {
     MINU = (MIN & 0b00001111);
     MIND = ((MIN & 0b11110000) >> 4);
     HORAU = (H & 0b00001111);
-    HORAD = ((H & 0b11110000) >> 4);
+    HORAD = ((H & 0b00110000) >> 4);
     DAYU = (DAY & 0b00001111);
     DAYD = ((DAY & 0b11110000) >> 4);
     MONTHU = (MONTH & 0b00001111);
