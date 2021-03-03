@@ -12,6 +12,7 @@
 #include <pic16f887.h>
 #include "I2C.h"
 #include "OSC.h"
+#include "usart.h"
 
 //******************************************************************************
 // Palabra de configuración
@@ -95,6 +96,7 @@ void __interrupt() ISR(void) {
     if (PIR1bits.TXIF == 1) {
         mandar();
         SEND++;
+        PIR1bits.TXIF = 0;
         PIE1bits.TXIE = 0;
 
 
@@ -111,7 +113,6 @@ void main(void) {
     Setup();
     timeout();
     if (CONT > 20) {
-        ADCON0bits.GO_nDONE = 1;
         CONT = 0;
         PIE1bits.TXIE = 1;
 
@@ -123,6 +124,9 @@ void main(void) {
         // Loop principal
         //**************************************************************************
         while (1) {
+
+            timein();
+            conver();
 
 
 
@@ -140,9 +144,11 @@ void main(void) {
 //******************************************************************************
 
 void Setup(void) {
-    I2C_Master_Init(100000);
     initOsc(6);
+    usart();
     TRISA = 0;
+    TRISB = 0; //PUERTO B 
+    TRISD = 0; //PUERTO D SALIDAS
     TRISE = 0; //PUERTO E SALIDAS
     ANSEL = 0; // ENTRADAS DIGITALES Y BIT 0 ANALÓGICA
     ANSELH = 0;
@@ -152,16 +158,14 @@ void Setup(void) {
     PORTD = 0; //PUERTO D EN 0
     PORTE = 0; //PUERTO E EN 0
     //PINES RA0 Y RA2 COMO ENTRADAS, LOS DEMAS COMO SALIDAS
-    TRISD = 0; //PUERTO D SALIDAS
-    TRISB = 0; //PUERTO B 
     OPTION_REG = 0b10000111; //SE APAGAN LAS PULLUPS DEL PUERTO B
     INTCONbits.GIE = 1; //SE HABILITAN LAS INTERRUPCIONES GLOBALES
     INTCONbits.PEIE = 1; //SE HABILITAN LAS INTERRUPCIONES PERIFERICAS
     PIR1bits.TXIF = 0;
     PIE1bits.TXIE = 1;
-
-
-
+    INTCONbits.T0IF = 0; // SE LIMPIA LA BANDERA DE INTERRUPCION DEL TIMER 0
+    INTCONbits.T0IE = 1; //SE HABILITA LA INTERRUPCION DEL TIMER0
+    I2C_Master_Init(100000);
 
 
 }
@@ -172,71 +176,73 @@ void Setup(void) {
 
 void mandar(void) {
     switch (SEND) {
-
         case 0:
-            TXREG = SU;
+            TXREG = 0x20;
             break;
         case 1:
+            TXREG = SU;
+            break;
+        case 2:
             TXREG = SD;
             break;
 
-        case 2:
+        case 3:
             TXREG = 0x3A;
             break;
 
-        case 3:
+        case 4:
             TXREG = MU;
             break;
-        case 4:
+        case 5:
             TXREG = MD;
             break;
-        case 5:
+        case 6:
             TXREG = 0x3A;
             break;
-        case 6:
+        case 7:
             TXREG = HU;
             break;
 
-        case 7:
+        case 8:
             TXREG = HD;
             break;
 
-        case 8:
+        case 9:
             TXREG = 0x20;
             break;
 
-        case 9:
+        case 10:
             TXREG = DAYU;
             break;
 
-        case 10:
+        case 11:
             TXREG = DAYD;
             break;
 
-        case 11:
+        case 12:
             TXREG = 0x2F;
             break;
-        case 12:
+        case 13:
             TXREG = MOU;
             break;
 
-        case 13:
+        case 14:
             TXREG = MOD;
             break;
-        case 14:
+        case 15:
             TXREG = 0x2F;
             break;
-            
-        case 15:
+
+        case 16:
             TXREG = YU;
             break;
-            
-        case 16:
+
+        case 17:
             TXREG = YD;
             break;
-            
-        case 17:
-            TXREG = 0x0D;
+
+        case 18:
+            TXREG = 0x0A;
             SEND = 0;
             break;
     }
@@ -267,13 +273,13 @@ void timein(void) {
 
     I2C_Master_Start();
     I2C_Master_Write(0xD1);
-    SEC = I2C_Master_Read(0);
-    MIN = I2C_Master_Read(0);
-    H = I2C_Master_Read(0);
-    NADA = I2C_Master_Read(0);
-    DAY = I2C_Master_Read(0);
-    MONTH = I2C_Master_Read(0);
-    YEAR = I2C_Master_Read(1);
+    SEC = I2C_Master_Read(1);
+    MIN = I2C_Master_Read(1);
+    H = I2C_Master_Read(1);
+    NADA = I2C_Master_Read(1);
+    DAY = I2C_Master_Read(1);
+    MONTH = I2C_Master_Read(1);
+    YEAR = I2C_Master_Read(0);
     I2C_Master_Stop();
 
 
@@ -282,17 +288,17 @@ void timein(void) {
 
 void conver(void) {
     SECU = (SEC & 0b00001111);
-    SECD = ((SEC & 0b00001111) >> 4);
+    SECD = ((SEC & 0b11110000) >> 4);
     MINU = (MIN & 0b00001111);
-    MIND = ((MIN & 0b00001111) >> 4);
+    MIND = ((MIN & 0b11110000) >> 4);
     HORAU = (H & 0b00001111);
-    HORAD = ((H & 0b00001111) >> 4);
+    HORAD = ((H & 0b11110000) >> 4);
     DAYU = (DAY & 0b00001111);
-    DAYD = ((DAY & 0b00001111) >> 4);
+    DAYD = ((DAY & 0b11110000) >> 4);
     MONTHU = (MONTH & 0b00001111);
-    MONTHD = ((MONTH & 0b00001111) >> 4);
+    MONTHD = ((MONTH & 0b11110000) >> 4);
     YEARU = (YEAR & 0b00001111);
-    YEARD = ((YEAR & 0b00001111) >> 4);
+    YEARD = ((YEAR & 0b11110000) >> 4);
 
 
     SU = (SECU + 0x30);
