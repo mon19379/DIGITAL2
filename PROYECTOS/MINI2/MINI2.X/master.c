@@ -70,7 +70,8 @@ uint8_t MOU = 0;
 uint8_t MOD = 0;
 uint8_t YU = 0;
 uint8_t YD = 0;
-
+uint8_t TOG = 0;
+uint8_t FLAG = 0;
 
 
 
@@ -82,6 +83,7 @@ void mandar(void);
 void timeout(void);
 void timein(void);
 void conver(void);
+void recibir(void);
 
 //******************************************************************************
 //Interrupción
@@ -93,15 +95,18 @@ void __interrupt() ISR(void) {
         CONT++;
         INTCONbits.T0IF = 0;
     }
-    if (PIR1bits.TXIF == 1) {
-        mandar();
-        SEND++;
-        PIR1bits.TXIF = 0;
-        PIE1bits.TXIE = 0;
 
-
-
-
+    if (FLAG == 1) {
+        if (PIR1bits.TXIF == 1) {
+            mandar();
+            SEND++;
+            PIR1bits.TXIF = 0;
+            PIE1bits.TXIE = 0;
+        }
+    }
+    if (PIR1bits.RCIF == 1) {
+        TOG = RCREG;
+        recibir();
     }
 }
 //******************************************************************************
@@ -166,6 +171,8 @@ void Setup(void) {
     PIE1bits.TXIE = 1;
     INTCONbits.T0IF = 0; // SE LIMPIA LA BANDERA DE INTERRUPCION DEL TIMER 0
     INTCONbits.T0IE = 1; //SE HABILITA LA INTERRUPCION DEL TIMER0
+    PIE1bits.RCIE = 1;
+    PIR1bits.RCIF = 0;
     I2C_Master_Init(100000);
 
 
@@ -318,4 +325,26 @@ void conver(void) {
 
 
 
+}
+
+void recibir(void) {
+    if (TOG == 1) {
+        FLAG = 1;
+        PORTAbits.RA0 = 0;
+        PORTAbits.RA1 = 0;
+    }
+
+    if (TOG == 2) {
+        PORTAbits.RA0 = 1;
+        PORTAbits.RA1 = 0;
+    }
+    if (TOG == 3) {
+        PORTAbits.RA1 = 1;
+        PORTAbits.RA0 = 0;
+    }
+    
+    if (TOG == 4){
+        PORTAbits.RA0 = 1;
+        PORTAbits.RA1 = 1;
+    }
 }
