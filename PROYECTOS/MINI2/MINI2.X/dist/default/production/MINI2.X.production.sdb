@@ -25,21 +25,21 @@
 [v _I2C_Master_Write I2C_Master_Write `(v  1 e 1 0 ]
 "74
 [v _I2C_Master_Read I2C_Master_Read `(uc  1 e 1 0 ]
-"92 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+"90 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
 [v _ISR ISR `II(v  1 e 1 0 ]
-"116
+"114
 [v _main main `(v  1 e 1 0 ]
-"152
+"137
 [v _Setup Setup `(v  1 e 1 0 ]
-"185
+"170
 [v _mandar mandar `(v  1 e 1 0 ]
-"259
+"244
 [v _timeout timeout `(v  1 e 1 0 ]
-"277
+"259
 [v _timein timein `(v  1 e 1 0 ]
-"297
+"279
 [v _conver conver `(v  1 e 1 0 ]
-"330
+"312
 [v _recibir recibir `(v  1 e 1 0 ]
 "7 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\OSC.c
 [v _initOsc initOsc `(v  1 e 1 0 ]
@@ -313,20 +313,20 @@
 [v _TOG TOG `uc  1 e 1 0 ]
 "74
 [v _FLAG FLAG `uc  1 e 1 0 ]
-"116
+"114
 [v _main main `(v  1 e 1 0 ]
 {
-"147
+"132
 } 0
-"259
+"244
 [v _timeout timeout `(v  1 e 1 0 ]
 {
-"275
+"257
 } 0
-"277
+"259
 [v _timein timein `(v  1 e 1 0 ]
 {
-"295
+"277
 } 0
 "65 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\I2C.c
 [v _I2C_Master_Write I2C_Master_Write `(v  1 e 1 0 ]
@@ -361,15 +361,15 @@
 {
 "35
 } 0
-"297 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+"279 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
 [v _conver conver `(v  1 e 1 0 ]
 {
-"328
+"310
 } 0
-"152
+"137
 [v _Setup Setup `(v  1 e 1 0 ]
 {
-"179
+"164
 } 0
 "5 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\usart.c
 [v _usart usart `(v  1 e 1 0 ]
@@ -402,18 +402,18 @@
 [v ___lldiv@dividend dividend `ul  1 p 4 4 ]
 "30
 } 0
-"92 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
+"90 C:\Users\franc\Documents\GitHub\DIGITAL2\PROYECTOS\MINI2\MINI2.X\master.c
 [v _ISR ISR `II(v  1 e 1 0 ]
 {
-"111
+"109
 } 0
-"330
+"312
 [v _recibir recibir `(v  1 e 1 0 ]
 {
-"350
+"332
 } 0
-"185
+"170
 [v _mandar mandar `(v  1 e 1 0 ]
 {
-"257
+"242
 } 0

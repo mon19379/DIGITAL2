@@ -8,13 +8,13 @@ int Bot2 = 0;
 int flagl = 0;
 int flagl2 = 0;
 
-AdafruitIO_Feed *Tiempo = io.feed("Tiempo");
+AdafruitIO_Feed *Tiempo = io.feed("Tiempo"); 
 AdafruitIO_Feed *Led1 = io.feed("Led1");
 AdafruitIO_Feed *Led2 = io.feed("Led2");
 
 void setup() {
   Serial.begin(9600); // opens serial port, sets data rate to 9600 bps
-  io.connect();
+  io.connect(); //se conecta al servidor
   Led1->onMessage(handleMessage);
   Led2->onMessage(handleMessage2);
 

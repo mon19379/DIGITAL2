@@ -73,8 +73,6 @@ uint8_t YD = 0;
 uint8_t TOG = 0;
 uint8_t FLAG = 0;
 
-
-
 //******************************************************************************
 // Prototipos de funciones
 //******************************************************************************
@@ -90,23 +88,23 @@ void recibir(void);
 //******************************************************************************
 
 void __interrupt() ISR(void) {
-    if (INTCONbits.T0IF == 1) {
-        TMR0 = 236;
-        CONT++;
-        INTCONbits.T0IF = 0;
+    if (INTCONbits.T0IF == 1) { //INTERRUPCION DEL TIMER 0
+        TMR0 = 236; //SE AGREGA VALOR AL TIMER 0
+        CONT++; //SE INCREMENTA UN CONTADOR
+        INTCONbits.T0IF = 0; //SE APAGA LA BANDERA
     }
 
-    if (FLAG == 1) {
-        if (PIR1bits.TXIF == 1) {
-            mandar();
-            SEND++;
-            PIR1bits.TXIF = 0;
-            PIE1bits.TXIE = 0;
+    if (FLAG == 1) { //CONDICION CON BANDERA MANDADA POR EL ESP
+        if (PIR1bits.TXIF == 1) { //INTERRUPCION DEL TX
+            mandar(); //FUNCION DE ENVIAR DATOS
+            SEND++; //SE INCREMENTA UN CONTADOR
+            PIR1bits.TXIF = 0; //SE APAGA LA BANDERA
+            PIE1bits.TXIE = 0; //SE APAGA LA INTERRUPCION
         }
     }
-    if (PIR1bits.RCIF == 1) {
-        TOG = RCREG;
-        recibir();
+    if (PIR1bits.RCIF == 1) { //INTERRUPCION DEL RX
+        TOG = RCREG; //SE METE EL VALOR DEL REGISTRO EN LA VARIABLE
+        recibir(); // RUTINA DE RECIBIR DATOS
     }
 }
 //******************************************************************************
@@ -116,31 +114,18 @@ void __interrupt() ISR(void) {
 void main(void) {
 
     Setup();
-    timeout();
-
-
-
-
-
+    timeout(); //FUNCION DE ESCRITURA
 
     //**************************************************************************
     // Loop principal
     //**************************************************************************
     while (1) {
 
-        timein();
-        conver();
-        if (CONT > 30) {
+        timein(); //FUNCION DE LECTURA
+        conver(); //CONVERSION DE LOS DATOS
+        if (CONT > 30) { //FUNCION PARA QUE SE HABILITE EL TX CADA CIERTO TIEMPO
             CONT = 0;
             PIE1bits.TXIE = 1;
-
-
-
-
-
-
-
-
         }
     }
 
@@ -150,10 +135,10 @@ void main(void) {
 //******************************************************************************
 
 void Setup(void) {
-    initOsc(6);
-    usart();
-    TRISA = 0;
-    TRISB = 0; //PUERTO B 
+    initOsc(6); //CONFIGURACIÓN DEL OSCILADOR
+    usart(); //CONFIGURACION DEL TX Y RX
+    TRISA = 0; //PUERTO A SALIDAS
+    TRISB = 0; //PUERTO B SALIDAS
     TRISD = 0; //PUERTO D SALIDAS
     TRISE = 0; //PUERTO E SALIDAS
     ANSEL = 0; // ENTRADAS DIGITALES Y BIT 0 ANALÓGICA
@@ -167,13 +152,13 @@ void Setup(void) {
     OPTION_REG = 0b10000111; //SE APAGAN LAS PULLUPS DEL PUERTO B
     INTCONbits.GIE = 1; //SE HABILITAN LAS INTERRUPCIONES GLOBALES
     INTCONbits.PEIE = 1; //SE HABILITAN LAS INTERRUPCIONES PERIFERICAS
-    PIR1bits.TXIF = 0;
-    PIE1bits.TXIE = 1;
+    PIR1bits.TXIF = 0; //SE LIMPIA LA BANDERA DE INTERRUPCION DEL TX
+    PIE1bits.TXIE = 1; //SE HABILITA LA INTERRUPCION DEL TX
     INTCONbits.T0IF = 0; // SE LIMPIA LA BANDERA DE INTERRUPCION DEL TIMER 0
     INTCONbits.T0IE = 1; //SE HABILITA LA INTERRUPCION DEL TIMER0
-    PIE1bits.RCIE = 1;
-    PIR1bits.RCIF = 0;
-    I2C_Master_Init(100000);
+    PIE1bits.RCIE = 1; //SE HABILITA LA INTERRUPCION DEL RX
+    PIR1bits.RCIF = 0; //SE LIMPIA LA BANDERA DE INTERRUPCION DEL RX
+    I2C_Master_Init(100000); //INICIALIZACION DEL MASTER
 
 
 }
@@ -185,128 +170,125 @@ void Setup(void) {
 void mandar(void) {
     switch (SEND) {
         case 0:
-            TXREG = 0x20;
+            TXREG = 0x20; //ENVIAR UN ESPACIO
             break;
         case 1:
-            TXREG = HD;
+            TXREG = HD; //ENVIAR DECENAS DE HORA
             break;
         case 2:
-            TXREG = HU;
+            TXREG = HU; //ENVIAR UNIDADES DE HORA
             break;
 
         case 3:
-            TXREG = 0x3A;
+            TXREG = 0x3A; //ENVIAR :
             break;
 
         case 4:
-            TXREG = MD;
+            TXREG = MD; //ENVIAR DECENAS DE MINUTO
             break;
         case 5:
-            TXREG = MU;
+            TXREG = MU; //ENVIAR UNIDADES DE MINUTO
             break;
         case 6:
-            TXREG = 0x3A;
+            TXREG = 0x3A; //ENVIAR :
             break;
         case 7:
-            TXREG = SD;
+            TXREG = SD; //ENVIAR DECENAS DE SEGUNDO
             break;
 
         case 8:
-            TXREG = SU;
+            TXREG = SU; //ENVIAR UNIDADES DE SEGUNDO
             break;
 
         case 9:
-            TXREG = 0x20;
+            TXREG = 0x20; //ENVIAR UN ESPACIO
             break;
 
         case 10:
-            TXREG = DD;
+            TXREG = DD; //ENVIAR DECENAS DIA
             break;
 
         case 11:
-            TXREG = DU;
+            TXREG = DU; //ENVIAR UNIDADES DIA
             break;
 
         case 12:
-            TXREG = 0x2F;
+            TXREG = 0x2F; //ENVIAR /
             break;
         case 13:
-            TXREG = MOD;
+            TXREG = MOD; //ENCIAR DECENAS MES
             break;
 
         case 14:
-            TXREG = MOU;
+            TXREG = MOU; //ENVIAR UNIDADES MES
             break;
         case 15:
-            TXREG = 0x2F;
+            TXREG = 0x2F; //ENVIAR /
             break;
 
         case 16:
-            TXREG = YD;
+            TXREG = YD; //ENVIAR DECENAS AÑO
             break;
 
         case 17:
-            TXREG = YU;
+            TXREG = YU; //ENVIAR UNIDADES AÑO
             break;
 
         case 18:
-            TXREG = 0x0A;
+            TXREG = 0x0A; //ENVIAR ENTER
             SEND = 0;
             break;
     }
 }
 
 void timeout(void) {
-    I2C_Master_Start();
-    I2C_Master_Write(0xD0);
-    I2C_Master_Write(0);
-    I2C_Master_Write(0b00000000);
-    I2C_Master_Write(0b00000000);
-    I2C_Master_Write(0b00000000);
-    I2C_Master_Write(1);
-    I2C_Master_Write(0x20);
-    I2C_Master_Write(0x10);
-    I2C_Master_Write(0x21);
-    I2C_Master_Stop();
-
-
-
+    I2C_Master_Start(); //FUNCION PARA INICIAR LA ESCRITURA EN EL SENSOR
+    I2C_Master_Write(0xD0); //SE INDICA QUE ESTA EN MODO ESCRITURA
+    I2C_Master_Write(0); //SE LE DA UN VALOR AL PC DEL SENSOR
+    I2C_Master_Write(0b00000000); //SE CONFIGURAN SEGUNDOS
+    I2C_Master_Write(0b00000000); //SE CONFIGURAN MINUTOS
+    I2C_Master_Write(0b00100011); // SE CONFIGURAN HORAS
+    I2C_Master_Write(1); //SE OMITE
+    I2C_Master_Write(0x05); //SE CONFIGURA DIA
+    I2C_Master_Write(0x03); //SE CONFIGURA MES
+    I2C_Master_Write(0x21); //SE CONFIGURA AÑO
+    I2C_Master_Stop(); //FUNCION PARA DETENER LA ESCRITURA EN EL SENSOR
 
 }
 
 void timein(void) {
-    I2C_Master_Start();
-    I2C_Master_Write(0xD0);
-    I2C_Master_Write(0);
+    I2C_Master_Start(); //FUNCION PARA INICIAR LA ESCRITURA EN EL SENSOR
+    I2C_Master_Write(0xD0); //SE INDICA QUE ESTA EN MODO ESCTITURA
+    I2C_Master_Write(0); //SE LE DA UN VALOR INICIAL AL PC DEL SENSOR
 
-    I2C_Master_Start();
-    I2C_Master_Write(0xD1);
-    SEC = I2C_Master_Read(1);
-    MIN = I2C_Master_Read(1);
-    H = I2C_Master_Read(1);
-    NADA = I2C_Master_Read(1);
-    DAY = I2C_Master_Read(1);
-    MONTH = I2C_Master_Read(1);
-    YEAR = I2C_Master_Read(0);
-    I2C_Master_Stop();
+    I2C_Master_Start(); //FUNCION PARA INICIAR LA LECTURA EN EL SENSOR
+    I2C_Master_Write(0xD1); //SE INDICA QUE ESTA EN MODO ESCRITURA
+    SEC = I2C_Master_Read(1); //SE LEEN LOS SEGUNDOS
+    MIN = I2C_Master_Read(1); // SE LEEN LOS MINUTOS
+    H = I2C_Master_Read(1); //SE LEEN LAS HORAS
+    NADA = I2C_Master_Read(1); //SE OMITE
+    DAY = I2C_Master_Read(1); //SE LEEN DIAS
+    MONTH = I2C_Master_Read(1); //SE LEEN MESES
+    YEAR = I2C_Master_Read(0); //SE LEEN AÑOS
+    I2C_Master_Stop(); //FUNCION PARA DETENER LA LECTURA EN EL SENSOR
 
 
 
 }
 
 void conver(void) {
-    SECU = (SEC & 0b00001111);
-    SECD = ((SEC & 0b11110000) >> 4);
-    MINU = (MIN & 0b00001111);
-    MIND = ((MIN & 0b11110000) >> 4);
-    HORAU = (H & 0b00001111);
-    HORAD = ((H & 0b00110000) >> 4);
-    DAYU = (DAY & 0b00001111);
-    DAYD = ((DAY & 0b11110000) >> 4);
-    MONTHU = (MONTH & 0b00001111);
-    MONTHD = ((MONTH & 0b11110000) >> 4);
-    YEARU = (YEAR & 0b00001111);
-    YEARD = ((YEAR & 0b11110000) >> 4);
+    SECU = (SEC & 0b00001111); //SE MANIPULAN LOS SEGUNDOS PARA SEPARAR EN
+    SECD = ((SEC & 0b11110000) >> 4); //DECENAS Y UNIDADES
+    MINU = (MIN & 0b00001111); //SE MANIPULAN LOS MINUTOS PARA SEPARAR EN 
+    MIND = ((MIN & 0b11110000) >> 4); //DECENAS Y UNIDADES
+    HORAU = (H & 0b00001111); //SE MANIPULAN LAS HORAS PARA SEPARAR EN 
+    HORAD = ((H & 0b00110000) >> 4); //DECEINAS Y UNIDADES
+    DAYU = (DAY & 0b00001111); //SE MANIPULAN LOS DIAS PARA SEPARAR EN 
+    DAYD = ((DAY & 0b11110000) >> 4); //DECENAS Y UNIDADES
+    MONTHU = (MONTH & 0b00001111); //SE MANIPULAN LOS MESES PARA SEPARAR EN 
+    MONTHD = ((MONTH & 0b11110000) >> 4); //DECENAS Y UNIDADES 
+    YEARU = (YEAR & 0b00001111); //SE MANIPULAN LOS AÑOS PARA SEPARAR EN 
+    YEARD = ((YEAR & 0b11110000) >> 4); //DECENAS Y UNIDADES 
 
 
     SU = (SECU + 0x30);
@@ -320,7 +302,7 @@ void conver(void) {
     MOU = (MONTHU + 0x30);
     MOD = (MONTHD + 0x30);
     YU = (YEARU + 0x30);
-    YD = (YEARD + 0x30);
+    YD = (YEARD + 0x30); //CONVERSION A ASCII DE TODAS LAS VARIABLES
 
 
 
@@ -328,22 +310,22 @@ void conver(void) {
 }
 
 void recibir(void) {
-    if (TOG == 1) {
-        FLAG = 1;
+    if (TOG == 1) { //TOGGLE PARA LA ENVIADA DE DATOS
+        FLAG = 1; //SE ACTIVA UNA BANDERA
         PORTAbits.RA0 = 0;
-        PORTAbits.RA1 = 0;
+        PORTAbits.RA1 = 0; //SE APAGAN LEDS
     }
 
-    if (TOG == 2) {
+    if (TOG == 2) { //TOGGLE PARA ENCENDER UNA LED
         PORTAbits.RA0 = 1;
         PORTAbits.RA1 = 0;
     }
-    if (TOG == 3) {
+    if (TOG == 3) { //TOGGLE PARA ENCENDER UNA LED
         PORTAbits.RA1 = 1;
         PORTAbits.RA0 = 0;
     }
-    
-    if (TOG == 4){
+
+    if (TOG == 4) { //TOGGLE PARA ENCENDER AMBAS LEDS
         PORTAbits.RA0 = 1;
         PORTAbits.RA1 = 1;
     }

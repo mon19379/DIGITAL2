@@ -2763,8 +2763,6 @@ uint8_t FLAG = 0;
 
 
 
-
-
 void Setup(void);
 void mandar(void);
 void timeout(void);
@@ -2804,7 +2802,10 @@ void main(void) {
 
     Setup();
     timeout();
-# 129 "master.c"
+
+
+
+
     while (1) {
 
         timein();
@@ -2812,7 +2813,6 @@ void main(void) {
         if (CONT > 30) {
             CONT = 0;
             PIE1bits.TXIE = 1;
-# 144 "master.c"
         }
     }
 
@@ -2934,15 +2934,12 @@ void timeout(void) {
     I2C_Master_Write(0);
     I2C_Master_Write(0b00000000);
     I2C_Master_Write(0b00000000);
-    I2C_Master_Write(0b00000000);
+    I2C_Master_Write(0b00100011);
     I2C_Master_Write(1);
-    I2C_Master_Write(0x20);
-    I2C_Master_Write(0x10);
+    I2C_Master_Write(0x05);
+    I2C_Master_Write(0x03);
     I2C_Master_Write(0x21);
     I2C_Master_Stop();
-
-
-
 
 }
 
@@ -3015,7 +3012,7 @@ void recibir(void) {
         PORTAbits.RA0 = 0;
     }
 
-    if (TOG == 4){
+    if (TOG == 4) {
         PORTAbits.RA0 = 1;
         PORTAbits.RA1 = 1;
     }
