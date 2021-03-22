@@ -34,7 +34,7 @@ void setup() {
   pinMode(PB_4, OUTPUT);
   pinMode(PA_5, OUTPUT);
   pinMode(PA_6, OUTPUT);
-  pinMode(PA_7, OUTPUT);
+
 
   //LEDS J2
   pinMode(PD_0, OUTPUT);
@@ -44,7 +44,7 @@ void setup() {
   pinMode(PE_1, OUTPUT);
   pinMode(PE_2, OUTPUT);
   pinMode(PE_3, OUTPUT);
-  pinMode(PF_1, OUTPUT);
+  pinMode(PA_7, OUTPUT);
 
   //SEMAFORO
   pinMode(PF_3, OUTPUT);
@@ -57,7 +57,7 @@ void setup() {
   pinMode(PE_0, INPUT_PULLUP);
   pinMode(PF_0, INPUT_PULLUP);
 
-  //INDICADOR 
+  //INDICADOR
   pinMode(RED_LED, OUTPUT);
 }
 
@@ -73,6 +73,7 @@ void loop() {
   BO2 = digitalRead(PE_0);
   BO3 = digitalRead(PF_0);
   player1();
+  player2();
 
   if (BO1 == HIGH) {
     SEM = 0;
@@ -87,18 +88,22 @@ void loop() {
   if (FLAG == 1) {
     if (BO2 == LOW) {
       PL1 = 1;
-
     }
     if (PL1 == 1 && BO2 == HIGH) {
       PL1 = 0;
       CONT ++;
-
-
-
     }
-
   }
 
+  if (FLAG == 1) {
+    if (BO3 == LOW) {
+      PL2 = 1;
+    }
+    if (PL2 == 1 && BO3 == HIGH) {
+      PL2 = 0;
+      CONT1 ++;
+    }
+  }
   delay(100);
 }
 
@@ -117,7 +122,19 @@ void semaforo (void) {
   digitalWrite(PB_4, LOW);
   digitalWrite(PA_5, LOW);
   digitalWrite(PA_6, LOW);
-   CONT = 0;
+  CONT = 0;
+
+ 
+  digitalWrite(PD_0, LOW);
+  digitalWrite(PD_1, LOW);
+  digitalWrite(PD_2, LOW);
+  digitalWrite(PD_3, LOW);
+  digitalWrite(PE_1, LOW);
+  digitalWrite(PE_2, LOW);
+  digitalWrite(PE_3, LOW);
+  digitalWrite(PA_7, LOW);
+  CONT1 = 0;
+
 
   digitalWrite (PC_4, HIGH);
   digitalWrite (PB_3, LOW);
@@ -140,6 +157,8 @@ void semaforo (void) {
   digitalWrite (PF_3, LOW);
 
 }
+
+
 
 void player1 (void) {
   if (CONT == 1) {
@@ -228,7 +247,7 @@ void player1 (void) {
     digitalWrite(PB_4, LOW);
     digitalWrite(PA_5, LOW);
     digitalWrite(PA_6, HIGH);
-    
+
 
   }
 
@@ -245,6 +264,113 @@ void player1 (void) {
     FLAG = 0;
     CONT = 0;
 
+  }
+
+}
+
+void player2 (void) {
+  if (CONT1 == 1) {
+    digitalWrite(PD_0, HIGH);
+    digitalWrite(PD_1, LOW);
+    digitalWrite(PD_2, LOW);
+    digitalWrite(PD_3, LOW);
+    digitalWrite(PE_1, LOW);
+    digitalWrite(PE_2, LOW);
+    digitalWrite(PE_3, LOW);
+    digitalWrite(PA_7, LOW);
+
+  }
+  else if (CONT1 == 2) {
+    digitalWrite(PD_0, LOW);
+    digitalWrite(PD_1, HIGH);
+    digitalWrite(PD_2, LOW);
+    digitalWrite(PD_3, LOW);
+    digitalWrite(PE_1, LOW);
+    digitalWrite(PE_2, LOW);
+    digitalWrite(PE_3, LOW);
+    digitalWrite(PA_7, LOW);
+
+  }
+  else if (CONT1 == 3) {
+    digitalWrite(PD_0, LOW);
+    digitalWrite(PD_1, LOW);
+    digitalWrite(PD_2, HIGH);
+    digitalWrite(PD_3, LOW);
+    digitalWrite(PE_1, LOW);
+    digitalWrite(PE_2, LOW);
+    digitalWrite(PE_3, LOW);
+    digitalWrite(PA_7, LOW);
+
+  }
+  else if (CONT1 == 4) {
+    digitalWrite(PD_0, LOW);
+    digitalWrite(PD_1, LOW);
+    digitalWrite(PD_2, LOW);
+    digitalWrite(PD_3, HIGH);
+    digitalWrite(PE_1, LOW);
+    digitalWrite(PE_2, LOW);
+    digitalWrite(PE_3, LOW);
+    digitalWrite(PA_7, LOW);
+
+  }
+  else if (CONT1 == 5) {
+    digitalWrite(PD_0, LOW);
+    digitalWrite(PD_1, LOW);
+    digitalWrite(PD_2, LOW);
+    digitalWrite(PD_3, LOW);
+    digitalWrite(PE_1, HIGH);
+    digitalWrite(PE_2, LOW);
+    digitalWrite(PE_3, LOW);
+    digitalWrite(PA_7, LOW);
+
+  }
+  else if (CONT1 == 6) {
+    digitalWrite(PD_0, LOW);
+    digitalWrite(PD_1, LOW);
+    digitalWrite(PD_2, LOW);
+    digitalWrite(PD_3, LOW);
+    digitalWrite(PE_1, LOW);
+    digitalWrite(PE_2, HIGH);
+    digitalWrite(PE_3, LOW);
+    digitalWrite(PA_7, LOW);
+
+  }
+  else if (CONT1 == 7) {
+    digitalWrite(PD_0, LOW);
+    digitalWrite(PD_1, LOW);
+    digitalWrite(PD_2, LOW);
+    digitalWrite(PD_3, LOW);
+    digitalWrite(PE_1, LOW);
+    digitalWrite(PE_2, LOW);
+    digitalWrite(PE_3, HIGH);
+    digitalWrite(PA_7, LOW);
+
+  }
+  else if (CONT1 == 8) {
+    digitalWrite(PD_0, LOW);
+    digitalWrite(PD_1, LOW);
+    digitalWrite(PD_2, LOW);
+    digitalWrite(PD_3, LOW);
+    digitalWrite(PE_1, LOW);
+    digitalWrite(PE_2, LOW);
+    digitalWrite(PE_3, LOW);
+    digitalWrite(PA_7, HIGH);
+
+
+  }
+
+  else if (CONT1 == 9) {
+    digitalWrite(PD_0, LOW);
+    digitalWrite(PD_1, LOW);
+    digitalWrite(PD_2, LOW);
+    digitalWrite(PD_3, LOW);
+    digitalWrite(PE_1, LOW);
+    digitalWrite(PE_2, LOW);
+    digitalWrite(PE_3, LOW);
+    digitalWrite(PA_7, LOW);
+    digitalWrite(RED_LED, HIGH);
+    FLAG = 0;
+    CONT1 = 0;
   }
 
 }
