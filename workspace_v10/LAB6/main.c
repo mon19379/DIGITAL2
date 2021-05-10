@@ -10,7 +10,6 @@
 #include "driverlib/debug.h"
 
 
-
 uint8_t FLAG = 0;
 
 int main(void)
@@ -36,18 +35,18 @@ int main(void)
 
           FLAG = 0;
 
-           GPIOPinWrite(GPIO_PORTF_BASE,GPIO_PIN_1| GPIO_PIN_2|GPIO_PIN_3,GPIO_PIN_1);
+           GPIOPinWrite(GPIO_PORTF_BASE,GPIO_PIN_1| GPIO_PIN_2|GPIO_PIN_3, 2);
 
            SysCtlDelay(20000000);
 
 
-           GPIOPinWrite(GPIO_PORTF_BASE,GPIO_PIN_1| GPIO_PIN_2|GPIO_PIN_3,GPIO_PIN_1|GPIO_PIN_3);
+           GPIOPinWrite(GPIO_PORTF_BASE,GPIO_PIN_1| GPIO_PIN_2|GPIO_PIN_3, 10);
 
            SysCtlDelay(20000000);
 
 
 
-           GPIOPinWrite(GPIO_PORTF_BASE,GPIO_PIN_1| GPIO_PIN_2|GPIO_PIN_3, GPIO_PIN_3);
+           GPIOPinWrite(GPIO_PORTF_BASE,GPIO_PIN_1| GPIO_PIN_2|GPIO_PIN_3, 8);
 
            SysCtlDelay(20000000);
 
