@@ -16,13 +16,16 @@
 
 
 // SSID & Password
-const char* ssid = "DIGITAL2";  // Enter your SSID here
-const char* password = "digital2";  //Enter your Password here
+const char* ssid = "CLARO1_130838";  // Enter your SSID here
+const char* password = "664fZCnapc";  //Enter your Password here
 
 WebServer server(80);  // Object of WebServer(HTTP port, 80 is defult)
 
 
 uint8_t cont;
+char recib[4];
+uint8_t x;
+
 
 //************************************************************************************************
 // Configuración
@@ -32,6 +35,7 @@ void setup() {
   Serial.begin(115200);
   Serial.println("Try Connecting to ");
   Serial.println(ssid);
+  Serial2.begin(115200, SERIAL_8N1, 16, 17);
   // Connect to your wi-fi modem
   WiFi.begin(ssid, password);
 
@@ -39,9 +43,9 @@ void setup() {
   pinMode(19, OUTPUT);
   pinMode(21, OUTPUT);
   pinMode(32, OUTPUT);
-  pinMode(33, OUTPUT); .
-  pinMode(34, OUTPUT);
-  pinMode(35, OUTPUT);
+  pinMode(33, OUTPUT);
+  pinMode(25, OUTPUT);
+  pinMode(26, OUTPUT);
 
 
   // Check wi-fi is connected to wi-fi network
@@ -55,9 +59,6 @@ void setup() {
   Serial.println(WiFi.localIP());  //Show ESP32 IP on serial
 
   server.on("/", handle_OnConnect); // Directamente desde e.g. 192.168.0.8
-  server.on("/led1on", handle_led1on);
-  server.on("/led1off", handle_led1off);
-
   server.onNotFound(handle_NotFound);
 
   server.begin();
@@ -69,71 +70,220 @@ void setup() {
 //************************************************************************************************
 void loop() {
   server.handleClient();
-  if (LED1status)
-  {
-    digitalWrite(LED1pin, HIGH);
-  }
-  else
-  {
-    digitalWrite(LED1pin, LOW);
+  disp(x);
+  if (Serial2.available() > 0) {
+    Serial2.readBytesUntil(10, recib, 4);
+
+    cont = 4;
+    x = cont;
+
+    if (recib[0] == 48) {
+      cont = x;
+
+    }
+
+    else if (recib[0] == 49) {
+      x --;
+
+
+    }
+
+    if (recib[1] == 48) {
+      cont = x;
+
+    }
+
+    else if (recib[1] == 50) {
+      x --;
+
+    }
+
+    if (recib[2] == 48) {
+      cont = x;
+
+    }
+
+    else if (recib[2] == 51) {
+      x --;
+
+    }
+
+    if (recib[3] == 48) {
+      cont = x;
+
+    }
+
+    else if (recib[3] == 52) {
+      x --;
+
+    }
+
+
   }
 }
 //************************************************************************************************
 // Handler de Inicio página
 //************************************************************************************************
 void handle_OnConnect() {
-  LED1status = LOW;
-  Serial.println("GPIO2 Status: OFF");
-  server.send(200, "text/html", SendHTML(LED1status));
+  server.send(200, "text/html", SendHTML());
 }
-//************************************************************************************************
-// Handler de led1on
-//************************************************************************************************
-void handle_led1on() {
-  LED1status = HIGH;
-  Serial.println("GPIO2 Status: ON");
-  server.send(200, "text/html", SendHTML(LED1status));
-}
-//************************************************************************************************
-// Handler de led1off
-//************************************************************************************************
-void handle_led1off() {
-  LED1status = LOW;
-  Serial.println("GPIO2 Status: OFF");
-  server.send(200, "text/html", SendHTML(LED1status));
-}
+
 //************************************************************************************************
 // Procesador de HTML
 //************************************************************************************************
-String SendHTML(uint8_t led1stat) {
+String SendHTML(void) {
   String ptr = "<!DOCTYPE html> <html>\n";
-  ptr += "<head><meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0, user-scalable=no\">\n";
-  ptr += "<title>LED Control</title>\n";
-  ptr += "<style>html { font-family: Helvetica; display: inline-block; margin: 0px auto; text-align: center;}\n";
-  ptr += "body{margin-top: 50px;} h1 {color: #444444;margin: 50px auto 30px;} h3 {color: #444444;margin-bottom: 50px;}\n";
-  ptr += ".button {display: block;width: 80px;background-color: #3498db;border: none;color: white;padding: 13px 30px;text-decoration: none;font-size: 25px;margin: 0px auto 35px;cursor: pointer;border-radius: 4px;}\n";
-  ptr += ".button-on {background-color: #3498db;}\n";
-  ptr += ".button-on:active {background-color: #2980b9;}\n";
-  ptr += ".button-off {background-color: #34495e;}\n";
-  ptr += ".button-off:active {background-color: #2c3e50;}\n";
-  ptr += "p {font-size: 14px;color: #888;margin-bottom: 10px;}\n";
-  ptr += "</style>\n";
-  ptr += "</head>\n";
-  ptr += "<body>\n";
-  ptr += "<h1>ESP32 Web Server &#128664</h1>\n";
-  ptr += "<h3>Ejemplo de Web Server</h3>\n";
 
-  if (led1stat)
-  {
-    ptr += "<p>LED1 Status: ON</p><a class=\"button button-off\" href=\"/led1off\">OFF</a>\n";
-  }
-  else
-  {
-    ptr += "<p>LED1 Status: OFF</p><a class=\"button button-on\" href=\"/led1on\">ON</a>\n";
+  ptr += "  <head>\n";
+  ptr += "    <meta chatset=\"utf_8\">\n";
+  ptr += "    <title>PROYECTO4</title>\n";
+  ptr += "    <script>\n";
+  ptr += "  <!--\n";
+  ptr += "  function timedRefresh(timeoutPeriod) {\n";
+  ptr += "  \tsetTimeout(\"location.reload(true);\",timeoutPeriod);\n";
+  ptr += "  }\n";
+  ptr += "\n";
+  ptr += "  window.onload = timedRefresh(5000);\n";
+  ptr += "\n";
+  ptr += "  //   -->\n";
+  ptr += "  </script>\n";
+  ptr += "\n";
+  ptr += "    <style>\n";
+  ptr += "    *{\n";
+  ptr += "      padding: 0;\n";
+  ptr += "      margin: 0;\n";
+  ptr += "      box-sizing: border-box;\n";
+  ptr += "      font-family: arial;\n";
+  ptr += "    }\n";
+  ptr += "\n";
+  ptr += "\n";
+  ptr += "    h1{\n";
+  ptr += "      font-size: 6mm;\n";
+  ptr += "      letter-spacing: 15px;\n";
+  ptr += "      color: #0e3742;\n";
+  ptr += "      width: 100%;\n";
+  ptr += "      text-align: justify\n";
+  ptr += "      outline: none;\n";
+  ptr += "      animation: animate 5s linear infinite;\n";
+  ptr += "\n";
+  ptr += "\n";
+  ptr += "    }\n";
+  ptr += "\n";
+  ptr += "    @keyframes animate\n";
+  ptr += "    {\n";
+  ptr += "      0%, 18%, 20%,40.1%,60%, 65.1%, 80%, 90.1&, 92%\n";
+  ptr += "      {\n";
+  ptr += "            color: #0e3742;\n";
+  ptr += "            box-shadow: none;\n";
+  ptr += "      }\n";
+  ptr += "      18.1%,20.1%,30%,50%,60.1%,65%,80.1%,90%,92.1%,100%\n";
+  ptr += "      {\n";
+  ptr += "            color: #0fff;\n";
+  ptr += "            box-shadow: 0 0 10px #03bcf4,\n";
+  ptr += "            0 0 20px #03bcf4\n";
+  ptr += "            0 0 40px #03bcf4\n";
+  ptr += "            0 0 80px #03bcf4\n";
+  ptr += "            0 0 160px #03bcf4\n";
+  ptr += "\n";
+  ptr += "      }\n";
+  ptr += "    }\n";
+  ptr += "\n";
+  ptr += "\n";
+  ptr += "    }\n";
+  ptr += "\n";
+  ptr += "    #center{\n";
+  ptr += "\n";
+  ptr += "    margin-top:1000000px;\n";
+  ptr += "    margin-left: 100px;\n";
+  ptr += "\n";
+  ptr += "\n";
+  ptr += "    }\n";
+  ptr += "\n";
+  ptr += "    td, th{\n";
+  ptr += "\n";
+  ptr += "      border:2px solid black;\n";
+  ptr += "      padding-left: 30px;\n";
+  ptr += "      padding-right: 30px;\n";
+  ptr += "      padding-top: 10px;\n";
+  ptr += "      padding-bottom: 10px;\n";
+  ptr += "      color: white;\n";
+  ptr += "      background-color: black;\n";
+  ptr += "      }\n";
+  ptr += "\n";
+  ptr += "\n";
+  ptr += "      body{\n";
+  ptr += "\n";
+  ptr += "        align-items: center;\n";
+  ptr += "        background: grays;\n";
+  ptr += "      }\n";
+  ptr += "\n";
+  ptr += "    </style>\n";
+  ptr += "    </head>\n";
+  ptr += "\n";
+  ptr += "  <header>\n";
+  ptr += "    <h1 class=\"text1\">PARQUEO-MATIC</h1>\n";
+  ptr += "  </header>\n";
+  ptr += "\n";
+  ptr += "\n";
+  ptr += "<table id=\"center\">\n";
+  ptr += "    <tr>\n";
+  ptr += "      <th>No. de Parqueo</th>\n";
+  ptr += "      <th>Disponibilidad</th>\n";
+  ptr += "    </tr>\n";
+  ptr += "\n";
+  ptr += "    <tr>\n";
+  ptr += "      <td>No.1</td>\n";
+
+  if (recib[0] == 49) {
+    ptr += "      <td> No Disponible</td>\n";
   }
 
-  ptr += "</body>\n";
-  ptr += "</html>\n";
+  else if (recib[0] == 48) {
+    ptr += "      <td> Disponible</td>\n";
+
+  }
+  ptr += "    </tr>\n";
+  ptr += "\n";
+  ptr += "    <tr>\n";
+  ptr += "      <td>No.2</td>\n";
+  if (recib[1] == 50) {
+    ptr += "      <td> No Disponible</td>\n";
+  }
+
+  else if (recib[1] == 48) {
+    ptr += "      <td> Disponible</td>\n";
+
+  }
+  ptr += "    </tr>\n";
+  ptr += "\n";
+  ptr += "    <tr>\n";
+  ptr += "      <td>No.3</td>\n";
+
+  if (recib[2] == 51) {
+    ptr += "      <td> No Disponible</td>\n";
+  }
+
+  else if (recib[2] == 48) {
+    ptr += "      <td> Disponible</td>\n";
+
+  }
+  ptr += "    </tr>\n";
+  ptr += "\n";
+  ptr += "    <tr>\n";
+  ptr += "      <td>No.4</td>\n";
+
+  if (recib[3] == 52) {
+    ptr += "      <td> No Disponible</td>\n";
+  }
+
+  else if (recib[1] == 48) {
+    ptr += "      <td> Disponible</td>\n";
+  }
+  ptr += "    </tr>\n";
+  ptr += "\n";
+  ptr += "  </table>\n";
+  ptr += "  </html>\n";
+  ptr += "";
   return ptr;
 }
 //************************************************************************************************
@@ -144,66 +294,67 @@ void handle_NotFound() {
 }
 
 
-void 7SEG() {
-  void display(uint8_t segment) {
 
-    switch (segment) {
+void disp(uint8_t segment) {
 
-      case 0: //0
-        digitalWrite(35, LOW); //a
-        digitalWrite(34, LOW); //b
-        digitalWrite(18, LOW); //c
-        digitalWrite(21, LOW); //d
-        digitalWrite(19, LOW); //e
-        digitalWrite(32, LOW); //f
-        digitalWrite(33, HIGH); //g
-        break;
+  switch (segment) {
 
-      case 1: //1
-        digitalWrite(35, HIGH); //a
-        digitalWrite(34, LOW); //b
-        digitalWrite(18, LOW); //c
-        digitalWrite(21, HIGH); //d
-        digitalWrite(19, HIGH); //e
-        digitalWrite(32, HIGH); //f
-        digitalWrite(33, HIGH); //g
-        break;
-      case 2: //2
-        digitalWrite(35, LOW); //a
-        digitalWrite(34, LOW); //b
-        digitalWrite(18, HIGH); //c
-        digitalWrite(21, LOW); //d
-        digitalWrite(19, LOW); //e
-        digitalWrite(32, HIGH); //f
-        digitalWrite(33, LOW); //g
-        break;
-      case 3: //3
-        digitalWrite(35, LOW); //a
-        digitalWrite(34, LOW); //b
-        digitalWrite(18, LOW); //c
-        digitalWrite(21, LOW); //d
-        digitalWrite(19, HIGH); //e
-        digitalWrite(32, HIGH); //f
-        digitalWrite(33, LOW); //g
-        break;
-      case 4: //4
-        digitalWrite(35, LOW); //a
-        digitalWrite(34, LOW); //b
-        digitalWrite(18, LOW); //c
-        digitalWrite(21, LOW); //d
-        digitalWrite(19, LOW); //e
-        digitalWrite(32, LOW); //f
-        digitalWrite(33, HIGH); //g
-        break;
+    case 0: //0
+      digitalWrite(26, LOW); //a
+      digitalWrite(25, LOW); //b
+      digitalWrite(18, LOW); //c
+      digitalWrite(21, LOW); //d
+      digitalWrite(19, LOW); //e
+      digitalWrite(32, LOW); //f
+      digitalWrite(33, HIGH); //g
+      break;
 
-      default:
-        digitalWrite(35, HIGH); //a
-        digitalWrite(34, LOW); //b
-        digitalWrite(18, LOW); //c
-        digitalWrite(21, HIGH); //d
-        digitalWrite(19, HIGH); //e
-        digitalWrite(32, LOW); //f
-        digitalWrite(33, LOW); //g
-        break;
+    case 1: //1
+      digitalWrite(26, HIGH); //a
+      digitalWrite(25, LOW); //b
+      digitalWrite(18, LOW); //c
+      digitalWrite(21, HIGH); //d
+      digitalWrite(19, HIGH); //e
+      digitalWrite(32, HIGH); //f
+      digitalWrite(33, HIGH); //g
+      break;
+    case 2: //2
+      digitalWrite(26, LOW); //a
+      digitalWrite(25, LOW); //b
+      digitalWrite(18, HIGH); //c
+      digitalWrite(21, LOW); //d
+      digitalWrite(19, LOW); //e
+      digitalWrite(32, HIGH); //f
+      digitalWrite(33, LOW); //g
+      break;
+    case 3: //3
+      digitalWrite(26, LOW); //a
+      digitalWrite(25, LOW); //b
+      digitalWrite(18, LOW); //c
+      digitalWrite(21, LOW); //d
+      digitalWrite(19, HIGH); //e
+      digitalWrite(32, HIGH); //f
+      digitalWrite(33, LOW); //g
+      break;
+    case 4: //4
+      digitalWrite(26, HIGH); //a
+      digitalWrite(25, LOW); //b
+      digitalWrite(18, LOW); //c
+      digitalWrite(21, HIGH); //d
+      digitalWrite(19, HIGH); //e
+      digitalWrite(32, LOW); //f
+      digitalWrite(33, LOW);
+      break;
 
-    }
+    default:
+      digitalWrite(26, LOW); //a
+      digitalWrite(25, LOW); //b
+      digitalWrite(18, LOW); //c
+      digitalWrite(21, LOW); //d
+      digitalWrite(19, LOW); //e
+      digitalWrite(32, LOW); //f
+      digitalWrite(33, HIGH); //g
+      break;
+
+  }
+}
